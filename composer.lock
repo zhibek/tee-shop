@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4aa59e99578e44be8fde9c2487cfcc6e",
+    "hash": "faf4f35dc07aee86f34e7ba935dfd353",
     "packages": [
         {
             "name": "bragento/magento-composer-installer",
@@ -236,7 +236,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/zhibek/magento-scriptable-config.git",
-                "reference": "f5b393671610281d5df57818304e106ad69e2d64"
+                "reference": "f60b4db4b4b5251ac04c5c5a4c535f23f45b77cc"
             },
             "require": {
                 "magento-hackathon/magento-composer-installer": "*",
@@ -257,7 +257,7 @@
                     "email": "john.levermore@zhibek.com"
                 }
             ],
-            "time": "2015-06-29 09:48:30"
+            "time": "2015-06-29 10:53:55"
         }
     ],
     "packages-dev": [],
