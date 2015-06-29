@@ -26,6 +26,6 @@
     "extra": {
         "magento-root-dir": "magento",
 	"magento-deploystrategy": "symlink",
-	"auto-append-gitignore": true
+	"auto-append-gitignore": false
     }
 }
