@@ -20,6 +20,10 @@ Installation
 
 ### Access the box:
 
+**This box requires the vagrant-berkshelf plugin.**
+If you haven't already got this plugin, please follow the install instructions here:
+https://github.com/berkshelf/vagrant-berkshelf
+
 To access the vagrant environment from the terminal, change to the vagrant directory and type 
 
     vagrant ssh
