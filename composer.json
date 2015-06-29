@@ -1,0 +1,31 @@
+{
+    "name": "zhibek/tee-shop",
+    "description": "tee-shop",
+    "type": "project",
+    "authors": [
+        {
+            "name": "John Levermore",
+            "email": "john.levermore@zhibek.com"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "packages.firegento.com"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/zhibek/magento-scriptable-config.git"
+        }
+    ],
+    "require": {
+        "bragento/magento-composer-installer": "~1",
+        "magento/core": "~1.9",
+	"zhibek/magento-scriptable-config": "dev-master"
+    },
+    "extra": {
+        "magento-root-dir": "magento",
+	"magento-deploystrategy": "copy",
+	"auto-append-gitignore": true
+    }
+}
