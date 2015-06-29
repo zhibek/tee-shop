@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f40231cf3bc091283cdff99b7dbcf956",
+    "hash": "4aa59e99578e44be8fde9c2487cfcc6e",
     "packages": [
         {
             "name": "bragento/magento-composer-installer",
@@ -236,15 +236,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/zhibek/magento-scriptable-config.git",
-                "reference": "8ae8b8d7d46c1f041723efafc266c20f31e1a70f"
+                "reference": "f5b393671610281d5df57818304e106ad69e2d64"
             },
             "require": {
-                "magento-hackathon/magento-composer-installer": "*"
+                "magento-hackathon/magento-composer-installer": "*",
+                "magento/core": "*"
             },
             "bin": [
-                "app/code/community/Zhibek/Migration/shell/cacheclear.php",
-                "app/code/community/Zhibek/Migration/shell/install.php",
-                "app/code/community/Zhibek/Migration/shell/migrate.php"
+                "app/code/community/Zhibek/Migration/shell/cacheclear.sh",
+                "app/code/community/Zhibek/Migration/shell/install.sh",
+                "app/code/community/Zhibek/Migration/shell/migrate.sh"
             ],
             "type": "magento-module",
             "license": [
@@ -256,7 +257,7 @@
                     "email": "john.levermore@zhibek.com"
                 }
             ],
-            "time": "2015-05-31 14:02:04"
+            "time": "2015-06-29 09:48:30"
         }
     ],
     "packages-dev": [],

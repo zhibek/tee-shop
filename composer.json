@@ -25,7 +25,7 @@
     },
     "extra": {
         "magento-root-dir": "magento",
-	"magento-deploystrategy": "copy",
+	"magento-deploystrategy": "symlink",
 	"auto-append-gitignore": true
     }
 }
