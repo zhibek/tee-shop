@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <CamelCase_Weather>
+            <active>true</active>
+            <codePool>local</codePool>
+        </CamelCase_Weather>
+    </modules>
+</config>
