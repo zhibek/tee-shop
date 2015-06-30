@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <system>
+            <children>
+				<weather module="camelcase_weather" translate="title">
+                    <title>Weather</title>
+                    <sort_order>900</sort_order>
+                    <action>adminhtml/weather/index</action>
+                </weather>
+            </children>
+        </system>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>                
+                    <system>
+                        <children>
+                            <weather translate="title">
+                                <title>Weather</title>
+								<sort_order>900</sort_order>
+                            </weather>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

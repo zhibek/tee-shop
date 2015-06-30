@@ -6,6 +6,11 @@
         </CamelCase_Weather>
     </modules>
     <global>
+        <helpers>
+            <camelcase_weather>
+                <class>CamelCase_Weather_Helper</class>
+            </camelcase_weather>
+        </helpers>
         <models>
             <camelcase_weather>
                 <class>CamelCase_Weather_Model</class>
@@ -26,4 +31,15 @@
             </updates>
         </layout>
     </frontend>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <CamelCase_Weather after="Mage_Adminhtml">CamelCase_Weather</CamelCase_Weather>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
 </config>
