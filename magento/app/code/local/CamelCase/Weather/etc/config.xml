@@ -7,22 +7,22 @@
     </modules>
     <global>
         <models>
-            <weather>
+            <camelcase_weather>
                 <class>CamelCase_Weather_Model</class>
-            </weather>
+            </camelcase_weather>
         </models>
         <blocks>
-            <weather>
+            <camelcase_weather>
                 <class>CamelCase_Weather_Block</class>
-            </weather>
+            </camelcase_weather>
         </blocks>
     </global>
     <frontend>
         <layout>
             <updates>
-                <weather>
+                <camelcase_weather>
                     <file>weather.xml</file>
-                </weather>
+                </camelcase_weather>
             </updates>
         </layout>
     </frontend>

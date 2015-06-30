@@ -7,7 +7,7 @@ class CamelCase_Weather_Block_Weather extends Mage_Core_Block_Template
     public function getTemp()
     {
         if (!$this->client) {
-            $this->client = Mage::getModel('weather/client');
+            $this->client = Mage::getModel('camelcase_weather/client');
         }
         
         return $this->client->getTemp();
@@ -16,7 +16,7 @@ class CamelCase_Weather_Block_Weather extends Mage_Core_Block_Template
     public function getConditions()
     {
         if (!$this->client) {
-            $this->client = Mage::getModel('weather/client');
+            $this->client = Mage::getModel('camelcase_weather/client');
         }
         
         return $this->client->getConditions();

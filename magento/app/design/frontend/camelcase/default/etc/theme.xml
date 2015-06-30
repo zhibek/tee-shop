@@ -3,9 +3,9 @@
     <parent>rwd/default</parent>
     <layout>
         <updates>
-            <weather>
+            <camelcase>
                 <file>camelcase.xml</file>
-            </weather>
+            </camelcase>
         </updates>
     </layout>
 </theme>
