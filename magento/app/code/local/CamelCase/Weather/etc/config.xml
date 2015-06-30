@@ -5,4 +5,13 @@
             <version>1.0.0.0</version>
         </CamelCase_Weather>
     </modules>
+    <frontend>
+        <layout>
+            <updates>
+                <weather>
+                    <file>weather.xml</file>
+                </weather>
+            </updates>
+        </layout>
+    </frontend>
 </config>
