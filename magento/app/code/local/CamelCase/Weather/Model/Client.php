@@ -6,9 +6,14 @@ class CamelCase_Weather_Model_Client
 
     const KELVIN_CELSIUS_CONVERSION = 273.15;
 
-    private $city = 'Cairo';
+    private $city;
 
     private $data;
+
+    public function __construct()
+    {
+        $this->city = Mage::helper('camelcase_weather/data')->getConfigCity();
+    }
 
     private function retrieveWeather()
     {
