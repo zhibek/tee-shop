@@ -3,7 +3,7 @@
 <layout>
     <default>
         <reference name="right">
-            <block type="core/template" name="right.weather" template="weather/result.phtml" />
+            <block type="camelcase_weather/weather" name="right.weather" template="weather/result.phtml" />
         </reference>
     </default>
 </layout>

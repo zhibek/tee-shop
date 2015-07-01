@@ -4,6 +4,18 @@
             <version>0.1</version>
         </CamelCase_Weather>
     </modules>
+    <global>
+        <blocks>
+            <camelcase_weather>
+                 <class>CamelCase_Weather_Block</class>
+            </camelcase_weather>
+         </blocks>
+        <models>
+            <camelcase_weather>
+                 <class>CamelCase_Weather_Model</class>
+            </camelcase_weather>
+         </models>
+</global>
     <frontend>
         <layout>
             <updates>
