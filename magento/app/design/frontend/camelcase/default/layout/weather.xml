@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<layout>
+    <default>
+        <reference name="right">
+            <block type="core/template" name="right.weather" template="weather/result.phtml" />
+        </reference>
+    </default>
+</layout>

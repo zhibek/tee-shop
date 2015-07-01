@@ -1,7 +1,16 @@
-1<config>
+<config>
     <modules>
         <CamelCase_Weather>
             <version>0.1</version>
         </CamelCase_Weather>
     </modules>
+    <frontend>
+        <layout>
+            <updates>
+                <camelcase_weather>
+                    <file>weather.xml</file>
+                </camelcase_weather>
+            </updates>
+        </layout>
+    </frontend>
 </config>
