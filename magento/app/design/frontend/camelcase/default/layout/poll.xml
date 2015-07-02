@@ -1,0 +1,7 @@
+<layout version="0.1.0">
+    <default>
+        <reference name="right">
+            <remove name="right.poll" />
+        </reference>
+    </default>
+</layout>
