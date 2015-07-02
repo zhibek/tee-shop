@@ -1,1 +1,9 @@
-<p>this is the weather</p>
+<?php
+$weatherData = $this->getWeather();
+?>
+
+<div>
+    <b><?php echo $weatherData->name ?>, <?php echo $weatherData->sys->country?></b> 
+    <img src="http://openweathermap.org/images/flags/<?php echo strtolower($weatherData->sys->country)?>.png">  
+    <p><span class="badge badge-info"><?php echo round($weatherData->main->temp / 10  , 1)?>&deg;С</span>
+</div>
