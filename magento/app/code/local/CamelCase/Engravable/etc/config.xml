@@ -1,0 +1,17 @@
+<config>
+    <modules>
+        <CamelCase_Engravable>
+            <version>0.1.0</version>
+        </CamelCase_Engravable>
+    </modules>
+    <global>
+        <resources>
+            <engravable_setup>
+                <setup>
+                    <module>CamelCase_Engravable</module>
+                    <class>Mage_Catalog_Model_Resource_Setup</class>
+                </setup>
+            </engravable_setup>
+        </resources>
+    </global>
+</config>

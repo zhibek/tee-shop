@@ -1,0 +1,8 @@
+<config>
+    <modules>
+        <CamelCase_Engravable>      
+            <active>true</active>
+            <codePool>local</codePool>
+        </CamelCase_Engravable>
+    </modules>
+</config>
