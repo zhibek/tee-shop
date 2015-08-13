@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <CamelCase_Engravable>
+            <version>1.0.0.0</version>
+        </CamelCase_Engravable>
+    </modules>
+    <global>
+        <resources>
+            <camelcase_engravable_setup>
+                <setup>
+                    <module>CamelCase_Engravable</module>
+                    <class>Mage_Catalog_Model_Resource_Setup</class>
+                </setup>
+            </camelcase_engravable_setup>
+        </resources>
+        <helpers>
+            <camelcase_engravable>
+                <class>CamelCase_Engravable_Helper</class>
+            </camelcase_engravable>
+        </helpers>
+    </global>
+</config>
