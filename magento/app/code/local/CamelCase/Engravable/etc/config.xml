@@ -19,5 +19,34 @@
                 <class>CamelCase_Engravable_Helper</class>
             </camelcase_engravable>
         </helpers>
+        <blocks>
+            <camelcase_engravable>
+                <class>CamelCase_Engravable_Block</class>
+            </camelcase_engravable>
+        </blocks>
+        <models>
+            <camelcase_engravable>
+                <class>CamelCase_Engravable_Model</class>
+            </camelcase_engravable>
+        </models>
+        <events>
+            <sales_quote_item_set_product>
+                <observers>
+                    <camelcase_engravable_set_custom_attributes>
+                        <class>camelcase_engravable/observer</class>
+                        <method>setCustomAttributes</method>
+                    </camelcase_engravable_set_custom_attributes>
+                </observers>
+            </sales_quote_item_set_product>
+        </events>
     </global>
+    <frontend>
+        <layout>
+            <updates>
+                <camelcase_engravable>
+                    <file>engravable.xml</file>
+                </camelcase_engravable>
+            </updates>
+        </layout>
+    </frontend>
 </config>
