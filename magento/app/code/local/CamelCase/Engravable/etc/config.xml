@@ -12,6 +12,20 @@
                     <class>Mage_Catalog_Model_Resource_Setup</class>
                 </setup>
             </engravable_setup>
-        </resources>
+        </resources>    
+        <blocks>
+            <engravable>
+                <class>CamelCase_Engravable_Block</class>
+            </engravable>
+        </blocks>
     </global>
+    <frontend>
+        <layout>
+            <updates>
+                <engravable>
+                    <file>engravable.xml</file>
+                </engravable>
+            </updates>
+        </layout>
+    </frontend>
 </config>
