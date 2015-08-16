@@ -33,6 +33,10 @@ class CamelCase_Engravable_Model_Observer
         Mage::log('Engravable product added to cart...');
         Mage::log(sprintf('Engraved Name: "%s"', $engravedName));
         Mage::log(sprintf('Engraved Date: "%s"', $engravedDate));
+
+        // Persist engraved_name & engraved_date
+        $quoteItem->setEngravedName($engravedName);
+        $quoteItem->setEngravedDate($engravedDate);
     }
 
 }
