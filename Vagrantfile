@@ -3,7 +3,7 @@ VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.box = "ubuntu/trusty64"
-  config.vm.synced_folder "./", "/var/www", id: "web-root"
+  config.vm.synced_folder "./", "/var/www", id: "web-root" , owner: "www-data", group: "www-data", mount_options: ["dmode=775,fmode=664"]
   config.vm.network "forwarded_port", guest: 22, host: 2280, id: "ssh", auto: true
   config.vm.network "private_network", ip: "10.1.1.80"
 
