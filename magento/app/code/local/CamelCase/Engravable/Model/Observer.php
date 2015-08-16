@@ -37,6 +37,23 @@ class CamelCase_Engravable_Model_Observer
         // Persist engraved_name & engraved_date
         $quoteItem->setEngravedName($engravedName);
         $quoteItem->setEngravedDate($engravedDate);
+
+        // Calculate new product cost and persist to quote
+        $cost = $this->calculateCost($quoteItem->getProduct(), $engravedName);
+        $quoteItem->setCustomPrice($cost);
+        $quoteItem->setOriginalCustomPrice($cost);
+
+        //$quoteItem->getProduct()->setIsSuperMode(true);
+        //$quoteItem->save();
+    }
+
+    public function calculateCost($product, $engravedName)
+    {
+        $engravedCharacterCost = Mage::helper('camelcase_engravable/data')->getConfigCharacterCost();
+        $engravedCharacterCount = strlen($engravedName);
+        $engravingCost = $engravedCharacterCost * $engravedCharacterCount;
+
+        return $product->getPrice() + $engravingCost;
     }
 
 }

@@ -68,6 +68,13 @@
             </sales_convert_order_item>
         </fieldsets>
     </global>
+    <default>
+        <general>
+            <camelcase_engravable>
+                <character_cost>0.10</character_cost>
+            </camelcase_engravable>
+        </general>
+    </default>
     <frontend>
         <layout>
             <updates>
