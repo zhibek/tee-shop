@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <CamelCase_Engravable>
+            <version>1.0.0</version> 
+        </CamelCase_Engravable>
+    </modules>
+    <global>
+        
+        <blocks>
+            <camelcase_engravable>
+                <class>CamelCase_Engravable_Block</class>
+            </camelcase_engravable>
+        </blocks>
+        <models>
+            <camelcase_engravable>
+                <class>CamelCase_Engravable_Model</class>
+            </camelcase_engravable>
+        </models>
+
+        <resources>
+            <engravable_setup>
+                <setup>
+                    <module>CamelCase_Engravable</module>
+                    <class>Mage_Catalog_Model_Resource_Setup</class>
+                </setup>
+            </engravable_setup>
+        </resources>
+            <events>
+                <sales_quote_save_after>
+                    <observers>
+                        <camelcase_engravable>
+                            <type>model</type>
+                            <class>camelcase_engravable/observer</class>
+                            <method>logNameAndDate</method>
+                        </camelcase_engravable>
+                    </observers>
+                </sales_quote_save_after>
+            </events>
+       
+    </global>
+    
+    <frontend>
+        <layout>
+            <updates>
+                <camelcase_engravable>
+                    <file>engravable.xml</file>
+                </camelcase_engravable>
+            </updates>
+        </layout>  
+    </frontend>  
+</config>
