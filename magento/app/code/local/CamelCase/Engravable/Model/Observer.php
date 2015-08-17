@@ -51,17 +51,17 @@ class CamelCase_Engravable_Model_Observer
 
         $this->logEvent();
 
-//        if ($this->isEngravable()) {
-//            $engravableName = $this->getEngravableName();
-//            $engravableDate = $this->getEngravableDate();
-//
-//            $quoteItem = $observer->getEvent()->getQuoteItem();
-//
-//            $quoteItem->setDate('engravable_name', $engravableName);
-//            $quoteItem->setDate('engravable_date', $engravableDate);
-//
-//            $quoteItem->save();
-//        }
+        if ($this->isEngravable()) {
+            $engravableName = $this->getEngravableName();
+            $engravableDate = $this->getEngravableDate();
+
+            $quoteItem = $this->getQuoteItem();
+
+            $quoteItem->setData('engravable_name', $engravableName);
+            $quoteItem->setData('engravable_date', $engravableDate);
+
+            $quoteItem->save();
+        }
     }
 
     protected function isEngravable()
