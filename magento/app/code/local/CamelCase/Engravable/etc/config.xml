@@ -18,6 +18,21 @@
                 <class>CamelCase_Engravable_Block</class>
             </engravable>
         </blocks>
+        <models>
+            <engravable>
+                <class>CamelCase_Engravable_Model</class>
+            </engravable>
+        </models>
+        <events>
+            <checkout_cart_product_add_after>
+                <observers>
+                    <engravable>
+                        <class>engravable/observer</class>
+                        <method>logEvent</method>
+                    </engravable>
+                </observers>
+            </checkout_cart_product_add_after>
+        </events>
     </global>
     <frontend>
         <layout>
