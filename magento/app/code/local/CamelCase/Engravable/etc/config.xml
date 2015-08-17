@@ -1,7 +1,7 @@
 <config>
     <modules>
         <CamelCase_Engravable>
-            <version>0.1.0</version>
+            <version>0.1.1</version>
         </CamelCase_Engravable>
     </modules>
     <global>
@@ -28,11 +28,29 @@
                 <observers>
                     <engravable>
                         <class>engravable/observer</class>
-                        <method>logEvent</method>
+                        <method>saveQuoteItem</method>
                     </engravable>
                 </observers>
             </checkout_cart_product_add_after>
+            <checkout_cart_add_product_complete>
+                <observers>
+                    <engravable>
+                        <class>engravable/observer</class>
+                        <method>addAttributesToQuoteItem</method>
+                    </engravable>
+                </observers>
+            </checkout_cart_add_product_complete>
         </events>
+        <fieldsets>
+            <sales_convert_quote_item>
+                <engravable_name>
+                    <to_order_item>*</to_order_item>
+                </engravable_name>
+                <engravable_date>
+                    <to_order_item>*</to_order_item>
+                </engravable_date>
+            </sales_convert_quote_item>
+        </fieldsets>
     </global>
     <frontend>
         <layout>
