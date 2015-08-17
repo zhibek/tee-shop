@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * local.xml
+ *
+ * Local layout modifications for our local theme
+ *
+ * @category    design
+ * @package     my_theme_default
+ * @copyright   Copyright (c) 2011 Magebase.
+ */
+-->
+<layout version="0.1.0">
+<default>
+    <!-- remove the COMUNNITY POLL -->
+    <remove name="right.poll" />
+</default>
+</layout>
