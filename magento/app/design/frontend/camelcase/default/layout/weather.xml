@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <customer_address_edit>
 <reference name="right">
- 
+ <action method=""><template>weather/weather.phtml</template><type>weather</type></action>
 </reference>
 </customer_address_edit>

@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <config>
     <modules>
-        <Chiragdodia_Mymodule>
+        <Camelcase_Weather>
             <version>0.1.0</version>    <!-- Version number of your module -->
-        </Chiragdodia_Mymodule>
+        </Camelcase_Weather>
     </modules>
     <frontend>
         <layout>
