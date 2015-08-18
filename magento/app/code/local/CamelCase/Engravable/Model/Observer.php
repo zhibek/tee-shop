@@ -18,17 +18,17 @@ class CamelCase_Engravable_Model_Observer
     {
         return $this->observer;
     }
-    
+
     public function getQuoteItem()
     {
         return $this->quoteItem;
     }
-    
+
     public function setProduct($product)
     {
         $this->product = $product;
     }
-    
+
     public function getProduct()
     {
         return $this->product;
@@ -52,6 +52,8 @@ class CamelCase_Engravable_Model_Observer
         $this->logEvent();
 
         if ($this->isEngravable()) {
+            // save name and date to quote item 
+
             $engravableName = $this->getEngravableName();
             $engravableDate = $this->getEngravableDate();
 
@@ -60,6 +62,13 @@ class CamelCase_Engravable_Model_Observer
             $quoteItem->setData('engravable_name', $engravableName);
             $quoteItem->setData('engravable_date', $engravableDate);
 
+            // update quote item price based on engraved characters
+            $pricePerCharacter = (float) Mage::getStoreConfig(CamelCase_Engravable_Helper_Data::CONFIG_CHARACTER_PRICE);
+            $charactersCount = $this->countCharacters();
+            
+            $newPrice = $quoteItem->getPriceInclTax() + $pricePerCharacter * $charactersCount;
+            $quoteItem->setOriginalCustomPrice($newPrice);
+            
             $quoteItem->save();
         }
     }
@@ -70,7 +79,7 @@ class CamelCase_Engravable_Model_Observer
         $product = $observer->getEvent()->getProduct();
         $this->setProduct($product);
         $productData = $product->getData();
-//        var_dump($productData);exit;
+
         return (boolean) $productData['is_engravable'];
     }
 
@@ -87,16 +96,26 @@ class CamelCase_Engravable_Model_Observer
     protected function getEngravableDate()
     {
         if (is_null($this->engravableDate)) {
-            $observer = $this->getObserver();   
+            $observer = $this->getObserver();
             $engravableDate = date("Y-m-d", strtotime($this->getQuoteItem()->getCreatedAt()));
             $this->engravableDate = $engravableDate;
         }
         return $this->engravableDate;
     }
-    
+
     public function saveQuoteItem($observer)
     {
         $this->quoteItem = $observer->getEvent()->getQuoteItem();
+    }
+
+    public function countCharacters()
+    {
+        $engravableName = $this->getEngravableName();
+        $engravableDate = $this->getEngravableDate();
+        
+        $count = strlen( trim(str_replace(" ", "", $engravableName)) ) + strlen(trim($engravableDate));
+        
+        return $count;
     }
 
 }
