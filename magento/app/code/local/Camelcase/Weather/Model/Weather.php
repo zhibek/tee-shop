@@ -8,11 +8,21 @@
 
 class Camelcase_Weather_Model_Weather extends Mage_Core_Model_Abstract {
 
-    public function getWeatherInfo() {
+    private function getWeatherInfo() {
 
         $client = new Zend_Http_Client('http://api.openweathermap.org/data/2.5/weather?q=Cairo');
         $body = $client->request()->getBody();
-        return $body;
+        $Json = json_decode($body, true);
+        return $Json;
     }
 
+    public function getTemp() {
+        $weather = $this->getWeatherInfo();
+        return $weather["main"]["temp"]-272.15;
+    }
+
+    public function getCity() {
+        $weather = $this->getWeatherInfo();
+        return $weather["name"];
+    }
 }

@@ -8,22 +8,16 @@
 
 class Camelcase_Weather_Block_Weather extends Mage_Core_Block_Template {
 
-    private function getWeather() {
-//         call model to fetch data
-    $forcastInfo = Mage::getModel("weather/weather")->getWeatherInfo();
-    $Json = json_decode($forcastInfo, true);
-    return $Json;
-
-    }
-
     public function getTemp() {
-        $weather = $this->getWeather();
-        return $weather["main"]["temp"];
+//         call model to fetch data
+        $temp = Mage::getModel("weather/weather")->getTemp();
+        return $temp;
     }
 
     public function getCity() {
-        $weather = $this->getWeather();
-        return $weather["name"];
+//         call model to fetch data
+        $city = Mage::getModel("weather/weather")->getCity();
+        return $city;
     }
 
 }
