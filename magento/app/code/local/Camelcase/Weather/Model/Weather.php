@@ -9,9 +9,10 @@
 class Camelcase_Weather_Model_Weather extends Mage_Core_Model_Abstract {
 
     public function getWeatherInfo() {
-        
-        $response = http_get("http://api.openweathermap.org/data/2.5/weather", array("q" => "Cairo"), $forcastInfo);
-        return $forcastInfo;
+
+        $client = new Zend_Http_Client('http://api.openweathermap.org/data/2.5/weather?q=Cairo');
+        $body = $client->request()->getBody();
+        return $body;
     }
 
 }

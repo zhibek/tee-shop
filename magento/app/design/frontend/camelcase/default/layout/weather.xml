@@ -2,7 +2,7 @@
 <layout version="0.1.0">
     <default>
         <reference name="right">
-            <block type="core/template" name="forcast" template="weather/weather.phtml" />
+            <block type="weather/weather" name="forcast" template="weather/weather.phtml" />
         </reference>
     </default>
 
