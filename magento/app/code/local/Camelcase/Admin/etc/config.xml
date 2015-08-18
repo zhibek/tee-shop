@@ -18,6 +18,24 @@
             </WeatherAdmin>
         </routers>
     </admin>
+    <adminhtml>
+        <menu>
+            <weather_menu translate="title" module="admin">
+                <!--top menu name-->
+                <title>Weather</title>
+                <!--999 to put weather at the end-->  
+                <sort_order>9999</sort_order>
+                <!--menu items-->
+                <children>
+                    <!--first element-->
+                    <first_page module="admin">
+                        <title>Set Country</title> 
+                        <action>weather/index/index</action>
+                    </first_page>
+                </children>
+            </weather_menu>
+        </menu> 
+    </adminhtml>
     <!--    <frontend>
         <layout>
             <updates>
