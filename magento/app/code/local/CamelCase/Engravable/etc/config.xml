@@ -2,11 +2,28 @@
 <config>
     <modules>
         <CamelCase_Engravable>
-            <version>1.0.0</version> 
+            <version>1.0.6</version> 
         </CamelCase_Engravable>
     </modules>
     <global>
-        
+        <fieldsets>
+            <sales_convert_quote_item>
+                <engraved_name>
+                    <to_order_item>*</to_order_item>
+                </engraved_name>
+                <engraved_date>
+                    <to_order_item>*</to_order_item>
+                </engraved_date>
+            </sales_convert_quote_item>
+            <sales_convert_order_item>
+                <engraved_name>
+                    <to_quote_item>*</to_quote_item>
+                </engraved_name>
+                <engraved_date>
+                    <to_quote_item>*</to_quote_item>
+                </engraved_date>
+            </sales_convert_order_item>
+        </fieldsets>
         <blocks>
             <camelcase_engravable>
                 <class>CamelCase_Engravable_Block</class>
@@ -26,17 +43,17 @@
                 </setup>
             </engravable_setup>
         </resources>
-            <events>
-                <sales_quote_save_after>
-                    <observers>
-                        <camelcase_engravable>
-                            <type>model</type>
-                            <class>camelcase_engravable/observer</class>
-                            <method>logNameAndDate</method>
-                        </camelcase_engravable>
-                    </observers>
-                </sales_quote_save_after>
-            </events>
+        <events>
+            <sales_quote_save_after>
+                <observers>
+                    <camelcase_engravable>
+                        <type>model</type>
+                        <class>camelcase_engravable/observer</class>
+                        <method>logNameAndDate</method>
+                    </camelcase_engravable>
+                </observers>
+            </sales_quote_save_after>
+        </events>
        
     </global>
     

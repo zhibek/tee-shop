@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <layout>
     <default>
-        <remove name="right.poll" />
+        <!--<remove name="right.poll" />-->
         <!--<remove name="product.info.media" />-->
     </default>
 </layout>
