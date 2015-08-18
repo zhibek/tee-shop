@@ -5,6 +5,13 @@
             <version>1.0.6</version> 
         </CamelCase_Engravable>
     </modules>
+    <default>
+        <engravable>
+            <default>
+                <character_price>5</character_price>
+            </default>
+        </engravable>
+    </default>
     <global>
         <fieldsets>
             <sales_convert_quote_item>
