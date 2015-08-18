@@ -5,4 +5,10 @@
             <block type="engravable/engravable" name="product.info.engravable" template="catalog/product/view/engravable.phtml" after="-"/>
         </reference>
     </catalog_product_view>
+    
+    <checkout_cart_index translate="label">
+        <reference name="additional.product.info">
+            <block type="engravable/checkout_cart_item" name="additional.product.engravable" template="checkout/cart/item/engravable.phtml" />
+        </reference>
+    </checkout_cart_index>
 </layout>
