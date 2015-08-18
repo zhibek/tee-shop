@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Camelcase_Admin>
+        <active>true</active>
+        <codePool>local</codePool>
+        </Camelcase_Admin>
+    </modules>
+</config>

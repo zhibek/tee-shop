@@ -14,4 +14,16 @@
             </updates>
         </layout>
     </frontend>
+    <global>
+        <blocks>
+            <weather>
+                <class>Camelcase_Weather_Block</class>
+            </weather>
+        </blocks>
+        <models>
+            <weather>
+                <class>Camelcase_Weather_Model</class>
+            </weather>
+        </models>
+    </global>
 </config>
