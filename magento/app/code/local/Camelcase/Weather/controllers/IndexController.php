@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-class Camelcase_Admin_IndexController extends Mage_Adminhtml_Controller_Action
+class Camelcase_Weather_IndexController extends Mage_Adminhtml_Controller_Action
 {
     public function indexAction()
     {

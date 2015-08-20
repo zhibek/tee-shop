@@ -20,10 +20,40 @@
                 <class>Camelcase_Weather_Block</class>
             </weather>
         </blocks>
+        <helpers>
+            <weather>
+                <class>Camelcase_Weather_Helper</class>
+            </weather>
+        </helpers>
         <models>
             <weather>
                 <class>Camelcase_Weather_Model</class>
             </weather>
         </models>
     </global>
+    <admin>
+        <routers>
+            <Weather_Admin>
+                <use>admin</use>
+                <args>
+                    <module>Camelcase_Weather</module>
+                    <frontName>weather</frontName>
+                </args>
+            </Weather_Admin>
+        </routers>
+    </admin>
+    <adminhtml>
+        <menu>
+            <custom_menu translate="title" module="weather">
+                <title>Weather</title> 
+                <sort_order>9999</sort_order>
+                <children>
+                    <first_page module="weather">
+                        <title>Set Country</title> 
+                        <action>weather/index/index</action>
+                    </first_page>
+                </children>
+            </custom_menu>
+        </menu>
+    </adminhtml>
 </config>
