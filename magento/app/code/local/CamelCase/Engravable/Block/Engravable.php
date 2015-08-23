@@ -9,4 +9,19 @@ class CamelCase_Engravable_Block_Engravable extends Mage_Core_Block_Template
         return $model->getProduct();
     }
     
+    public function getEngravedData() {
+     
+        $item = $this->getParentBlock()->getItem();
+        $engravedName = $item->getEngravedName();
+        if(!empty($engravedName)) {
+            return array(
+              'engraved_name' =>  $engravedName, 
+              'engraved_date' =>  $item->getEngravedDate()
+                    
+            );
+        }
+        
+        return FALSE;
+    }
+    
 }
