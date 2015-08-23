@@ -18,6 +18,11 @@
                 <class>CamelCase_Engravable_Block</class>
             </engravable>
         </blocks>
+        <helpers>
+            <engravable>
+                <class>CamelCase_Engravable_Helper</class>
+            </engravable>
+        </helpers>
         <models>
             <engravable>
                 <class>CamelCase_Engravable_Model</class>
@@ -65,7 +70,7 @@
         <layout>
             <updates>
                 <engravable>
-                    <file>engravable_admin.xml</file>
+                    <file>engravable.xml</file>
                 </engravable>
             </updates>
         </layout>

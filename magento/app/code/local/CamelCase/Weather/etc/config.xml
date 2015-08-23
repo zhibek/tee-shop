@@ -76,7 +76,7 @@
         <layout>
             <updates>
                 <weather_admin>
-                    <file>weather_admin.xml</file>
+                    <file>weather.xml</file>
                 </weather_admin>
             </updates>
         </layout>
