@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <weather_adminhtml_weatherbackend_index>
+        <reference name="content">
+            <block type="weather/adminhtml_weatherbackend" name="weatherbackend" template="weather/weatherbackend.phtml" />
+        </reference>
+    </weather_adminhtml_weatherbackend_index>
+</layout>

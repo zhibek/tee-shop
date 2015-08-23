@@ -61,4 +61,13 @@
             </updates>
         </layout>
     </frontend>
+    <adminhtml>
+        <layout>
+            <updates>
+                <engravable>
+                    <file>engravable_admin.xml</file>
+                </engravable>
+            </updates>
+        </layout>
+    </adminhtml>
 </config>

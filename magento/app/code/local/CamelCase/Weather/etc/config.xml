@@ -6,8 +6,15 @@
     </modules>
     <global>
         <blocks>
-            <weather><class>CamelCase_Weather_Block</class></weather>
+            <weather>
+                <class>CamelCase_Weather_Block</class>
+            </weather>
         </blocks>
+        <helpers>
+            <weather>
+                <class>CamelCase_Weather_Helper</class>
+            </weather>
+        </helpers>
     </global>
     <frontend>
         <layout>
@@ -15,7 +22,75 @@
                 <weather>
                     <file>weather.xml</file>
                 </weather>
+                <weather_admin>
+                    <file>weather_admin.xml</file>
+                </weather_admin>
             </updates>
         </layout>
     </frontend>
+    <admin>
+        <routers>
+            <weather>
+                <use>admin</use>
+                <args>
+                    <module>CamelCase_Weather</module>
+                    <frontName>admin_weather</frontName>
+                </args>
+            </weather>
+        </routers>
+    </admin>
+    <adminhtml>
+        <menu>
+            <weather module="weather">
+                <title>Weather</title>
+                <sort_order>100</sort_order>
+                <children>
+                    <weatherbackend module="weather">
+                        <title>Weather Admin</title>
+                        <sort_order>0</sort_order>
+                        <action>admin_weather/adminhtml_weatherbackend</action>
+                    </weatherbackend>
+                </children>
+            </weather>
+        </menu>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <weather translate="title" module="weather">
+                            <title>Weather</title>
+                            <sort_order>1000</sort_order>
+                            <children>
+                                <weatherbackend translate="title">
+                                    <title>Backend Page Title</title>
+                                </weatherbackend>
+                            </children>
+                        </weather>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        <layout>
+            <updates>
+                <weather_admin>
+                    <file>weather_admin.xml</file>
+                </weather_admin>
+            </updates>
+        </layout>
+    </adminhtml>
+     <stores>
+        <admin>
+            <design>
+                <package>
+                    <name>camelcase</name>
+                </package>
+                <theme>
+                    <default>default</default>
+                </theme>
+            </design>
+        </admin>
+    </stores>
 </config>
