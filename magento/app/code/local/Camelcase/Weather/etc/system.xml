@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+<config>
+    <tabs>
+        <weatherconfig translate="label" module="weather">
+            <label>Weather Extension</label>
+            <sort_order>99999</sort_order>
+        </weatherconfig>
+    </tabs> 
+    <sections>
+        <weather_options name="weather_section" translate="label" module="weather">
+            <label>Weather Administration</label>
+            <tab>weatherconfig</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>1000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <weather_group name="weather_group" translate="label" module="weather">
+                    <label>Set Country for the Extension</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store> 
+                    <fields>
+                        <weather_input name="weather_input" translate="label">
+                            <label>Country</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </weather_input>                    
+                    </fields>                             
+                </weather_group>
+            </groups>
+        </weather_options>
+    </sections>     
+</config>
