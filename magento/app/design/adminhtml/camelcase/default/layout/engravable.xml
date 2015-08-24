@@ -1,7 +1,7 @@
 <layout version="0.1.0">
     <adminhtml_sales_order_view>
         <reference name="order_item_extra_info">
-            <block type="engravable/adminhtml_sales_order_engravedinfo" template="engravable/info.phtml" />
+            <block type="engravable/adminhtml_sales_order_engravedinfo" name="order_item_engraved_info" template="engravable/info.phtml" />
         </reference>
     </adminhtml_sales_order_view>
 </layout>
