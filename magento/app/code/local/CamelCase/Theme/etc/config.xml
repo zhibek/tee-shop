@@ -1,0 +1,19 @@
+<config>
+    <modules>
+        <CamelCase_Theme>
+            <version>0.1</version>
+        </CamelCase_Theme>
+    </modules>
+     <stores>
+        <admin>
+            <design>
+                <package>
+                    <name>camelcase</name>
+                </package>
+                <theme>
+                    <default>default</default>
+                </theme>
+            </design>
+        </admin>
+    </stores>
+</config>

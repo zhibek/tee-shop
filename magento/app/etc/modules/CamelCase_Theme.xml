@@ -1,0 +1,8 @@
+<config>
+  <modules>
+    <CamelCase_Theme>
+      <active>true</active>
+      <codePool>local</codePool>
+    </CamelCase_Theme>
+  </modules>
+</config>
