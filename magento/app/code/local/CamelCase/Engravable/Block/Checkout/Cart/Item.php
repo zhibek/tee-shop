@@ -24,7 +24,10 @@ class CamelCase_Engravable_Block_Checkout_Cart_Item extends Mage_Core_Block_Temp
     
     public function isEngravable()
     {
-        return true;
+        $product =$this->getItem()->getProduct();
+        $productData = $product->load()->getData();
+        
+        return (boolean) $productData['is_engravable'];
     }
 
 }
