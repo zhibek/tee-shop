@@ -13,6 +13,41 @@
                     <class>Mage_Catalog_Model_Resource_Setup</class>
                 </setup>
             </engravable_setup>
-        </resources> 
+        </resources>
+        <blocks>
+            <engravable>
+                <class>Camelcase_Engravable_Block</class>
+            </engravable>
+        </blocks>
+        <helpers>
+            <engravable>
+                <class>Camelcase_Engravable_Helper</class>
+            </engravable>
+        </helpers>
+        <models>
+            <engravable>
+                <class>Camelcase_Engravable_Model</class>
+            </engravable>
+        </models> 
+        <events>
+            <checkout_cart_product_add_after>
+                <observers>
+                    <camelcase_engravable_cart_event_observer>
+                        <type>singleton</type>
+                        <class>engravable/observer</class>
+                        <method>shopSystemLog</method>
+                    </camelcase_engravable_cart_event_observer>                
+                </observers>
+            </checkout_cart_product_add_after>
+        </events>
     </global>
+    <frontend>
+        <layout>
+            <updates>
+                <Camelcase_Engravable>
+                    <file>engravable.xml</file>
+                </Camelcase_Engravable>
+            </updates>
+        </layout>
+    </frontend>
 </config>
