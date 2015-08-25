@@ -1,10 +1,20 @@
 <config>
     <modules>
         <CamelCase_Theme>
-            <version>0.1</version>
+            <version>0.1.0</version>
         </CamelCase_Theme>
     </modules>
-     <stores>
+    <global>
+        <resources>
+            <theme_setup>
+                <setup>
+                    <module>CamelCase_Theme</module>
+                    <class>Mage_Catalog_Model_Resource_Setup</class>
+                </setup>
+            </theme_setup>
+        </resources>  
+    </global>
+    <stores>
         <admin>
             <design>
                 <package>
