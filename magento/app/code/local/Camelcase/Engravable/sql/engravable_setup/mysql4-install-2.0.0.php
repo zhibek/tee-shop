@@ -2,7 +2,6 @@
 <?php
 
 $this->startSetup();
-var_dump(111);exit;
 $this->addAttribute(
         'catalog_product', 'is_engravable', array(
     'input' => 'boolean',

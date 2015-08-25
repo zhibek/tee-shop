@@ -18,12 +18,13 @@ class Camelcase_Engravable_Model_Observer {
     }
 
     private function getEngravedName() {
-        if (is_null($this->checkEngravability())) {
+        if ($this->checkEngravability()) {
             $requestData = Mage::app()->getRequest()->getPost();
             $engravedName = $requestData['userEngravedName'];
         }
         return $engravedName;
     }
+
     // need to add fun to set the product global and protected var 
     private function checkEngravability() {
         $observer = $this->getObserver();
@@ -37,7 +38,14 @@ class Camelcase_Engravable_Model_Observer {
         if ($this->checkEngravability()) {
             $engravedName = $this->getEngravedName();
             $engravedDate = $this->getDateNow();
-            Mage::log('A new engraved ring had been Added to the cart with name "' . $engravedName . '" at "' . $engravedDate . '"');
+            Mage::log('A new engraved ring had been Added to the cart with name "'
+                    . $engravedName . '" at "' . $engravedDate . '"');
+            // adding to quote entity table after adding to cart
+            $quoteItem = $observer->getEvent()->getQuoteItem();
+            $quoteItem->setData('engraved_name', $engravedName);
+            $quoteItem->setData('engraved_date', $engravedDate);
+
+           
         }
     }
 

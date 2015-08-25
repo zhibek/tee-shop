@@ -2,7 +2,9 @@
 <config>
     <modules>
         <Camelcase_Engravable>
-            <version>2.0.1</version>    <!-- Version number of your module -->
+            <!-- each time u add attribute with update file in sql 
+            u need to change the version to the last change -->
+            <version>2.0.3</version>    <!-- Version number of your module -->
         </Camelcase_Engravable>
     </modules>
     <global>
@@ -10,7 +12,10 @@
             <engravable_setup>
                 <setup>
                     <module>Camelcase_Engravable</module>
+                    <!--adding  field to catalog table--> 
                     <class>Mage_Catalog_Model_Resource_Setup</class>
+                    <!--needed to add attributes to order_item & qoute_item-->
+                    <class>Mage_Sales_Model_Resource_Setup</class>
                 </setup>
             </engravable_setup>
         </resources>
@@ -29,12 +34,28 @@
                 <class>Camelcase_Engravable_Model</class>
             </engravable>
         </models> 
+        <fieldsets>
+            <sales_convert_quote_item>
+                <engraved_name>
+                    <to_order_item>*</to_order_item>
+                </engraved_name>
+                <engraved_date>
+                    <to_order_item>*</to_order_item>
+                </engraved_date>
+            </sales_convert_quote_item>
+        </fieldsets>
         <events>
+            <!--adding to cart event-->
             <checkout_cart_product_add_after>
                 <observers>
                     <camelcase_engravable_cart_event_observer>
+                        <!-- the observer object will be single object 
+                        u get the same object each time u call for it-->
                         <type>singleton</type>
                         <class>engravable/observer</class>
+                        <!-- this method is the only method who gets object
+                        observer .... So u need to set observer object 
+                        to use it anywhere-->
                         <method>shopSystemLog</method>
                     </camelcase_engravable_cart_event_observer>                
                 </observers>

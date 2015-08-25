@@ -1,6 +1,6 @@
 
 <?php
-
+//adding is engravable attribute 
 $this->startSetup();
 $this->addAttribute(
         'catalog_product', 'is_engravable', array(
