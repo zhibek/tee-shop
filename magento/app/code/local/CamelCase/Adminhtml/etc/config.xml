@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <CamelCase_Adminhtml>
+            <version>1.0.0</version> 
+        </CamelCase_Adminhtml>
+    </modules>
+    <adminhtml>
+        <layout>
+            <updates>
+                <camelcase_adminhtml>
+                    <file>engravable.xml</file>
+                </camelcase_adminhtml>
+            </updates>
+        </layout>  
+    </adminhtml>  
+    <stores>    
+        <admin>
+            <design>
+                <package>
+                    <name>camelcase</name>
+                </package>
+                <theme>
+                    <default>default</default>
+                </theme>
+            </design>
+        </admin>
+    </stores>
+</config>

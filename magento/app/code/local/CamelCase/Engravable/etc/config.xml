@@ -60,6 +60,15 @@
                     </camelcase_engravable>
                 </observers>
             </sales_quote_save_after>
+            <sales_quote_save_before>
+                <observers>
+                    <camelcase_engravable>
+                        <type>model</type>
+                        <class>camelcase_engravable/observer</class>
+                        <method>addNewItem</method>
+                    </camelcase_engravable>
+                </observers>
+            </sales_quote_save_before>
         </events>
        
     </global>
@@ -72,27 +81,5 @@
                 </camelcase_engravable>
             </updates>
         </layout>  
-    </frontend>  
-    
-    <adminhtml>
-        <layout>
-            <updates>
-                <engravable>
-                    <file>engravable.xml</file>
-                </engravable>
-            </updates>
-        </layout>  
-    </adminhtml>  
-    <stores>    
-        <admin>
-            <design>
-                <package>
-                    <name>camelcase</name>
-                </package>
-                <theme>
-                    <default>default</default>
-                </theme>
-            </design>
-        </admin>
-    </stores>
+    </frontend>      
 </config>
