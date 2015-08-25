@@ -35,6 +35,10 @@
                         <class>engravable/observer</class>
                         <method>saveQuoteItem</method>
                     </engravable>
+                    <separate_engravable_products>
+                        <class>engravable/observer</class>
+                        <method>makeQuoteItemForEachEngravableProduct</method>
+                    </separate_engravable_products>
                 </observers>
             </checkout_cart_product_add_after>
             <checkout_cart_add_product_complete>

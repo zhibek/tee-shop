@@ -24,6 +24,11 @@ class CamelCase_Engravable_Model_Observer
         return $this->quoteItem;
     }
 
+    public function setQuoteItem($quoteItem)
+    {
+        $this->quoteItem = $quoteItem;
+    }
+
     public function setProduct($product)
     {
         $this->product = $product;
@@ -45,7 +50,7 @@ class CamelCase_Engravable_Model_Observer
         }
     }
 
-    public function addAttributesToQuoteItem($observer)
+    public function addAttributesToQuoteItem(Varien_Event_Observer $observer)
     {
         $this->setObserver($observer);
 
@@ -65,10 +70,10 @@ class CamelCase_Engravable_Model_Observer
             // update quote item price based on engraved characters
             $pricePerCharacter = (float) Mage::getStoreConfig(CamelCase_Engravable_Helper_Data::CONFIG_CHARACTER_PRICE);
             $charactersCount = $this->countCharacters();
-            
+
             $newPrice = $quoteItem->getPriceInclTax() + $pricePerCharacter * $charactersCount;
             $quoteItem->setOriginalCustomPrice($newPrice);
-            
+
             $quoteItem->save();
         }
     }
@@ -96,26 +101,57 @@ class CamelCase_Engravable_Model_Observer
     protected function getEngravableDate()
     {
         if (is_null($this->engravableDate)) {
-            $observer = $this->getObserver();
             $engravableDate = date("Y-m-d", strtotime($this->getQuoteItem()->getCreatedAt()));
             $this->engravableDate = $engravableDate;
         }
         return $this->engravableDate;
     }
 
-    public function saveQuoteItem($observer)
+    public function saveQuoteItem(Varien_Event_Observer $observer)
     {
-        $this->quoteItem = $observer->getEvent()->getQuoteItem();
+        $this->setQuoteItem($observer->getEvent()->getQuoteItem());
     }
 
     public function countCharacters()
     {
         $engravableName = $this->getEngravableName();
         $engravableDate = $this->getEngravableDate();
-        
-        $count = strlen( trim(str_replace(" ", "", $engravableName)) ) + strlen(trim($engravableDate));
-        
+
+        $count = strlen(trim(str_replace(" ", "", $engravableName))) + strlen(trim($engravableDate));
+
         return $count;
+    }
+
+    public function makeQuoteItemForEachEngravableProduct(Varien_Event_Observer $observer)
+    {
+        $quote = $observer->getEvent()->getQuoteItem()->getQuote();
+        $items = $quote->getAllItems();
+        foreach ($items as $item) {
+            Mage::log(__METHOD__ . " :: prodcut is_engravable :: " . $item->getProduct()->getData()["is_engravable"]);
+            Mage::log(__METHOD__ . " :: item qty:: " . $item->getQty());
+            $isEngravable = (bool) $item->getProduct()->getData()["is_engravable"];
+            $itemQty = $item->getQty();
+
+            if ($isEngravable && $itemQty > 1) {
+                $this->separateQuoteItems($quote, $item);
+            }
+        }
+    }
+
+    protected function separateQuoteItems(Mage_Sales_Model_Quote $quote, Mage_Sales_Model_Quote_Item $item)
+    {
+        $newItem = clone $item;
+        $newItem->setQty(1);
+
+        $quote->addItem($newItem);
+
+        $item->setQty($item->getQty() - 1);
+        
+        if($item->getQty()>1){
+            $this->separateQuoteItems($quote, $item);
+        }
+        
+        $quote->save();
     }
 
 }
