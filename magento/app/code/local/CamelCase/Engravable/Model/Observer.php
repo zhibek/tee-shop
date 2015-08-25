@@ -19,6 +19,10 @@ class CamelCase_Engravable_Model_Observer
         return $this->observer;
     }
 
+    /**
+     * 
+     * @return Mage_Sales_Model_Quote_Item
+     */
     public function getQuoteItem()
     {
         return $this->quoteItem;
@@ -34,6 +38,10 @@ class CamelCase_Engravable_Model_Observer
         $this->product = $product;
     }
 
+    /**
+     * 
+     * @return Mage_Catalog_Model_Product
+     */
     public function getProduct()
     {
         return $this->product;
@@ -70,8 +78,12 @@ class CamelCase_Engravable_Model_Observer
             // update quote item price based on engraved characters
             $pricePerCharacter = (float) Mage::getStoreConfig(CamelCase_Engravable_Helper_Data::CONFIG_CHARACTER_PRICE);
             $charactersCount = $this->countCharacters();
+            
+            $engravingPrice = $pricePerCharacter * $charactersCount;
 
-            $newPrice = $quoteItem->getPriceInclTax() + $pricePerCharacter * $charactersCount;
+            Mage::log("Engraving price for quote item #" . $quoteItem->getId() . " :: " . $engravingPrice);
+            
+            $newPrice = $quoteItem->getPriceInclTax() + $engravingPrice;
             $quoteItem->setOriginalCustomPrice($newPrice);
 
             $quoteItem->save();
@@ -127,12 +139,11 @@ class CamelCase_Engravable_Model_Observer
         $quote = $observer->getEvent()->getQuoteItem()->getQuote();
         $items = $quote->getAllItems();
         foreach ($items as $item) {
-            Mage::log(__METHOD__ . " :: prodcut is_engravable :: " . $item->getProduct()->getData()["is_engravable"]);
-            Mage::log(__METHOD__ . " :: item qty:: " . $item->getQty());
+            
             $isEngravable = (bool) $item->getProduct()->getData()["is_engravable"];
             $itemQty = $item->getQty();
 
-            if ($isEngravable && $itemQty > 1) {
+            if ($isEngravable && ($itemQty > 1) ) {
                 $this->separateQuoteItems($quote, $item);
             }
         }
@@ -142,16 +153,14 @@ class CamelCase_Engravable_Model_Observer
     {
         $newItem = clone $item;
         $newItem->setQty(1);
-
+        $newItem->setOriginalCustomPrice($item->getProduct()->getPrice());
+        
         $quote->addItem($newItem);
 
         $item->setQty($item->getQty() - 1);
         
-        if($item->getQty()>1){
-            $this->separateQuoteItems($quote, $item);
-        }
-        
         $quote->save();
+        $this->setQuoteItem($newItem);
     }
 
 }
