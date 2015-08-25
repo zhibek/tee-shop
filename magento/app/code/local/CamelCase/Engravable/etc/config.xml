@@ -78,9 +78,21 @@
         <layout>
             <updates>
                 <engravable>
-                    <file>engravable_admin.xml</file>
+                    <file>engravable.xml</file>
                 </engravable>
             </updates>
         </layout>  
     </adminhtml>  
+    <stores>    
+        <admin>
+            <design>
+                <package>
+                    <name>camelcase</name>
+                </package>
+                <theme>
+                    <default>default</default>
+                </theme>
+            </design>
+        </admin>
+    </stores>
 </config>

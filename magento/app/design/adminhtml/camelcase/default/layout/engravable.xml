@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<layout>
+    <adminhtml_sales_order_view>
+        <reference name="order_item_extra_info">
+             <block type="camelcase_engravable/engravable" name="additional.product.engravable" template="engravable/basket.phtml" />
+        </reference>
+    </adminhtml_sales_order_view>
+</layout>
