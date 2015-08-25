@@ -16,5 +16,13 @@ class CamelCase_Engravable_Block_Adminhtml_Sales_Order_EngravedInfo extends Mage
     {
         return $this->getParentBlock()->getItem();
     }
+    
+    public function isEngravable()
+    {
+        $product =$this->getItem()->getProduct();
+        $productData = $product->load()->getData();
+        
+        return (boolean) $productData['is_engravable'];
+    }
 
 }
