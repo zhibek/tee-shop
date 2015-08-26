@@ -3,7 +3,11 @@
 class Camelcase_Engravable_Model_Observer {
 
     protected $observer;
-
+    protected $engravedName;
+    protected $engravedDate;
+    
+    
+    
     private function setObserver($observer) {
         $this->observer = $observer;
     }
@@ -12,17 +16,17 @@ class Camelcase_Engravable_Model_Observer {
         return $this->observer;
     }
 
-    private function getDateNow() {
-
-        return Mage::getModel('core/date')->date('Y-m-d');
+    private  function getDateNow() {
+        $this->engravedDate = Mage::getModel('core/date')->date('Y-m-d');
+        return $this->engravedDate;
     }
-
-    private function getEngravedName() {
+    
+    private  function getEngravedName() {
         if ($this->checkEngravability()) {
             $requestData = Mage::app()->getRequest()->getPost();
-            $engravedName = $requestData['userEngravedName'];
+            $this->engravedName= $requestData['userEngravedName'];
         }
-        return $engravedName;
+        return $this->engravedName;
     }
 
     // need to add fun to set the product global and protected var 
@@ -40,6 +44,13 @@ class Camelcase_Engravable_Model_Observer {
         return $addationalPrice;
     }
 
+    private function newPrice() {
+        // getting the original price 
+        $product = $this->getObserver()->getEvent()->getProduct();
+        $OrgPrice = $product->getPrice();
+        return $OrgPrice + $this->engravingPrice();
+    }
+
     public function shopSystemLog($observer) {
         $this->setObserver($observer);
         if ($this->checkEngravability()) {
@@ -51,12 +62,8 @@ class Camelcase_Engravable_Model_Observer {
             $quoteItem = $observer->getEvent()->getQuoteItem();
             $quoteItem->setData('engraved_name', $engravedName);
             $quoteItem->setData('engraved_date', $engravedDate);
-            // getting the original price 
-            $product = $observer->getEvent()->getProduct();
-            $OrgPrice = $product->getPrice();
             // updating price of the qoute item insted of the original price 
-            $newPrice = $OrgPrice + $this->engravingPrice();
-            $quoteItem->setOriginalCustomPrice($newPrice);
+            $quoteItem->setOriginalCustomPrice($this->newPrice());
             $quoteItem->save();
         }
     }

@@ -62,7 +62,9 @@
             </checkout_cart_product_add_after>
         </events>
     </global>
+    <!--frondend folder of our theme-->
     <frontend>
+        <!--layout folder-->
         <layout>
             <updates>
                 <Camelcase_Engravable>
@@ -71,4 +73,28 @@
             </updates>
         </layout>
     </frontend>
+    <!--adminhtml folder of our theme-->
+    <adminhtml>
+        <!--layout folder-->
+        <layout>
+            <updates>
+                <Camelcase_Engravable>
+                    <file>engravable.xml</file>
+                </Camelcase_Engravable>
+            </updates>
+        </layout>
+    </adminhtml>
+    <!--for activating adminhtml theme-->
+    <stores>
+        <admin>
+            <design>
+                <package>
+                    <name>camelcase</name>
+                </package>
+                <theme>
+                    <default>default</default>
+                </theme>
+            </design>
+        </admin>
+    </stores> 
 </config>

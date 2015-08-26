@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.1.0">
+    <!--u can get it from the url and search for its related -->
+    <adminhtml_sales_order_view>
+        <!--how to get refrence name?-->
+        <!--now i'm edditing items orders page so go to-->
+        <!--design -> adminhtml -> defualt -> defualt -> layout -> sales.xml-->
+        <!--searching there for core/text_list to use it for editting-->
+        <!--i choosed order_item_extra_info cause it suits with the current task which--> 
+        <!--adding more data about the engraved ring--> 
+        <reference name="order_item_extra_info">
+            <block type="engravable/adminorder" name="orderdata" template="engravable/orders.phtml" after="-" />
+        </reference>
+    </adminhtml_sales_order_view>
+</layout>
