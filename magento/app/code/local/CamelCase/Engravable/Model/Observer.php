@@ -5,7 +5,6 @@ class CamelCase_Engravable_Model_Observer
 {
     public function logNameAndDate($observer)
     {
-        
         $params = Mage::app()->getRequest()->getPost();
         if(!empty($params['engravable_name'])) {
             $date  = date('d-m-Y');
@@ -21,5 +20,19 @@ class CamelCase_Engravable_Model_Observer
             $quote_item->save();
             Mage::log("This an engravable Ring With Name '{$params['engravable_name']}' and date {$date}");
         }
+    }
+    
+    public function getType($observer)
+    {
+        
+        $item = $observer->getQuoteItem();
+        $product = $item->getProduct();
+        if ($product->getIsEngravable()) {
+            Mage::getSingleton('core/session')->addError(Mage::getStoreConfig('engravable/default/engravable_ring'));
+            Mage::app()->getFrontController()->getResponse()->setRedirect($product->getProductUrl());
+            Mage::app()->getResponse()->sendResponse();
+            exit;
+        }
+         
     }
 }
