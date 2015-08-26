@@ -33,6 +33,13 @@ class Camelcase_Engravable_Model_Observer {
         return $productData['is_engravable'];
     }
 
+    private function engravingPrice() {
+
+        $strLength = strlen($this->getEngravedName()) + 1 + strlen($this->getDateNow());
+        $addationalPrice = $strLength * 0.5;
+        return $addationalPrice;
+    }
+
     public function shopSystemLog($observer) {
         $this->setObserver($observer);
         if ($this->checkEngravability()) {
@@ -44,8 +51,13 @@ class Camelcase_Engravable_Model_Observer {
             $quoteItem = $observer->getEvent()->getQuoteItem();
             $quoteItem->setData('engraved_name', $engravedName);
             $quoteItem->setData('engraved_date', $engravedDate);
-
-           
+            // getting the original price 
+            $product = $observer->getEvent()->getProduct();
+            $OrgPrice = $product->getPrice();
+            // updating price of the qoute item insted of the original price 
+            $newPrice = $OrgPrice + $this->engravingPrice();
+            $quoteItem->setOriginalCustomPrice($newPrice);
+            $quoteItem->save();
         }
     }
 
