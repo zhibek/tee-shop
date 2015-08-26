@@ -6,33 +6,20 @@ class CamelCase_Engravable_Model_Observer
     public function logNameAndDate($observer)
     {
         $params = Mage::app()->getRequest()->getPost();
-        if(!empty($params['engravable_name'])) {
+        $name = $params['options'][3] ? $params['options'][3] : false;
+        if(!empty($name)) {
             $date  = date('d-m-Y');
                 /* @var $quote Mage_Sales_Model_Quote */
             $quote = $observer->getEvent()->getQuote();
-            $product = Mage::getSingleton('catalog/product')->load($params['product']);
-            $quote_item  = $quote->getItemByProduct($product);
+            $collection = $quote->getItemsCollection();
+            $quote_item = $collection->getLastItem();
             $character_price = Mage::getStoreConfig('engravable/default/character_price');
-            $newPrice  = $quote_item->getBasePrice() + strlen($params['engravable_name']) * $character_price;
-            $quote_item->setData('engraved_name', $params['engravable_name']);
+            $newPrice  = $quote_item->getBasePrice() + strlen($name) * $character_price;
+            $quote_item->setData('engraved_name', $name);
             $quote_item->setData('engraved_date', $date);
             $quote_item->setOriginalCustomPrice($newPrice);
             $quote_item->save();
             Mage::log("This an engravable Ring With Name '{$params['engravable_name']}' and date {$date}");
         }
-    }
-    
-    public function getType($observer)
-    {
-        
-        $item = $observer->getQuoteItem();
-        $product = $item->getProduct();
-        if ($product->getIsEngravable()) {
-            Mage::getSingleton('core/session')->addError(Mage::getStoreConfig('engravable/default/engravable_ring'));
-            Mage::app()->getFrontController()->getResponse()->setRedirect($product->getProductUrl());
-            Mage::app()->getResponse()->sendResponse();
-            exit;
-        }
-         
     }
 }

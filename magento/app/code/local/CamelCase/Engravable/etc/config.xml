@@ -61,7 +61,7 @@
                     </camelcase_engravable>
                 </observers>
             </sales_quote_save_after>
-            <sales_quote_save_before>
+<!--            <sales_quote_save_before>
                 <observers>
                     <camelcase_engravable>
                         <type>model</type>
@@ -69,7 +69,7 @@
                         <method>addNewItem</method>
                     </camelcase_engravable>
                 </observers>
-            </sales_quote_save_before>
+            </sales_quote_save_before>-->
             <checkout_cart_product_add_after>
                 <observers>
                     <camelcase_engravable>
