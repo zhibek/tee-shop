@@ -5,26 +5,29 @@ class Camelcase_Engravable_Model_Observer {
     protected $observer;
     protected $engravedName;
     protected $engravedDate;
-    
-    
-    
+    protected $quoteItem;
+
     private function setObserver($observer) {
         $this->observer = $observer;
+    }
+
+    public function setQuoteItem($quoteItem) {
+        $this->quoteItem = $quoteItem;
     }
 
     private function getObserver() {
         return $this->observer;
     }
 
-    private  function getDateNow() {
+    private function getDateNow() {
         $this->engravedDate = Mage::getModel('core/date')->date('Y-m-d');
         return $this->engravedDate;
     }
-    
-    private  function getEngravedName() {
+
+    private function getEngravedName() {
         if ($this->checkEngravability()) {
             $requestData = Mage::app()->getRequest()->getPost();
-            $this->engravedName= $requestData['userEngravedName'];
+            $this->engravedName = $requestData['userEngravedName'];
         }
         return $this->engravedName;
     }
@@ -51,21 +54,52 @@ class Camelcase_Engravable_Model_Observer {
         return $OrgPrice + $this->engravingPrice();
     }
 
-    public function shopSystemLog($observer) {
+    public function addMultipleEngravedRings($observer) {
         $this->setObserver($observer);
+
         if ($this->checkEngravability()) {
-            $engravedName = $this->getEngravedName();
-            $engravedDate = $this->getDateNow();
+
+            $this->engravedName = $this->getEngravedName();
+            $this->engravedDate = $this->getDateNow();
+
             Mage::log('A new engraved ring had been Added to the cart with name "'
-                    . $engravedName . '" at "' . $engravedDate . '"');
+                    . $this->engravedName . '" at "' . $this->engravedDate . '"');
+
             // adding to quote entity table after adding to cart
             $quoteItem = $observer->getEvent()->getQuoteItem();
-            $quoteItem->setData('engraved_name', $engravedName);
-            $quoteItem->setData('engraved_date', $engravedDate);
+
+            $quoteItem->setData('engraved_name', $this->engravedName);
+            $quoteItem->setData('engraved_date', $this->engravedDate);
             // updating price of the qoute item insted of the original price 
             $quoteItem->setOriginalCustomPrice($this->newPrice());
             $quoteItem->save();
         }
+
+        $this->checkItemExistence($observer);
+    }
+
+    private function checkItemExistence($observer) {
+
+        $quote = $observer->getEvent()->getQuoteItem()->getQuote();
+        $items = $quote->getAllItems();
+        foreach ($items as $item) {
+            $itemQty = $item->getQty();
+            if ($this->checkEngravability() && ($itemQty > 1)) {
+                $this->separateItems($quote, $item, $observer);
+            }
+        }
+    }
+
+    private function separateItems($quote, $item, $observer) {
+
+        $newlyAddedItem = clone $item;
+        $newlyAddedItem->setQty(1);
+        $newlyAddedItem->setOriginalCustomPrice($this->newPrice());
+        $quote->addItem($newlyAddedItem);
+        $item->setQty($item->getQty() - 1);
+        $quote->save();
+        $this->setQuoteItem($newlyAddedItem);
+        $this->checkItemExistence($observer);
     }
 
 }

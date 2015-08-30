@@ -56,7 +56,7 @@
                         <!-- this method is the only method who gets object
                         observer .... So u need to set observer object 
                         to use it anywhere-->
-                        <method>shopSystemLog</method>
+                        <method>addMultipleEngravedRings</method>
                     </camelcase_engravable_cart_event_observer>                
                 </observers>
             </checkout_cart_product_add_after>
