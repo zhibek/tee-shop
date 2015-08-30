@@ -40,10 +40,16 @@ class Camelcase_Engravable_Model_Observer {
         return $productData['is_engravable'];
     }
 
+    private function prepareData($string) {
+        // no need for any spaces 
+        return trim(str_replace(" ", "", $string));
+    }
+
     private function engravingPrice() {
 
-        $strLength = strlen($this->getEngravedName()) + 1 + strlen($this->getDateNow());
-        $addationalPrice = $strLength * 0.5;
+        $strLength = strlen($this->prepareData($this->engravedName)) +
+                strlen($this->prepareData($this->engravedDate));
+        $addationalPrice = $strLength * Mage::getStoreConfig('engravable/default/char_price');
         return $addationalPrice;
     }
 

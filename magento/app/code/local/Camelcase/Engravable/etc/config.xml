@@ -96,5 +96,12 @@
                 </theme>
             </design>
         </admin>
-    </stores> 
+    </stores>
+    <default>
+        <engravable>
+            <default>
+                <char_price>0.5</char_price>
+            </default>
+        </engravable>
+    </default> 
 </config>
