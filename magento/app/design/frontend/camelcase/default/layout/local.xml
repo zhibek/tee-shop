@@ -14,14 +14,6 @@
     <default>
         <!-- remove the COMUNNITY POLL -->
         <remove name="right.poll" />
-        
-        
-            <reference name="head">
-                <action method="addJs">
-                    <script>jquery.lightbox_me.js</script>
-                </action>
-            </reference>
-        
     </default>
     
     

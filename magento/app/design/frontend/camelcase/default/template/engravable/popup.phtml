@@ -4,7 +4,7 @@ $_product = $this->getProduct();
 $_url = Mage::helper('checkout/cart')->getAddUrl($_product);
 if ($this->htmlEscape($_product->load()->getData('is_engravable'))):
     ?>
-    <input type="text" id="engravable_holder"/>
+    <input type="hidden" id="engravable_holder"/>
     <form  id="product_addtocart_form" action='<?php echo $this->getSubmitUrl($_product); ?>' method="post" enctype="multipart/form-data"></form>
 
 

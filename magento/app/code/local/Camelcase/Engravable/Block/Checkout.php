@@ -6,13 +6,20 @@
  * and open the template in the editor.
  */
 
-
 class CamelCase_Engravable_Block_Checkout extends Mage_Core_Block_Template {
-    
-    public function getName(){ 
+
+    public function isEngravable() {
+        $product = $this->getParentBlock()->getItem()->getProduct();
+        $productData = $product->load()->getData();
+        return $productData['is_engravable'];
+    }
+
+    public function getName() {
         return $this->getParentBlock()->getItem()->getData()['engraved_name'];
     }
-    public function getDate(){
+
+    public function getDate() {
         return $this->getParentBlock()->getItem()->getData()['engraved_date'];
     }
+
 }
