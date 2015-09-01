@@ -4,10 +4,55 @@ $_product = $this->getProduct();
 $_url = Mage::helper('checkout/cart')->getAddUrl($_product);
 if ($this->htmlEscape($_product->load()->getData('is_engravable'))):
     ?>
-    <form id="product_addtocart_form" action='<?php echo $this->getSubmitUrl($_product);?>' method="post" enctype="multipart/form-data"></form>
+    <form  id="product_addtocart_form" action='<?php echo $this->getSubmitUrl($_product); ?>' method="post" enctype="multipart/form-data"></form>
 
+
+    <!--ss--><!--ss--><!--ss--><!--ss--><!--ss--><!--ss-->
+
+    <div id="dialog" class="web_dialog">
+        <table style="width: 100%; border: 0px;" cellpadding="3" cellspacing="0">
+            <tr>
+                <td class="web_dialog_title">Engraved Ring</td>
+                <td class="web_dialog_title align_right">
+                    <a href="#" id="btnClose">X</a>
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td colspan="2" style="padding-left: 15px;">
+                    <b>Engraved Name </b>
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="text" id="nameholder" placeholder="Name" />
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <button id="btnSubmit" >Submit</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+    <!--ss--><!--ss--><!--ss--><!--ss--><!--ss-->
 
     <script>
+
+
         jQuery(document).ready(function () {
             jQuery('<input>').attr({
                 type: 'hidden',
@@ -16,18 +61,107 @@ if ($this->htmlEscape($_product->load()->getData('is_engravable'))):
             }).appendTo('#product_addtocart_form');
 
             var addToCart = jQuery('.btn-cart').first();
-            addToCart.prop("onclick", null);
-
-            addToCart.click(function () {
-                var name = prompt("Engraved Name is missing", "Engraved Name");
-                jQuery('#userEngravedName').val(name);
-                jQuery('#product_addtocart_form').submit();
+            addToCart.prop("onclick", null);           
+            
+            addToCart.click(function (e)
+            {
+                ShowDialog(true);
+               
             });
 
+            jQuery("#btnClose").click(function (e)
+            {
+                HideDialog();
+                e.preventDefault();
+            });
 
+            jQuery("#btnSubmit").click(function (e)
+            {   name = jQuery('#nameholder').val();  
+                jQuery('#userEngravedName').val(name);
+                 jQuery('#product_addtocart_form').submit();
+                HideDialog();
+            });
+
+            function ShowDialog(modal)
+            {
+                jQuery("#overlay").show();
+                jQuery("#dialog").fadeIn(300);
+
+                if (modal)
+                {
+                    jQuery("#overlay").unbind("click");
+                }
+                else
+                {
+                    jQuery("#overlay").click(function (e)
+                    {
+                        HideDialog();
+                    });
+                }
+            }
+
+            function HideDialog()
+            {
+                jQuery("#overlay").hide();
+                jQuery("#dialog").fadeOut(300);
+            }
 
         });
-
     </script>
+    <style type="text/css">
 
+        .web_dialog_overlay
+        {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            background: #000000;
+            opacity: .15;
+            filter: alpha(opacity=15);
+            -moz-opacity: .15;
+            z-index: 101;
+            display: none;
+        }
+        .web_dialog
+        {
+            display: none;
+            position: fixed;
+            width: 380px;
+            height: 200px;
+            top: 50%;
+            left: 50%;
+            margin-left: -190px;
+            margin-top: -100px;
+            background-color: #ffffff;
+            border: 2px solid #336699;
+            padding: 0px;
+            z-index: 102;
+            font-family: Verdana;
+            font-size: 10pt;
+        }
+        .web_dialog_title
+        {
+            border-bottom: solid 2px #336699;
+            background-color: #336699;
+            padding: 4px;
+            color: White;
+            font-weight:bold;
+        }
+        .web_dialog_title a
+        {
+            color: White;
+            text-decoration: none;
+        }
+        .align_right
+        {
+            text-align: right;
+        }
+
+    </style>
 <?php endif; ?>
