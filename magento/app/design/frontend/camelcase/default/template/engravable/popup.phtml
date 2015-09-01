@@ -1,0 +1,33 @@
+<?php
+$_helper = $this->helper('catalog/output');
+$_product = $this->getProduct();
+$_url = Mage::helper('checkout/cart')->getAddUrl($_product);
+if ($this->htmlEscape($_product->load()->getData('is_engravable'))):
+    ?>
+    <form id="product_addtocart_form" action='<?php echo $this->getSubmitUrl($_product);?>' method="post" enctype="multipart/form-data"></form>
+
+
+    <script>
+        jQuery(document).ready(function () {
+            jQuery('<input>').attr({
+                type: 'hidden',
+                id: 'userEngravedName',
+                name: 'userEngravedName'
+            }).appendTo('#product_addtocart_form');
+
+            var addToCart = jQuery('.btn-cart').first();
+            addToCart.prop("onclick", null);
+
+            addToCart.click(function () {
+                var name = prompt("Engraved Name is missing", "Engraved Name");
+                jQuery('#userEngravedName').val(name);
+                jQuery('#product_addtocart_form').submit();
+            });
+
+
+
+        });
+
+    </script>
+
+<?php endif; ?>

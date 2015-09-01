@@ -97,6 +97,7 @@
             </design>
         </admin>
     </stores>
+    <!--// default value-->
     <default>
         <engravable>
             <default>

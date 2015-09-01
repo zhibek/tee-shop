@@ -107,5 +107,5 @@ class Camelcase_Engravable_Model_Observer {
         $this->setQuoteItem($newlyAddedItem);
         $this->checkItemExistence($observer);
     }
-
+    
 }

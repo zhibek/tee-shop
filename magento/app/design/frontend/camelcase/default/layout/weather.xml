@@ -4,6 +4,13 @@
         <reference name="right">
             <block type="weather/weather" name="forcast" template="weather/weather.phtml" />
         </reference>
+        
+        <reference name="head">                          
+            <!-- Add javascript from your local theme directory located in skin/frontend/ -->
+            <action method="addJs">
+                <script>lib/window.js</script>
+            </action>
+        </reference>	     	
     </default>
 
 </layout>

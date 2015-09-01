@@ -11,8 +11,8 @@
  */
 -->
 <layout version="0.1.0">
-<default>
-    <!-- remove the COMUNNITY POLL -->
-    <remove name="right.poll" />
-</default>
+    <default>
+        <!-- remove the COMUNNITY POLL -->
+        <remove name="right.poll" />
+    </default>
 </layout>

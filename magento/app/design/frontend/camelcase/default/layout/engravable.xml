@@ -16,4 +16,10 @@
             <block type="engravable/checkout" name="engravableData" template="engravable/basket.phtml" after="-" />
         </reference>
     </checkout_cart_index>
+    
+    <product_list>
+        <reference name="product_list.name.after">
+            <block type="engravable/popup" name="engravablepopup" template="engravable/popup.phtml" after="-" />
+        </reference>
+    </product_list>
 </layout>
