@@ -4,6 +4,7 @@ $_product = $this->getProduct();
 $_url = Mage::helper('checkout/cart')->getAddUrl($_product);
 if ($this->htmlEscape($_product->load()->getData('is_engravable'))):
     ?>
+    <input type="text" id="engravable_holder"/>
     <form  id="product_addtocart_form" action='<?php echo $this->getSubmitUrl($_product); ?>' method="post" enctype="multipart/form-data"></form>
 
 
@@ -60,13 +61,14 @@ if ($this->htmlEscape($_product->load()->getData('is_engravable'))):
                 name: 'userEngravedName'
             }).appendTo('#product_addtocart_form');
 
-            var addToCart = jQuery('.btn-cart').first();
-            addToCart.prop("onclick", null);           
-            
+            var addToCart = jQuery('#engravable_holder').siblings('.actions').find('.btn-cart');
+            console.log(addToCart);
+            addToCart.prop("onclick", null);
+
             addToCart.click(function (e)
             {
                 ShowDialog(true);
-               
+
             });
 
             jQuery("#btnClose").click(function (e)
@@ -76,9 +78,10 @@ if ($this->htmlEscape($_product->load()->getData('is_engravable'))):
             });
 
             jQuery("#btnSubmit").click(function (e)
-            {   name = jQuery('#nameholder').val();  
+            {
+                name = jQuery('#nameholder').val();
                 jQuery('#userEngravedName').val(name);
-                 jQuery('#product_addtocart_form').submit();
+                jQuery('#product_addtocart_form').submit();
                 HideDialog();
             });
 
