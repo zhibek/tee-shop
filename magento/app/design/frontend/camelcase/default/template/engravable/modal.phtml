@@ -1,0 +1,47 @@
+ <?php if($this->isEngravable()) : ?>
+    <?php $product = $this->getProduct(); ?>
+    <?php $url = Mage::helper('checkout/cart')->getAddUrl($product); ?>
+
+
+<!--<div id="engraved"></div>-->
+
+
+<div id="engraved" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Type Your Engravable Name</h4>
+      </div>
+      <div class="modal-body">
+          <form method="post" id="engravedForm" action="<?=$this->getSubmitUrl($product)?>">
+              <input name="engravable_name" type="text" value="" placeholder="Type your engravable name">
+          </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button id="saveButton" type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<script type="text/javascript">
+    
+    jQuery(document).ready(function (){
+            var btn =  jQuery('#engraved').parent().find('.btn-cart');
+            btn.attr('onclick', '');
+            btn.click(function (event){
+              event.preventDefault();
+              jQuery("#engraved").modal();               
+            });
+            jQuery('#saveButton').click(function (){
+                jQuery('#engravedForm').submit();
+            });
+    });
+</script>
+ <?php endif; ?>

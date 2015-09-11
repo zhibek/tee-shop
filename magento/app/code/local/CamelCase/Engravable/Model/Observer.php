@@ -9,9 +9,10 @@ class CamelCase_Engravable_Model_Observer
         if(!empty($params['engravable_name'])) {
             $date  = date('d-m-Y');
                 /* @var $quote Mage_Sales_Model_Quote */
-            $quote = $observer->getEvent()->getQuote();
-            $product = Mage::getSingleton('catalog/product')->load($params['product']);
-            $quote_item  = $quote->getItemByProduct($product);
+//            $quote = $observer->getEvent()->getQuote();
+//            $product = Mage::getSingleton('catalog/product')->load($params['product']);
+//            $quote_item  = $quote->getItemByProduct($product);
+            $quote_item  = Mage::getSingleton('checkout/session')->getQuote()->getItemsCollection()->getLastItem();
             $character_price = Mage::getStoreConfig('engravable/default/character_price');
             $newPrice  = $quote_item->getBasePrice() + strlen($params['engravable_name']) * $character_price;
             $quote_item->setData('engraved_name', $params['engravable_name']);

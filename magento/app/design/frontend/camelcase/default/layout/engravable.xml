@@ -13,4 +13,10 @@
         </reference>
     </checkout_cart_index>
     
+    <product_list>
+        <reference name="product_list.name.after">
+            <block type="camelcase_engravable/modal" name="product_modal" template="engravable/modal.phtml" />
+        </reference>
+    </product_list>
+    
 </layout>
