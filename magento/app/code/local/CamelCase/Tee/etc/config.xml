@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <CamelCase_Tee>
+            <version>0.1.2</version>
+        </CamelCase_Tee>
+    </modules>
+        
+    <global>
+        <resources>
+            <tee_setup>
+                <setup>
+                    <module>CamelCase_Tee</module>
+                    <class>Mage_Catalog_Model_Resource_Setup</class>
+                </setup>
+            </tee_setup>
+        </resources>
+
+    </global>
+</config>
