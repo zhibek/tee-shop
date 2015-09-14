@@ -7,6 +7,11 @@
     </modules>
         
     <global>
+        <models>
+            <camelcase_tee>
+                <class>CamelCase_Tee_Model</class>
+            </camelcase_tee>
+        </models>
         <resources>
             <tee_setup>
                 <setup>
@@ -15,6 +20,16 @@
                 </setup>
             </tee_setup>
         </resources>
-
+        <events>
+            <payment_method_is_active>
+                <observers>
+                    <camelcase_tee>
+                        <type>model</type>
+                        <class>camelcase_tee/observer</class>
+                        <method>paymentMethodIsActive</method>
+                    </camelcase_tee>
+                </observers>
+            </payment_method_is_active>
+        </events>
     </global>
 </config>
