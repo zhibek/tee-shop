@@ -16,9 +16,11 @@ class CamelCase_Tee_Model_Observer {
     
     public function setLayout($observer)
     {
-        Mage::getDesign()->setArea('frontend') 
-            ->setPackageName('bare') 
-            ->setTheme('default'); 
+        if(Mage::getDesign()->getArea() != 'adminhtml') {            
+            Mage::getDesign()->setArea('frontend') 
+                ->setPackageName('bare') 
+                ->setTheme('default'); 
+        }
     }
  
 }
