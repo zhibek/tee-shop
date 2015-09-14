@@ -4,5 +4,6 @@
 <layout>
     <default>
         <remove name="right.poll" />
+        <remove name="paypal.partner.right.logo"/>
     </default>    
 </layout>
