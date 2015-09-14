@@ -30,6 +30,15 @@
                     </camelcase_tee>
                 </observers>
             </payment_method_is_active>
+            <controller_action_layout_load_before>
+                <observers>
+                    <camelcase_tee>
+                        <type>model</type>
+                        <class>camelcase_tee/observer</class>
+                        <method>setLayout</method>
+                    </camelcase_tee>
+                </observers>
+            </controller_action_layout_load_before>
         </events>
     </global>
 </config>
