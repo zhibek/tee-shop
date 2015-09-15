@@ -6,7 +6,6 @@ use Behat\Behat\Context\ClosuredContextInterface,
     Behat\Behat\Exception\PendingException;
 use Behat\Gherkin\Node\PyStringNode,
     Behat\Gherkin\Node\TableNode;
-
 use Behat\MinkExtension\Context\MinkContext;
 
 //
@@ -19,17 +18,34 @@ use Behat\MinkExtension\Context\MinkContext;
 /**
  * Features context.
  */
-class FeatureContext extends Behat\MinkExtension\Context\MinkContext
-{
+class FeatureContext extends Behat\MinkExtension\Context\MinkContext {
+
     /**
      * Initializes context.
      * Every scenario gets its own context object.
      *
      * @param array $parameters context parameters (set them up through behat.yml)
      */
-    public function __construct(array $parameters)
-    {
+    public function __construct(array $parameters) {
         // Initialize your context here
+    }
+
+    /**
+     * @Given /^I mock add to cart$/
+     */
+    public function iMockAddToCart2() {
+        $this->iAmOnHomepage();
+        $this->visit('/test-t-shirt.html');
+        $this->pressButton('Add to Cart');
+    }
+
+    /**
+     * @Given /^I mock checkout$/
+     */
+    public function iMockCheckout() {
+        $this->iMockAddToCart2();
+        $this->clickLink('Checkout');
+        $this->pressButton('onepage-guest-register-button');
     }
 
 //
