@@ -3,6 +3,9 @@
 try {
     Mage::app()->setCurrentStore(Mage_Core_Model_App::ADMIN_STORE_ID);
     $product = Mage::getModel('catalog/product');
+    $category_id = Mage::getResourceModel('catalog/category_collection')
+               ->addFieldToFilter('name', 'Test products')
+               ->getFirstItem()->getId();
     $product
         ->setWebsiteIds(array(1))
         ->setAttributeSetId(4) //ID of a attribute set named 'default'
@@ -26,7 +29,7 @@ try {
                 'qty' => 999 //qty
             )
         )
-        ->setCategoryIds(array(6)); //assign product to categories
+        ->setCategoryIds(array($category_id)); //assign product to categories
     $product->save();
 } catch (Exception $e) {
     Mage::log($e->getMessage());
