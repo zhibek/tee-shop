@@ -38,7 +38,7 @@
         ],
         "magento-deploystrategy": "symlink",
         "auto-append-gitignore": false,
-        "magento-force" : true
+        "magento-force" : "override"
         
     }
 }
