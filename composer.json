@@ -29,7 +29,9 @@
 		"behat/behat": "dev-jenkins-server as 2.5.5",
         "behat/mink": "1.4.*@stable",
         "behat/mink-extension": "*",
-        "behat/mink-goutte-driver": "*"
+        "behat/mink-goutte-driver": "*",
+        "symfony/filesystem":            "2.6.11",
+        "symfony/browser-kit":           "2.6.11"
     },
     "config": {
         "bin-dir": "bin/"
