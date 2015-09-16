@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "92d37ae134f6229a9c0c95046706d09d",
+    "hash": "7be544ecbe209f96a05ad6ae15277bcd",
     "packages": [
         {
             "name": "behat/behat",
@@ -12,15 +12,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/camelcasetechsd/Behat.git",
-                "reference": "e8ece83f8223f6addd0500555e3b8fe34702d046"
+                "reference": "d769a4de2822744c17f15fe96940ed482eea2369"
             },
             "require": {
                 "behat/gherkin": "~2.3.0",
                 "php": ">=5.3.1",
+                "symfony/browser-kit": "2.6.11",
                 "symfony/config": "2.6.11",
                 "symfony/console": "2.6.11",
                 "symfony/dependency-injection": "2.6.11",
                 "symfony/event-dispatcher": "2.6.11",
+                "symfony/filesystem": "2.6.11",
                 "symfony/finder": "2.6.11",
                 "symfony/translation": "2.6.11",
                 "symfony/yaml": "2.6.11"
@@ -59,7 +61,7 @@
                 "Behat",
                 "Symfony2"
             ],
-            "time": "2015-09-16 15:14:46"
+            "time": "2015-09-16 15:25:45"
         },
         {
             "name": "behat/gherkin",
@@ -768,20 +770,21 @@
         },
         {
             "name": "symfony/browser-kit",
-            "version": "v2.7.4",
+            "version": "v2.6.11",
+            "target-dir": "Symfony/Component/BrowserKit",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/BrowserKit.git",
-                "reference": "277a2457776d4cc25706fbdd9d1e4ab2dac884e4"
+                "reference": "e421f4888f1dbe5c37fe7b57bff6579a047be5b9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/BrowserKit/zipball/277a2457776d4cc25706fbdd9d1e4ab2dac884e4",
-                "reference": "277a2457776d4cc25706fbdd9d1e4ab2dac884e4",
+                "url": "https://api.github.com/repos/symfony/BrowserKit/zipball/e421f4888f1dbe5c37fe7b57bff6579a047be5b9",
+                "reference": "e421f4888f1dbe5c37fe7b57bff6579a047be5b9",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.9",
+                "php": ">=5.3.3",
                 "symfony/dom-crawler": "~2.0,>=2.0.5"
             },
             "require-dev": {
@@ -795,11 +798,11 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.7-dev"
+                    "dev-master": "2.6-dev"
                 }
             },
             "autoload": {
-                "psr-4": {
+                "psr-0": {
                     "Symfony\\Component\\BrowserKit\\": ""
                 }
             },
@@ -819,7 +822,7 @@
             ],
             "description": "Symfony BrowserKit Component",
             "homepage": "https://symfony.com",
-            "time": "2015-09-06 08:36:38"
+            "time": "2015-07-09 16:02:48"
         },
         {
             "name": "symfony/config",
@@ -1159,20 +1162,21 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v2.7.4",
+            "version": "v2.6.11",
+            "target-dir": "Symfony/Component/Filesystem",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Filesystem.git",
-                "reference": "f079e9933799929584200b9a926f72f29e291654"
+                "reference": "823c035b1a5c13a4924e324d016eb07e70f94735"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Filesystem/zipball/f079e9933799929584200b9a926f72f29e291654",
-                "reference": "f079e9933799929584200b9a926f72f29e291654",
+                "url": "https://api.github.com/repos/symfony/Filesystem/zipball/823c035b1a5c13a4924e324d016eb07e70f94735",
+                "reference": "823c035b1a5c13a4924e324d016eb07e70f94735",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.9"
+                "php": ">=5.3.3"
             },
             "require-dev": {
                 "symfony/phpunit-bridge": "~2.7"
@@ -1180,11 +1184,11 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.7-dev"
+                    "dev-master": "2.6-dev"
                 }
             },
             "autoload": {
-                "psr-4": {
+                "psr-0": {
                     "Symfony\\Component\\Filesystem\\": ""
                 }
             },
@@ -1204,7 +1208,7 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
-            "time": "2015-08-27 07:03:44"
+            "time": "2015-07-08 05:59:48"
         },
         {
             "name": "symfony/finder",
