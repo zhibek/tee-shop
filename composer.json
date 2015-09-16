@@ -16,13 +16,17 @@
         {
             "type": "git",
             "url": "https://github.com/zhibek/magento-scriptable-config.git"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/camelcasetechsd/Behat.git"
         }
     ],
     "require": {
         "bragento/magento-composer-installer": "~1",
-        "magento/core": "~1.9",
+        "magento/core": "1.9.2.1",
 		"zhibek/magento-scriptable-config": "dev-master",
-		"behat/behat": "2.5.x",
+		"behat/behat": "dev-jenkins-server as 2.5.5",
         "behat/mink": "1.4.*@stable",
         "behat/mink-extension": "*",
         "behat/mink-goutte-driver": "*"

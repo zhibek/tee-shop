@@ -1,3 +1,6 @@
 /.vagrant
 /vendor
 /logs
+/bin
+*~
+/nbproject
