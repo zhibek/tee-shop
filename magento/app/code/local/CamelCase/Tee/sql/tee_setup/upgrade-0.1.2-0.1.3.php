@@ -7,14 +7,14 @@ try {
                ->addFieldToFilter('name', 'Test products')
                ->getFirstItem()->getId();
     $product
-        ->setWebsiteIds(array(1))
-        ->setAttributeSetId(4) //ID of a attribute set named 'default'
+        ->setWebsiteIds(array(Mage::app()->getStore(true)->getWebsite()->getId()))
+        ->setAttributeSetId($product->getDefaultAttributeSetId()) //ID of a attribute set named 'default'
         ->setTypeId('simple') //product type
         ->setCreatedAt(strtotime('now')) //product creation time
         ->setSku('testsku17') //SKU
         ->setName('Test T-Shirt') //product name
         ->setWeight(8.00)
-        ->setStatus(1) //product status (1 - enabled, 2 - disabled)
+        ->setStatus(Mage_Catalog_Model_Product_Status::STATUS_ENABLED)
         ->setTaxClassId(4) //tax class (0 - none, 1 - default, 2 - taxable, 4 - shipping)
         ->setVisibility(Mage_Catalog_Model_Product_Visibility::VISIBILITY_BOTH) //catalog and search visibility
         ->setPrice(11.22) //price in form 11.22
