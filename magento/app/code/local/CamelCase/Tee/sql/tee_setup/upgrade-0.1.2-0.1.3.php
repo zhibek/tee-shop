@@ -7,7 +7,7 @@ try {
                ->addFieldToFilter('name', 'Test products')
                ->getFirstItem()->getId();
     $product
-        ->setWebsiteIds(array(Mage::app()->getStore(true)->getWebsite()->getId()))
+        ->setWebsiteIds(1)
         ->setAttributeSetId($product->getDefaultAttributeSetId()) //ID of a attribute set named 'default'
         ->setTypeId('simple') //product type
         ->setCreatedAt(strtotime('now')) //product creation time
