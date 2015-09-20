@@ -16,27 +16,28 @@ $colourId = (int)Mage::getResourceModel('eav/entity_attribute')
 
 $sizeId = (int)Mage::getResourceModel('eav/entity_attribute')
         ->getIdByCode('catalog_product', 'size');
+
+
 try {
     $configProduct
 //    ->setStoreId(1) //you can set data in store scope
-            ->setWebsiteIds(array(1)) //website ID the product is assigned to, as an array
+            ->setWebsiteIds(1) //website ID the product is assigned to, as an array
             ->setAttributeSetId($attributeSetId) //ID of a attribute set named 'default'
             ->setTypeId('configurable') //product type
             ->setCreatedAt(strtotime('now')) //product creation time
 //    ->setUpdatedAt(strtotime('now')) //product update time
-            ->setSku('config-t-shirt-002') //SKU
-            ->setName('config-t-shirt_2') //product name
+            ->setSku('config t-shirt1') //SKU
+            ->setName('config t-shirt1') //product name
             ->setWeight(4.0000)
-            ->setStatus(1) //product status (1 - enabled, 2 - disabled)
+            ->setStatus(Mage_Catalog_Model_Product_Status::STATUS_ENABLED) //product status (1 - enabled, 2 - disabled)
             ->setTaxClassId(4) //tax class (0 - none, 1 - default, 2 - taxable, 4 - shipping)
             ->setVisibility(Mage_Catalog_Model_Product_Visibility::VISIBILITY_BOTH) //catalog and search visibility
             ->setPrice(11.22) //price in form 11.22
-            ->setCost(22.33) //price in form 11.22
-            ->setMetaTitle('test meta title 2')
-            ->setMetaKeyword('test meta keyword 2')
-            ->setMetaDescription('test meta description 2')
-            ->setDescription('Long conf description')
-            ->setShortDescription('Short conf description')
+            ->setMetaTitle('test meta titasdasdale 2')
+            ->setMetaKeyword('test meta keyword asdasd2')
+            ->setMetaDescription('test meta descriptiosadasdn 2')
+            ->setDescription('Long conf descriptioasdsadn')
+            ->setShortDescription('Short conf descriptasdasdasdion')
             ->setStockData(array(
                 'is_in_stock' => 1, //Stock Availability
                 'qty' => 999 //qty
@@ -47,9 +48,9 @@ try {
     /**/
     /** assigning associated product to configurable */
     /**/
-    $configProduct->getTypeInstance()->setUsedProductAttributeIds(array(137, 138)); //attribute ID of attribute 'color' in my store
+    $configProduct->getTypeInstance()->setUsedProductAttributeIds(array((int) $colourId, (int) $sizeId)); //attribute ID of attribute 'color' in my store
     $configurableAttributesData = $configProduct->getTypeInstance()->getConfigurableAttributesAsArray();
-    
+
     $configProduct->setCanSaveConfigurableAttributes(true);
     $configProduct->setConfigurableAttributesData($configurableAttributesData);
 
