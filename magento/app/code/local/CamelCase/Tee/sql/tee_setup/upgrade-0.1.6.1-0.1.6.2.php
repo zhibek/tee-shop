@@ -6,7 +6,7 @@ $entityTypeId = Mage::getModel('catalog/product')
         ->getEntityType()
         ->getId(); //product entity type
 
-$attributeSetName='Set-t-shirt';
+$attributeSetName='TestSet';
 
 $attributeSet = Mage::getModel('eav/entity_attribute_set')
         ->setEntityTypeId($entityTypeId)
@@ -30,7 +30,9 @@ $modelGroup->save();
 // attribute set id 
 $attributeSetId = $this->getAttributeSetId($entityTypeId, $attributeSetName);
 // 1 is the attribute order
-$this->addAttributeToSet($entityTypeId, $attributeSetId, 't-shirt', 'primary-colour', 1);
-$this->addAttributeToSet($entityTypeId, $attributeSetId, 't-shirt', 'size', 1);
+$this->addAttributeToSet($entityTypeId, $attributeSetId, 't-shirt', 'primary_colour');
+$this->addAttributeToSet($entityTypeId, $attributeSetId, 't-shirt', 'size');
+$this->addAttributeToSet($entityTypeId, $attributeSetId, 't-shirt', 'fabric_care');
+$this->addAttributeToSet($entityTypeId, $attributeSetId, 't-shirt', 'brand');
 
 
