@@ -23,6 +23,8 @@ $fabricId = (int) Mage::getResourceModel('eav/entity_attribute')
 $brandId = (int) Mage::getResourceModel('eav/entity_attribute')
                 ->getIdByCode('catalog_product', 'brand');
 
+$simpleProductToAssign = Mage::getModel('catalog/product')->loadByAttribute('name', 'Test T-Shirt');
+
 
 try {
     $configProduct
@@ -63,7 +65,7 @@ try {
     $configProduct->setConfigurableAttributesData($configurableAttributesData);
 
     $configurableProductsData = array();
-    $configurableProductsData['10'] = array(
+    $configurableProductsData[$simpleProductToAssign] = array(
         array(//['10'] = id of a simple product associated with this configurable
             '0' => array(
                 'label' => 'primary_colour', //attribute label
