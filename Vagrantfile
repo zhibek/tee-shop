@@ -25,5 +25,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       "recipe[site::default]"
     ]
   end
+ config.vm.provision :shell, inline: "java -jar /var/www/selenium/selenium-server.jar &", run: "always", privileged: false
 
 end

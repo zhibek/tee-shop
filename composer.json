@@ -25,7 +25,8 @@
 		"behat/behat": "2.5.x",
         "behat/mink": "1.4.*@stable",
         "behat/mink-extension": "*",
-        "behat/mink-goutte-driver": "*"
+        "behat/mink-goutte-driver": "*",
+        "behat/mink-selenium2-driver": "*"
     },
     "config": {
         "bin-dir": "bin/"
