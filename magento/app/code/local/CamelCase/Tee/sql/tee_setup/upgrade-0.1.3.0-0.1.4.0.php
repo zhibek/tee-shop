@@ -9,7 +9,7 @@ $category_id = Mage::getResourceModel('catalog/category_collection')
                 ->getFirstItem()->getId();
 
 $product
-        ->setWebsiteIds(1)
+        ->setWebsiteIds(array(1))
         ->setAttributeSetId($product->getDefaultAttributeSetId()) //ID of a attribute set named 'default'
         ->setTypeId('simple') //product type
         ->setCreatedAt(strtotime('now')) //product creation time
