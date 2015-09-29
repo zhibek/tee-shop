@@ -35,7 +35,7 @@ $brandId = (int) Mage::getResourceModel('eav/entity_attribute')
 
 try {
     $configProduct
-            ->setWebsiteIds(array(1))
+            ->setWebsiteIds(1)
             ->setAttributeSetId($attributeSetId) //ID of a attribute set named 'default'
             ->setTypeId('configurable') //product type
             ->setCreatedAt(strtotime('now')) //product creation time
