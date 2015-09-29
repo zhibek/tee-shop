@@ -1,5 +1,6 @@
 <?php
 
+// here we create the Test Product category 
 $store = Mage::getModel('core/store')->load(Mage_Core_Model_App::DISTRO_STORE_ID);
 $parentId = $store->getRootCategoryId();
  

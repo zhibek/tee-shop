@@ -1,6 +1,8 @@
 
 <?php
 
+// make bare theme is the default theme
+
 $installer = $this;
 $installer->startSetup();
 

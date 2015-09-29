@@ -1,5 +1,5 @@
 <?php
-
+// adding our product attributes (fabric_care , primary_colour , size , brand )
 
 $installer = $this;
 $installer->startSetup();
@@ -14,7 +14,7 @@ $installer->addAttribute('catalog_product', 'brand', array(
     'global'            => Mage_Catalog_Model_Resource_Eav_Attribute::SCOPE_GLOBAL,
     'visible'           => true,
     'required'          => false,
-    'user_defined'      => false,
+    'user_defined'      => true,
     'default'           => '',
     'searchable'        => false,
     'filterable'        => false,
@@ -25,7 +25,7 @@ $installer->addAttribute('catalog_product', 'brand', array(
     'is_configurable'   => true
 ));
 
-$installer->addAttribute('catalog_product', 'fabric-care', array(
+$installer->addAttribute('catalog_product', 'fabric_care', array(
     'group'             => 'General',
     'type'              => 'varchar',
     'backend'           => '',
@@ -36,7 +36,7 @@ $installer->addAttribute('catalog_product', 'fabric-care', array(
     'global'            => Mage_Catalog_Model_Resource_Eav_Attribute::SCOPE_GLOBAL,
     'visible'           => true,
     'required'          => false,
-    'user_defined'      => false,
+    'user_defined'      => true,
     'default'           => '',
     'searchable'        => false,
     'filterable'        => false,
@@ -47,7 +47,7 @@ $installer->addAttribute('catalog_product', 'fabric-care', array(
     'is_configurable'   => true
 ));
 
-$installer->addAttribute('catalog_product', 'primary-colour', array(
+$installer->addAttribute('catalog_product', 'primary_colour', array(
     'group'             => 'General',
     'type'              => 'varchar',
     'backend'           => 'eav/entity_attribute_backend_array',
@@ -58,7 +58,7 @@ $installer->addAttribute('catalog_product', 'primary-colour', array(
     'global'            => Mage_Catalog_Model_Resource_Eav_Attribute::SCOPE_GLOBAL,
     'visible'           => true,
     'required'          => true,
-    'user_defined'      => false,
+    'user_defined'      => true,
     'default'           => '',
     'searchable'        => false,
     'filterable'        => false,
@@ -92,7 +92,7 @@ $installer->addAttribute('catalog_product', 'size', array(
     'global'            => Mage_Catalog_Model_Resource_Eav_Attribute::SCOPE_GLOBAL,
     'visible'           => true,
     'required'          => true,
-    'user_defined'      => false,
+    'user_defined'      => true,
     'default'           => '',
     'searchable'        => false,
     'filterable'        => false,

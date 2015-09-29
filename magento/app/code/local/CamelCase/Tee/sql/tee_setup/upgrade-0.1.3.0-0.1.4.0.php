@@ -1,12 +1,14 @@
 <?php
 
-try {
-    Mage::app()->setCurrentStore(Mage_Core_Model_App::ADMIN_STORE_ID);
-    $product = Mage::getModel('catalog/product');
-    $category_id = Mage::getResourceModel('catalog/category_collection')
-               ->addFieldToFilter('name', 'Test products')
-               ->getFirstItem()->getId();
-    $product
+// here we create our test product to work with 
+
+Mage::app()->setCurrentStore(Mage_Core_Model_App::ADMIN_STORE_ID);
+$product = Mage::getModel('catalog/product');
+$category_id = Mage::getResourceModel('catalog/category_collection')
+                ->addFieldToFilter('name', 'Test products')
+                ->getFirstItem()->getId();
+
+$product
         ->setWebsiteIds(1)
         ->setAttributeSetId($product->getDefaultAttributeSetId()) //ID of a attribute set named 'default'
         ->setTypeId('simple') //product type
@@ -25,12 +27,9 @@ try {
         ->setDescription('This is a long description')
         ->setShortDescription('This is a short description')
         ->setStockData(array(
-                'is_in_stock' => 1, //Stock Availability
-                'qty' => 999 //qty
-            )
+            'is_in_stock' => 1, //Stock Availability
+            'qty' => 999 //qty
+                )
         )
         ->setCategoryIds(array($category_id)); //assign product to categories
-    $product->save();
-} catch (Exception $e) {
-    Mage::log($e->getMessage());
-}
+$product->save();
