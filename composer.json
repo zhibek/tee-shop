@@ -21,8 +21,8 @@
     "require": {
         "bragento/magento-composer-installer": "~1",
         "magento/core": "~1.9",
-		"zhibek/magento-scriptable-config": "dev-master",
-		"behat/behat": "2.5.x",
+        "zhibek/magento-scriptable-config": "dev-master",
+        "behat/behat": "2.5.x",
         "behat/mink": "1.4.*@stable",
         "behat/mink-extension": "*",
         "behat/mink-goutte-driver": "*",
@@ -35,8 +35,8 @@
         "magento-root-dir": "magento",
         "persistent-files": [
             "app/etc/install.xml",
+            "app/etc/modules/CamelCase_Tee.xml",
             "app/code/local",
-            "app/etc/modules",
             "app/design/frontend/bare"
         ],
         "magento-deploystrategy": "symlink",
