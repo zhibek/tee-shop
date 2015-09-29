@@ -16,4 +16,4 @@ $parentCategory = Mage::getModel('catalog/category')->load($parentId);
 $category->setPath($parentCategory->getPath());
 
 $category->save();
-unset($category);
+//unset($category);

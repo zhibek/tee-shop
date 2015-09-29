@@ -35,12 +35,10 @@ $brandId = (int) Mage::getResourceModel('eav/entity_attribute')
 
 try {
     $configProduct
-//    ->setStoreId(1) //you can set data in store scope
-            ->setWebsiteIds(1) //website ID the product is assigned to, as an array
+            ->setWebsiteIds(array(1))
             ->setAttributeSetId($attributeSetId) //ID of a attribute set named 'default'
             ->setTypeId('configurable') //product type
             ->setCreatedAt(strtotime('now')) //product creation time
-//    ->setUpdatedAt(strtotime('now')) //product update time
             ->setSku('Base Config Product') //SKU
             ->setName('Base Config Product') //product name
             ->setWeight(4.0000)
