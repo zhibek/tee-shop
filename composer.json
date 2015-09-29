@@ -35,7 +35,9 @@
         "magento-root-dir": "magento",
         "persistent-files": [
             "app/etc/install.xml",
-            "app/code/local"
+            "app/code/local",
+            "app/etc/modules",
+            "app/design/frontend/bare"
         ],
         "magento-deploystrategy": "symlink",
         "auto-append-gitignore": false,
