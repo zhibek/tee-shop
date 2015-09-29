@@ -7,7 +7,7 @@ installing Magento.
     <db_name>tee-shop</db_name>
     <db_user>camelcasetech</db_user>
     <db_pass>c@m31C@$3T3c4</db_pass>
-    <url>http://dev.tee-shop.com/</url>
+    <url>http://teeshop-dev.zhibek.com/</url>
     <secure_base_url></secure_base_url>
     <admin_lastname>Admin</admin_lastname>
     <admin_firstname>Example</admin_firstname>
