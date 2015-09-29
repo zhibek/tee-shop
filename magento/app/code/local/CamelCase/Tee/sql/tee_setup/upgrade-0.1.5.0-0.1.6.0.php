@@ -40,7 +40,7 @@ $Sizes = array(
     '4' => 'XL'
 );
 
-Mage::app()->setCurrentStore(Mage_Core_Model_App::ADMIN_STORE_ID);
+Mage::app()->getStore()->setId(Mage_Core_Model_App::ADMIN_STORE_ID);
 
 $product = Mage::getModel('catalog/product');
 
@@ -51,43 +51,37 @@ $category_id = Mage::getResourceModel('catalog/category_collection')
 foreach ($Colours as $colour) {
     foreach ($Sizes as $size) {
 
-        try {
-            Mage::app()->setCurrentStore(Mage_Core_Model_App::ADMIN_STORE_ID);
+        $product = Mage::getModel('catalog/product');
 
-            $product = Mage::getModel('catalog/product');
-
-            $product
-                    ->setWebsiteIds(array(1))
-                    ->setAttributeSetId($product->getDefaultAttributeSetId()) //ID of a attribute set named 'default'
-                    ->setTypeId('simple') //product type
-                    ->setCreatedAt(strtotime('now')) //product creation time
-                    ->setSku('T-shirt_' . $colour . '_' . $size) //SKU
-                    ->setName('T-shirt_' . $colour . '_' . $size) //product name
-                    ->setWeight(4.00)
-                    ->setStatus(Mage_Catalog_Model_Product_Status::STATUS_ENABLED)
-                    ->setTaxClassId(4) //tax class (0 - none, 1 - default, 2 - taxable, 4 - shipping)
-                    ->setVisibility(Mage_Catalog_Model_Product_Visibility::VISIBILITY_BOTH) //catalog and search visibility
-                    ->setPrice(11.22) //price in form 11.22
-                    ->setCost(22.33) //price in form 11.22
-                    ->setMetaTitle('T-shirt_' . $colour . '_' . $size)
-                    ->setMetaKeyword('T-shirt_' . $colour . '_' . $size)
-                    ->setMetaDescription("This's Long Description !!")
-                    ->setDescription("This's Long Description !!")
-                    ->setShortDescription("This's Short Description !!")
-                    ->setStockData(array(
-                        'is_in_stock' => 1, //Stock Availability
-                        'qty' => 100 //qty
-                            )
-                    )
-                    ->setCategoryIds(array($category_id)); //assign product to categories
-            $product->setPrimaryColour(getAttributeOptionValue('primary_colour', $colour));
-            $product->setSize(getAttributeOptionValue('size', $size));
-            $product->setBrand('NIKE');
-            $product->setFabricCare('Machine Wash,COLD');
-            $product->save();
-        } catch (Exception $e) {
-            Mage::log($e->getMessage());
-        }
+        $product
+                ->setWebsiteIds(1)
+                ->setAttributeSetId($product->getDefaultAttributeSetId()) //ID of a attribute set named 'default'
+                ->setTypeId('simple') //product type
+                ->setCreatedAt(strtotime('now')) //product creation time
+                ->setSku('T-shirt_' . $colour . '_' . $size) //SKU
+                ->setName('T-shirt_' . $colour . '_' . $size) //product name
+                ->setWeight(4.00)
+                ->setStatus(Mage_Catalog_Model_Product_Status::STATUS_ENABLED)
+                ->setTaxClassId(4) //tax class (0 - none, 1 - default, 2 - taxable, 4 - shipping)
+                ->setVisibility(Mage_Catalog_Model_Product_Visibility::VISIBILITY_BOTH) //catalog and search visibility
+                ->setPrice(11.22) //price in form 11.22
+                ->setCost(22.33) //price in form 11.22
+                ->setMetaTitle('T-shirt_' . $colour . '_' . $size)
+                ->setMetaKeyword('T-shirt_' . $colour . '_' . $size)
+                ->setMetaDescription("This's Long Description !!")
+                ->setDescription("This's Long Description !!")
+                ->setShortDescription("This's Short Description !!")
+                ->setStockData(array(
+                    'is_in_stock' => 1, //Stock Availability
+                    'qty' => 100 //qty
+                        )
+                )
+                ->setCategoryIds(array($category_id)); //assign product to categories
+        $product->setPrimaryColour(getAttributeOptionValue('primary_colour', $colour));
+        $product->setSize(getAttributeOptionValue('size', $size));
+        $product->setBrand('NIKE');
+        $product->setFabricCare('Machine Wash,COLD');
+        $product->save();
     }
 }
 

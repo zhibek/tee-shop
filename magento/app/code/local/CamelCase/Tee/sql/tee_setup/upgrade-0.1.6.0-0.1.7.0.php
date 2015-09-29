@@ -19,6 +19,7 @@ $category_id = Mage::getResourceModel('catalog/category_collection')
                 ->addFieldToFilter('name', 'Test products')
                 ->getFirstItem()->getId();
 
+
 // primary_colour attribute_id
 $colourId = (int) Mage::getResourceModel('eav/entity_attribute')
                 ->getIdByCode('catalog_product', 'primary_colour');
@@ -32,10 +33,10 @@ $fabricId = (int) Mage::getResourceModel('eav/entity_attribute')
 $brandId = (int) Mage::getResourceModel('eav/entity_attribute')
                 ->getIdByCode('catalog_product', 'brand');
 
+    Mage::app()->getStore()->setId(Mage_Core_Model_App::ADMIN_STORE_ID);
 
-try {
     $configProduct
-            ->setWebsiteIds(1)
+            ->setWebsiteIds(array(1))
             ->setAttributeSetId($attributeSetId) //ID of a attribute set named 'default'
             ->setTypeId('configurable') //product type
             ->setCreatedAt(strtotime('now')) //product creation time
@@ -59,16 +60,10 @@ try {
                     )
             )
             ->setCategoryIds(array($category_id)); //assign product to categories
-
     $configProduct->getTypeInstance()->setUsedProductAttributeIds(array((int) $colourId, (int) $sizeId)); //attribute ID of attribute 'color' in my store
     $configurableAttributesData = $configProduct->getTypeInstance()->getConfigurableAttributesAsArray();
-
     $configProduct->setCanSaveConfigurableAttributes(true);
     $configProduct->setConfigurableAttributesData($configurableAttributesData);
     $configProduct->save();
 
     echo 'success';
-} catch (Exception $e) {
-    Mage::log($e->getMessage());
-    echo $e->getMessage();
-}
