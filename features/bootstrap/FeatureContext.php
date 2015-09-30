@@ -40,13 +40,46 @@ class FeatureContext extends Behat\MinkExtension\Context\MinkContext {
     }
 
     /**
-     * @Given /^I mock checkout$/
+     * 
+     * get the button with attribute value 
+     * @When /^I press button with attribute "([^"]*)" and value is "([^"]*)"$/
      */
-    public function iMockCheckout() {
-        $this->iMockAddToCart2();
-        $this->clickLink('Checkout');
-        $this->pressButton('onepage-guest-register-button');
+    public function iPressButtonWithAttributeAndNameIs($attribute, $value)
+    {
+        $buttons = $this->getSession()->getPage()->findAll('css', 'button');
+        foreach ($buttons as $button) {
+            $attrval = $button->getAttribute($attribute); 
+            if (!empty($attrval) && $attrval == $value) {
+                $button->click();
+                break;
+            }
+        }
     }
+    
+    /**
+     * @Given /^I wait for AJAX to finish$/
+     */
+    public function iWaitForAjaxToFinish()
+    {
+        $this->getSession()->wait(10000, '(typeof(jQuery)=="undefined" '
+                                          . '|| (0 === jQuery.active '
+                                          . '&& 0 === jQuery(\':animated\').length))');
+        $this->getSession()->wait('10000');
+    }
+
+    
+    /**
+     * @When /^I wait for "([^"]*)" seconds$/
+     */
+    public function iWaitForSeconds($numOfSeconds)
+    {
+        if (!is_int($numOfSeconds)) {
+            throw new \InvalidArgumentException();
+        }
+        $this->getSession()->wait($numOfSeconds);
+    }
+
+
 
 //
 // Place your definition and hook methods here:
