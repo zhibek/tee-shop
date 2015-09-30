@@ -2,7 +2,7 @@
 <config>
     <modules>
         <CamelCase_Tee>
-            <version>0.1.8.0</version>
+            <version>0.1.6.0</version>
         </CamelCase_Tee>
     </modules>
         
@@ -20,12 +20,16 @@
                 </setup>
             </tee_setup>
         </resources>
+        <events>
+            <payment_method_is_active>
+                <observers>
+                    <camelcase_tee>
+                        <type>model</type>
+                        <class>camelcase_tee/observer</class>
+                        <method>paymentMethodIsActive</method>
+                    </camelcase_tee>
+                </observers>
+            </payment_method_is_active>
+        </events>
     </global>
-    <default>
-        <payment>
-            <ccsave>
-                <active>0</active>
-            </ccsave>
-        </payment>
-    </default>
 </config>
