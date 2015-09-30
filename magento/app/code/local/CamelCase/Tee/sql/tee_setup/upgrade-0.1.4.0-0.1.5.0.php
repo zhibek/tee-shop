@@ -113,3 +113,15 @@ $installer->addAttribute('catalog_product', 'size', array(
 ));
 
 $installer->endSetup();
+// adding our product attributes to Default attribute set
+$entityTypeId = Mage::getModel('catalog/product')
+        ->getResource()
+        ->getEntityType()
+        ->getId(); //product entity type
+
+$attributeSetName='Default';
+
+$attributeSetId = $this->getAttributeSetId($entityTypeId, $attributeSetName);
+// 1 is the attribute order
+$this->addAttributeToSet($entityTypeId, $attributeSetId, '', 'primary-colour', 1);
+$this->addAttributeToSet($entityTypeId, $attributeSetId, '', 'size', 1);
