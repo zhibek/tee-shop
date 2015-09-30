@@ -5,7 +5,6 @@
         "This file is @generated automatically"
     ],
     "hash": "0b34baa7c4c73c849260617458dc696e",
-    "content-hash": "d67326c7746c5d960c4eddcf297eca64",
     "packages": [
         {
             "name": "behat/behat",
@@ -1540,7 +1539,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/zhibek/magento-scriptable-config.git",
-                "reference": "0ef306aa7431e40fcf38dfffe7ac53c24e0b628e"
+                "reference": "7c4d6132eb9172fb313e6d8afb920b7ef300bb6a"
             },
             "require": {
                 "magento-hackathon/magento-composer-installer": "*",
@@ -1561,7 +1560,7 @@
                     "email": "john.levermore@zhibek.com"
                 }
             ],
-            "time": "2015-06-29 11:25:41"
+            "time": "2015-09-30 12:56:42"
         }
     ],
     "packages-dev": [],
