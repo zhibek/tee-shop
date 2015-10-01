@@ -64,7 +64,7 @@ class FeatureContext extends Behat\MinkExtension\Context\MinkContext {
         $this->getSession()->wait(10000, '(typeof(jQuery)=="undefined" '
                                           . '|| (0 === jQuery.active '
                                           . '&& 0 === jQuery(\':animated\').length))');
-        $this->getSession()->wait('10000');
+        $this->getSession()->wait('50000');
     }
 
     
