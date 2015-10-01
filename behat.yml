@@ -18,5 +18,5 @@ ci:
     formatter:
         name: pretty,junit,html
         parameters:
-            output_path: null,build/junit,build/behat_report.html
+            output_path: null,/var/lib/jenkins/jobs/Tee-Shop/workspace/build/junit,/var/lib/jenkins/jobs/Tee-Shop/workspace/build/behat_report.html
     
