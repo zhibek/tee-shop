@@ -32,4 +32,11 @@
             </payment_method_is_active>
         </events>
     </global>
+    <default>
+        <payment>
+            <ccsave>
+                <active>0</active>
+            </ccsave>
+        </payment>
+    </default>
 </config>
