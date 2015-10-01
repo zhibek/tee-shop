@@ -49,7 +49,7 @@ foreach ($Colours as $colour) {
         $product = Mage::getModel('catalog/product');
 
         $product
-                ->setWebsiteIds(1)
+                ->setWebsiteIds(array(1))
                 ->setAttributeSetId($product->getDefaultAttributeSetId()) //ID of a attribute set named 'default'
                 ->setTypeId('simple') //product type
                 ->setCreatedAt(strtotime('now')) //product creation time
