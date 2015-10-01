@@ -4,3 +4,19 @@ default:
             base_url: http://tee-shop.local
             goutte: ~
             selenium2: ~
+
+ci:
+    extensions:
+        Behat\MinkExtension\Extension:
+            base_url: http://teeshop-dev.zhibek.com/
+            default_session: selenium2
+            javascript_session: 'selenium2'
+            browser_name: chrome
+            selenium2:
+                browser: chrome
+                capabilities: { "browserName": "chrome", "browser": "chrome", "version":  "28"}
+    formatter:
+        name: pretty,junit,html
+        parameters:
+            output_path: null,build/junit,build/behat_report.html
+    
