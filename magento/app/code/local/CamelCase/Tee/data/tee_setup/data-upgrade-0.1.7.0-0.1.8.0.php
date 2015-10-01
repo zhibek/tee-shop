@@ -8,7 +8,6 @@
 
 // assinging our 10 shirts to Base CONFIG SHirt
 
-
 $colourId = (int) Mage::getResourceModel('eav/entity_attribute')
                 ->getIdByCode('catalog_product', 'primary_colour');
 
