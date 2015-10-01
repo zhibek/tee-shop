@@ -1,11 +1,5 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 // Creating a conf product
 
 $configProduct = Mage::getModel('catalog/product');
@@ -33,37 +27,35 @@ $fabricId = (int) Mage::getResourceModel('eav/entity_attribute')
 $brandId = (int) Mage::getResourceModel('eav/entity_attribute')
                 ->getIdByCode('catalog_product', 'brand');
 
-    Mage::app()->getStore()->setId(Mage_Core_Model_App::ADMIN_STORE_ID);
+Mage::app()->getStore()->setId(Mage_Core_Model_App::ADMIN_STORE_ID);
 
-    $configProduct
-            ->setWebsiteIds(array(1))
-            ->setAttributeSetId($attributeSetId) //ID of a attribute set named 'default'
-            ->setTypeId('configurable') //product type
-            ->setCreatedAt(strtotime('now')) //product creation time
-            ->setSku('Base Config Product') //SKU
-            ->setName('Base Config Product') //product name
-            ->setWeight(4.0000)
-            ->setStatus(1) //product status (1 - enabled, 2 - disabled)
-            ->setTaxClassId(4) //tax class (0 - none, 1 - default, 2 - taxable, 4 - shipping)
-            ->setVisibility(Mage_Catalog_Model_Product_Visibility::VISIBILITY_BOTH) //catalog and search visibility
-            ->setPrice(11.22) //price in form 11.22
-            ->setMetaTitle('CONFIG')
-            ->setMetaKeyword('CONFIG')
-            ->setMetaDescription('CONFIG')
-            ->setDescription('Long conf descriptioasdsadn')
-            ->setShortDescription('Short conf descriptasdasdasdion')
-            ->setStockData(array(
-                'use_config_manage_stock' => 0, //'Use config settings' checkbox
-                'manage_stock' => 1, //manage stock
-                'is_in_stock' => 1, //Stock Availability
-//                'qty' => 999 //qty
-                    )
-            )
-            ->setCategoryIds(array($category_id)); //assign product to categories
-    $configProduct->getTypeInstance()->setUsedProductAttributeIds(array((int) $colourId, (int) $sizeId)); //attribute ID of attribute 'color' in my store
-    $configurableAttributesData = $configProduct->getTypeInstance()->getConfigurableAttributesAsArray();
-    $configProduct->setCanSaveConfigurableAttributes(true);
-    $configProduct->setConfigurableAttributesData($configurableAttributesData);
-    $configProduct->save();
+$configProduct
+        ->setWebsiteIds(array(1))
+        ->setAttributeSetId($attributeSetId) //ID of a attribute set named 'default'
+        ->setTypeId('configurable') //product type
+        ->setCreatedAt(strtotime('now')) //product creation time
+        ->setSku('Base Config Product') //SKU
+        ->setName('Base Config Product') //product name
+        ->setWeight(4.0000)
+        ->setStatus(1) //product status (1 - enabled, 2 - disabled)
+        ->setTaxClassId(4) //tax class (0 - none, 1 - default, 2 - taxable, 4 - shipping)
+        ->setVisibility(Mage_Catalog_Model_Product_Visibility::VISIBILITY_BOTH) //catalog and search visibility
+        ->setPrice(11.22) //price in form 11.22
+        ->setMetaTitle('CONFIG')
+        ->setMetaKeyword('CONFIG')
+        ->setMetaDescription('CONFIG')
+        ->setDescription('Long conf descriptioasdsadn')
+        ->setShortDescription('Short conf descriptasdasdasdion')
+        ->setStockData(array(
+            'use_config_manage_stock' => 0, //'Use config settings' checkbox
+            'manage_stock' => 1, //manage stock
+            'is_in_stock' => 1, //Stock Availability
+                )
+        )
+        ->setCategoryIds(array($category_id)); //assign product to categories
 
-    echo 'success';
+$configProduct->getTypeInstance()->setUsedProductAttributeIds(array((int) $colourId, (int) $sizeId)); //attribute ID of attribute 'primary_colour' in my store
+$configurableAttributesData = $configProduct->getTypeInstance()->getConfigurableAttributesAsArray();
+$configProduct->setCanSaveConfigurableAttributes(true);
+$configProduct->setConfigurableAttributesData($configurableAttributesData);
+$configProduct->save();
