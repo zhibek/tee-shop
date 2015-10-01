@@ -35,7 +35,8 @@ class FeatureContext extends Behat\MinkExtension\Context\MinkContext {
      */
     public function iMockAddToCart2() {
         $this->iAmOnHomepage();
-        $this->visit('/test-t-shirt.html');
+        $this->clickLink('Test Products');
+        $this->clickLink('Test T-Shirt');
         $this->pressButton('Add to Cart');
     }
 
