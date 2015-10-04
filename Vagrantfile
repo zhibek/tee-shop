@@ -5,6 +5,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "ubuntu/trusty64"
   config.vm.synced_folder "./", "/var/www", id: "web-root" , owner: "www-data", group: "www-data", mount_options: ["dmode=775,fmode=664"]
   config.vm.network "forwarded_port", guest: 22, host: 2280, id: "ssh", auto: true
+  config.vm.network "forwarded_port", guest: 5900, host: 5900
   config.vm.network "private_network", ip: "10.1.1.80"
 
   config.vm.provider "virtualbox" do |vb|
@@ -25,6 +26,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       "recipe[site::default]"
     ]
   end
- config.vm.provision :shell, inline: "DISPLAY=:1 xvfb-run java -jar /var/www/selenium/selenium-server.jar &", run: "always", privileged: false
+
+ config.vm.provision :shell, inline: "xvfb-run -n 1 -s \"-screen 0 1280x1024x8\" java -jar /var/www/selenium/selenium-server.jar > /tmp/selenium.log &", run: "always", privileged: false
 
 end
