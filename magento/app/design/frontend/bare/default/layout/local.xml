@@ -6,7 +6,5 @@
         <remove name="right.poll" />
         <remove name="paypal.partner.right.logo"/>
         <remove name="product.info.sharing"/>
-        
-
     </default>    
 </layout>

@@ -5,7 +5,6 @@
             <version>0.1.8.0</version>
         </CamelCase_Tee>
     </modules>
-        
     <global>
         <models>
             <camelcase_tee>
@@ -38,5 +37,14 @@
                 <active>0</active>
             </ccsave>
         </payment>
+        <design>
+            <package>
+                <name>bare</name>
+            </package>
+            <theme>
+                <skin></skin>
+                <default>default</default>
+            </theme>
+        </design>
     </default>
 </config>
