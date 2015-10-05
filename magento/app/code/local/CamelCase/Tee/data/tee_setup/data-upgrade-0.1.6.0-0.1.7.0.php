@@ -4,24 +4,6 @@
 /* In this upgarde we'll create 10 simple products that 'll be assigned 
   to the configurable product */
 
-function getAttributeOptionValue($arg_attribute, $arg_value) {
-    $attribute_model = Mage::getModel('eav/entity_attribute');
-    $attribute_options_model = Mage::getModel('eav/entity_attribute_source_table');
-
-    $attribute_code = $attribute_model->getIdByCode('catalog_product', $arg_attribute);
-    $attribute = $attribute_model->load($attribute_code);
-
-    $attribute_table = $attribute_options_model->setAttribute($attribute);
-    $options = $attribute_options_model->getAllOptions(false);
-
-    foreach ($options as $option) {
-        if ($option['label'] == $arg_value) {
-            return $option['value'];
-        }
-    }
-
-    return false;
-}
 
 $Colours = array(
     '0' => 'White',
@@ -36,6 +18,8 @@ $Sizes = array(
 );
 
 Mage::app()->getStore()->setId(Mage_Core_Model_App::ADMIN_STORE_ID);
+
+$helper = Mage::helper('tee');
 
 $product = Mage::getModel('catalog/product');
 
@@ -70,13 +54,12 @@ foreach ($Colours as $colour) {
                     'is_in_stock' => 1, //Stock Availability
                     'qty' => 100 //qty
                         )
-                )
-                ->setCategoryIds(array($category_id)); //assign product to categories
-        $product->setPrimaryColour(getAttributeOptionValue('primary_colour', $colour));
-        $product->setSize(getAttributeOptionValue('size', $size));
+                );
+        $product->setPrimaryColour($helper->getAttributeOptionValue('primary_colour', $colour));
+        $product->setSize($helper->getAttributeOptionValue('size', $size));
         $product->setBrand('NIKE');
         $product->setFabricCare('Machine Wash,COLD');
-        $product->save();
+        $product->save(); 
     }
 }
 

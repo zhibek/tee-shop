@@ -11,6 +11,11 @@
                 <class>CamelCase_Tee_Model</class>
             </camelcase_tee>
         </models>
+        <helpers>
+            <tee>
+                <class>CamelCase_Tee_Helper</class>
+            </tee>
+        </helpers>
         <resources>
             <tee_setup>
                 <setup>
