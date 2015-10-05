@@ -6,7 +6,8 @@ use Behat\Behat\Context\ClosuredContextInterface,
     Behat\Behat\Exception\PendingException;
 use Behat\Gherkin\Node\PyStringNode,
     Behat\Gherkin\Node\TableNode;
-use Behat\MinkExtension\Context\MinkContext;
+use Behat\MinkExtension\Context\MinkContext,
+    Behat\Mink\Element\NodeElement;
 
 //
 // Require 3rd-party libraries here:
@@ -16,7 +17,7 @@ use Behat\MinkExtension\Context\MinkContext;
 //
 
 /**
- * Features context.
+ * Features context. Behat\Mink\Element\NodeElement
  */
 class FeatureContext extends Behat\MinkExtension\Context\MinkContext {
 
@@ -26,6 +27,8 @@ class FeatureContext extends Behat\MinkExtension\Context\MinkContext {
      *
      * @param array $parameters context parameters (set them up through behat.yml)
      */
+    protected $existance_flag = 0;
+
     public function __construct(array $parameters) {
         // Initialize your context here
     }
@@ -43,54 +46,84 @@ class FeatureContext extends Behat\MinkExtension\Context\MinkContext {
     /**
      * 
      * get the button with attribute value 
-     * @When /^I press button with attribute "([^"]*)" and value is "([^"]*)"$/
+     * @When /^I press button with attribute "([^"]*)" and value is "([^"]*)" and container is "([^"]*)"$/
      */
-    public function iPressButtonWithAttributeAndNameIs($attribute, $value)
-    {
+    public function iPressButtonWithAttributeAndNameIs($attribute, $value, $container, $count = 0) {
         $buttons = $this->getSession()->getPage()->findAll('css', 'button');
-        foreach ($buttons as $button) {
-            $attrval = $button->getAttribute($attribute); 
-            if (!empty($attrval) && $attrval == $value) {
-                $button->click();
-                break;
+        // make sure no infinite loops happen
+        if ($count > 20) {
+            echo 'infinte counts' . PHP_EOL;
+            return false;
+        }
+        // make sure the button does not exist incase of recursiveness 
+        $this->existance_flag = 0;
+
+        if ($this->existance_flag == 0) {
+            foreach ($buttons as $button) {
+                $attrval = $button->getAttribute($attribute);
+                $displayValue = $this->getSession()->getPage()->findById($container)->isVisible();
+                if ($displayValue && !empty($attrval) && $attrval == $value) {
+                    $button->click();
+                    // to skip next if clause if the button already clicked
+                    $this->existance_flag = 1;
+                    return true;
+                }
+            }
+            if ($this->existance_flag == 0) {
+                $this->getSession()->wait('500');
+                $count++;
+                $this->iPressButtonWithAttributeAndNameIs($attribute, $value, $container, $count);
             }
         }
     }
-    
+
+    public function spin($lambda) {
+        while (true) {
+            try {
+                if ($lambda($this)) {
+                    return true;
+                }
+            } catch (Exception $e) {
+                // do nothing
+            }
+
+            sleep(1);
+        }
+    }
+
+    /**
+     * @When /^I wait for "([^"]*)" to appear$/
+     */
+    public function iWaitForToAppear($text) {
+        $this->spin(function(FeatureContext $context) use ($text) {
+            try {
+                $context->assertPageContainsText($text);
+                return true;
+            } catch (ResponseTextException $e) {
+                // NOOP
+            }
+            return false;
+        });
+    }
+
     /**
      * @Given /^I wait for AJAX to finish$/
      */
-    public function iWaitForAjaxToFinish()
-    {
+    public function iWaitForAjaxToFinish() {
         $this->getSession()->wait(10000, '(typeof(jQuery)=="undefined" '
-                                          . '|| (0 === jQuery.active '
-                                          . '&& 0 === jQuery(\':animated\').length))');
-        $this->getSession()->wait('50000');
+                . '|| (0 === jQuery.active '
+                . '&& 0 === jQuery(\':animated\').length))');
+        $this->getSession()->wait('5000');
     }
 
-    
     /**
      * @When /^I wait for "([^"]*)" seconds$/
      */
-    public function iWaitForSeconds($numOfSeconds)
-    {
-        if (!is_int($numOfSeconds)) {
-            throw new \InvalidArgumentException();
+    public function iWaitForSeconds($numOfSeconds) {
+        if (!is_numeric($numOfSeconds)) {
+            throw new \InvalidArgumentException("Number required");
         }
-        $this->getSession()->wait($numOfSeconds);
+        $this->getSession()->wait($numOfSeconds * 1000);
     }
 
-
-
-//
-// Place your definition and hook methods here:
-//
-//    /**
-//     * @Given /^I have done something with "([^"]*)"$/
-//     */
-//    public function iHaveDoneSomethingWith($argument)
-//    {
-//        doSomethingWith($argument);
-//    }
-//
 }
