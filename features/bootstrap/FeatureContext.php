@@ -107,7 +107,7 @@ class FeatureContext extends Behat\MinkExtension\Context\MinkContext {
     public function iSpinForAWhileToSeeAButtonWithTitle($title) {
         $this->setBtnTitle($title);
         $this->spin(function(FeatureContext $context) {
-            return ($context->getSession()->getPage()->hasButton($this->getBtnTitle()));
+            return ($context->getSession()->getPage()->hasButton($context->getBtnTitle()));
         });
     }
 }
