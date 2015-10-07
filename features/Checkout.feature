@@ -24,6 +24,6 @@ Feature: check out
     When  I press button with attribute "onclick" and value is "shippingMethod.save()" and container is "checkout-step-shipping_method" 
     When  I press button with attribute "onclick" and value is "payment.save()" and container is "checkout-step-payment"
     When  I press button with attribute "onclick" and value is "review.save();" and container is "checkout-step-review"
-    When I wait for "15" seconds
-    Then I should be on "/checkout/onepage/success/"
+    When I spin for a while to see a button with title "Continue Shopping"
     Then  I should see "Thank you for your purchase!"
+    Then I should be on "/checkout/onepage/success/"

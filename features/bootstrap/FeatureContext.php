@@ -28,9 +28,31 @@ class FeatureContext extends Behat\MinkExtension\Context\MinkContext {
      * @param array $parameters context parameters (set them up through behat.yml)
      */
     protected $existance_flag = 0;
+    protected $btn_title;
 
     public function __construct(array $parameters) {
         // Initialize your context here
+    }
+
+    private function setBtnTitle($title) {
+        $this->btn_title = $title;
+    }
+
+    private function getBtnTitle() {
+        return $this->btn_title;
+    }
+
+    private function spin($lambda) {
+        while (true) {
+            try {
+                if ($lambda($this)) {
+                    return true;
+                }
+            } catch (Exception $e) {
+                // do nothing
+            }
+            sleep(1);
+        }
     }
 
     /**
@@ -76,54 +98,16 @@ class FeatureContext extends Behat\MinkExtension\Context\MinkContext {
             }
         }
     }
-
-    public function spin($lambda) {
-        while (true) {
-            try {
-                if ($lambda($this)) {
-                    return true;
-                }
-            } catch (Exception $e) {
-                // do nothing
-            }
-
-            sleep(1);
-        }
-    }
-
+    
     /**
-     * @When /^I wait for "([^"]*)" to appear$/
+     * 
+     * get the button with attribute value 
+     * @When /^I spin for a while to see a button with title "([^"]*)"$/
      */
-    public function iWaitForToAppear($text) {
-        $this->spin(function(FeatureContext $context) use ($text) {
-            try {
-                $context->assertPageContainsText($text);
-                return true;
-            } catch (ResponseTextException $e) {
-                // NOOP
-            }
-            return false;
+    public function iSpinForAWhileToSeeAButtonWithTitle($title) {
+        $this->setBtnTitle($title);
+        $this->spin(function(FeatureContext $context) {
+            return ($context->getSession()->getPage()->hasButton($this->getBtnTitle()));
         });
     }
-
-    /**
-     * @Given /^I wait for AJAX to finish$/
-     */
-    public function iWaitForAjaxToFinish() {
-        $this->getSession()->wait(10000, '(typeof(jQuery)=="undefined" '
-                . '|| (0 === jQuery.active '
-                . '&& 0 === jQuery(\':animated\').length))');
-        $this->getSession()->wait('5000');
-    }
-
-    /**
-     * @When /^I wait for "([^"]*)" seconds$/
-     */
-    public function iWaitForSeconds($numOfSeconds) {
-        if (!is_numeric($numOfSeconds)) {
-            throw new \InvalidArgumentException("Number required");
-        }
-        $this->getSession()->wait($numOfSeconds * 1000);
-    }
-
 }
