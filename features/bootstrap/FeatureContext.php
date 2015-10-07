@@ -34,15 +34,15 @@ class FeatureContext extends Behat\MinkExtension\Context\MinkContext {
         // Initialize your context here
     }
 
-    protected function setBtnTitle($title) {
+    public function setBtnTitle($title) {
         $this->btn_title = $title;
     }
 
-    protected function getBtnTitle() {
+    public function getBtnTitle() {
         return $this->btn_title;
     }
 
-    protected function spin($lambda) {
+    public function spin($lambda) {
         while (true) {
             try {
                 if ($lambda($this)) {
