@@ -1,18 +1,19 @@
 <?php
+
 /*
-NOTE : Reindexing Values 
-$reindex = Mage::getModel('index/process')->load($value);
-$reindex ->reindexAll();
- 1 : Attributes
- 2 : Product Prices
- 3 : Catalog URL Rewrites
- 4 : Product falt data
- 5 : Category Flat Data
- 6 : Category Products
- 7 : Catalog Search Index
- 8 : Stock Status
- 9 : Tag Aggregation Data 
- */ 
+  NOTE : Reindexing Values
+  $reindex = Mage::getModel('index/process')->load($value);
+  $reindex ->reindexAll();
+  1 : Attributes
+  2 : Product Prices
+  3 : Catalog URL Rewrites
+  4 : Product falt data
+  5 : Category Flat Data
+  6 : Category Products
+  7 : Catalog Search Index
+  8 : Stock Status
+  9 : Tag Aggregation Data
+ */
 
 //Here we're assinging our 10 shirts to Base CONFIG SHirt
 
@@ -62,4 +63,4 @@ $configurable->save();
 
 // rindexing Stock Status table to make sure tha base config product in stock
 $reindex = Mage::getModel('index/process')->load(8);
-$reindex ->reindexAll();
+$reindex->reindexAll();
