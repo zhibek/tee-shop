@@ -1,41 +1,40 @@
 <?php
 
-#NOTE : Reindexing Values 
-//$reindex = Mage::getModel('index/process')->load($value);
-//$reindex ->reindexAll();
-//
-// 1 : Attributes
-// 2 : Product Prices
-// 3 : Catalog URL Rewrites
-// 4 : Product falt data
-// 5 : Category Flat Data
-// 6 : Category Products
-// 7 : Catalog Search Index
-// 8 : Stock Status
-// 9 : Tag Aggregation Data  
+class CamelCase_Tee_Helper_Data extends Mage_Core_Helper_Abstract
+{
 
+    CONST ATTRIBUTE_PRIMARY_COLOUR = 'primary_colour';
+    CONST ATTRIBUTE_SIZE = 'size';
 
+    public function getPrimaryColourOptionValue($value)
+    {
+	return $this->getAttributeOptionValue(self::ATTRIBUTE_PRIMARY_COLOUR, $value);
+    }
 
-class CamelCase_Tee_Helper_Data extends Mage_Core_Helper_Abstract {
+    public function getSizeOptionValue($value)
+    {
+	return $this->getAttributeOptionValue(self::ATTRIBUTE_SIZE, $value);
+    }
 
 //    to create an object ->  $helper = Mage::helper('tee');
-    public function getAttributeOptionValue($arg_attribute, $arg_value) {
-        $attribute_model = Mage::getModel('eav/entity_attribute');
-        $attribute_options_model = Mage::getModel('eav/entity_attribute_source_table');
+    private function getAttributeOptionValue($argAttribute, $argValue)
+    {
+	$attributeModel = Mage::getModel('eav/entity_attribute');
+	$attributeOptionsModel = Mage::getModel('eav/entity_attribute_source_table');
 
-        $attribute_code = $attribute_model->getIdByCode('catalog_product', $arg_attribute);
-        $attribute = $attribute_model->load($attribute_code);
+	$attributeCode = $attributeModel->getIdByCode('catalog_product', $argAttribute);
+	$attribute = $attributeModel->load($attributeCode);
 
-        $attribute_table = $attribute_options_model->setAttribute($attribute);
-        $options = $attribute_options_model->getAllOptions(false);
+	$attributeTable = $attributeOptionsModel->setAttribute($attribute);
+	$options = $attributeOptionsModel->getAllOptions(false);
 
-        foreach ($options as $option) {
-            if ($option['label'] == $arg_value) {
-                return $option['value'];
-            }
-        }
+	foreach ($options as $option) {
+	    if ($option['label'] == $argValue) {
+		return $option['value'];
+	    }
+	}
 
-        return false;
+	return false;
     }
 
 }

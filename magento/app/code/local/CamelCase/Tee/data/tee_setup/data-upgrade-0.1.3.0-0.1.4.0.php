@@ -4,7 +4,7 @@
 
 Mage::app()->getStore()->setId(Mage_Core_Model_App::ADMIN_STORE_ID);
 $product = Mage::getModel('catalog/product');
-$category_id = Mage::getResourceModel('catalog/category_collection')
+$categoryId = Mage::getResourceModel('catalog/category_collection')
                 ->addFieldToFilter('name', 'Test products')
                 ->getFirstItem()->getId();
 
@@ -31,5 +31,5 @@ $product
             'qty' => 200 //qty
                 )
         )
-        ->setCategoryIds(array($category_id)); //assign product to categories
+        ->setCategoryIds(array($categoryId)); //assign product to categories
 $product->save();

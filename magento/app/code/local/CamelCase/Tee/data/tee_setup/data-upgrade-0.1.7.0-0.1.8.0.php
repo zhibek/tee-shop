@@ -1,16 +1,26 @@
 <?php
+/*
+NOTE : Reindexing Values 
+$reindex = Mage::getModel('index/process')->load($value);
+$reindex ->reindexAll();
+ 1 : Attributes
+ 2 : Product Prices
+ 3 : Catalog URL Rewrites
+ 4 : Product falt data
+ 5 : Category Flat Data
+ 6 : Category Products
+ 7 : Catalog Search Index
+ 8 : Stock Status
+ 9 : Tag Aggregation Data 
+ */ 
 
-// assinging our 10 shirts to Base CONFIG SHirt
+//Here we're assinging our 10 shirts to Base CONFIG SHirt
 
 $colourId = (int) Mage::getResourceModel('eav/entity_attribute')
                 ->getIdByCode('catalog_product', 'primary_colour');
 
 $sizeId = (int) Mage::getResourceModel('eav/entity_attribute')
                 ->getIdByCode('catalog_product', 'size');
-
-$category_id = Mage::getResourceModel('catalog/category_collection')
-                ->addFieldToFilter('name', 'Test products')
-                ->getFirstItem()->getId();
 
 $Config = Mage::getModel('catalog/product')->loadByAttribute('name', 'Base Config Product')->getId();
 // loading base config product

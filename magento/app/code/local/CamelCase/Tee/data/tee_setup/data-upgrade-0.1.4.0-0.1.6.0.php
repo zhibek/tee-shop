@@ -22,10 +22,6 @@ $helper = Mage::helper('tee');
 
 $product = Mage::getModel('catalog/product');
 
-$category_id = Mage::getResourceModel('catalog/category_collection')
-                ->addFieldToFilter('name', 'Test products')
-                ->getFirstItem()->getId();
-
 foreach ($Colours as $colour) {
     foreach ($Sizes as $size) {
 
@@ -53,8 +49,8 @@ foreach ($Colours as $colour) {
                     'qty' => 100 //qty
                         )
         );
-        $product->setPrimaryColour($helper->getAttributeOptionValue('primary_colour', $colour));
-        $product->setSize($helper->getAttributeOptionValue('size', $size));
+        $product->setPrimaryColour($helper->getPrimaryColourOptionValue($colour));
+        $product->setSize($helper->getSizeOptionValue($size));
         $product->setBrand('NIKE');
         $product->setFabricCare('Machine Wash,COLD');
         $product->save();
