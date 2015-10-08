@@ -38,7 +38,7 @@ $configurableProductsData = array();
 $configurableAttributesData = $configurable->getTypeInstance()->getConfigurableAttributesAsArray();
 
 foreach ($simpleProducts as $simple) {
- 
+
     $configurableProductsData[$simple->getId()] = $simple;
     $configurableAttributesData[0]['values'][] = $simple;
 }
@@ -49,3 +49,7 @@ $configurable->setCanSaveConfigurableAttributes(true);
 Mage::log($configurableProductsData, null, 'configurableProductsData.log', true);
 Mage::log($configurableAttributesData, null, 'configurableAttributesData.log', true);
 $configurable->save();
+
+// rindexing Stock Status table to make sure tha base config product in stock
+$reindex = Mage::getModel('index/process')->load(8);
+$reindex ->reindexAll();

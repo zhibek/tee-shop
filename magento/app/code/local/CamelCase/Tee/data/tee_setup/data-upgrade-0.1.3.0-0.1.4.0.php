@@ -28,7 +28,7 @@ $product
         ->setShortDescription('This is a short description')
         ->setStockData(array(
             'is_in_stock' => 1, //Stock Availability
-            'qty' => 999 //qty
+            'qty' => 200 //qty
                 )
         )
         ->setCategoryIds(array($category_id)); //assign product to categories

@@ -1,5 +1,21 @@
 <?php
 
+#NOTE : Reindexing Values 
+//$reindex = Mage::getModel('index/process')->load($value);
+//$reindex ->reindexAll();
+//
+// 1 : Attributes
+// 2 : Product Prices
+// 3 : Catalog URL Rewrites
+// 4 : Product falt data
+// 5 : Category Flat Data
+// 6 : Category Products
+// 7 : Catalog Search Index
+// 8 : Stock Status
+// 9 : Tag Aggregation Data  
+
+
+
 class CamelCase_Tee_Helper_Data extends Mage_Core_Helper_Abstract {
 
 //    to create an object ->  $helper = Mage::helper('tee');

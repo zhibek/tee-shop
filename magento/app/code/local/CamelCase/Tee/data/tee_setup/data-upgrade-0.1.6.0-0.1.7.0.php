@@ -1,66 +1,61 @@
 <?php
 
+// Creating a conf product
 
-/* In this upgarde we'll create 10 simple products that 'll be assigned 
-  to the configurable product */
-
-
-$Colours = array(
-    '0' => 'White',
-    '1' => 'Black'
-);
-$Sizes = array(
-    '0' => 'XS',
-    '1' => 'S',
-    '2' => 'M',
-    '3' => 'L',
-    '4' => 'XL'
-);
-
-Mage::app()->getStore()->setId(Mage_Core_Model_App::ADMIN_STORE_ID);
-
-$helper = Mage::helper('tee');
-
-$product = Mage::getModel('catalog/product');
-
-$category_id = Mage::getResourceModel('catalog/category_collection')
+$configProduct = Mage::getModel('catalog/product');
+$entityTypeId = Mage::getModel('catalog/product')
+        ->getResource()
+        ->getEntityType()
+        ->getId(); //product entity type
+$attributeSetName = 'Default';
+$attributeSetId = $this->getAttributeSetId($entityTypeId, $attributeSetName);
+$categoryId = Mage::getResourceModel('catalog/category_collection')
                 ->addFieldToFilter('name', 'Test products')
                 ->getFirstItem()->getId();
 
-foreach ($Colours as $colour) {
-    foreach ($Sizes as $size) {
 
-        $product = Mage::getModel('catalog/product');
+// primary_colour attribute_id
+$colourId = (int) Mage::getResourceModel('eav/entity_attribute')
+                ->getIdByCode('catalog_product', 'primary_colour');
+// size attribute_id
+$sizeId = (int) Mage::getResourceModel('eav/entity_attribute')
+                ->getIdByCode('catalog_product', 'size');
+// fabric_care attribute_id
+$fabricId = (int) Mage::getResourceModel('eav/entity_attribute')
+                ->getIdByCode('catalog_product', 'fabric_care');
+// brand attribute_id
+$brandId = (int) Mage::getResourceModel('eav/entity_attribute')
+                ->getIdByCode('catalog_product', 'brand');
 
-        $product
-                ->setWebsiteIds(array(1))
-                ->setAttributeSetId($product->getDefaultAttributeSetId()) //ID of a attribute set named 'default'
-                ->setTypeId('simple') //product type
-                ->setCreatedAt(strtotime('now')) //product creation time
-                ->setSku('T-shirt_' . $colour . '_' . $size) //SKU
-                ->setName('T-shirt_' . $colour . '_' . $size) //product name
-                ->setWeight(4.00)
-                ->setStatus(Mage_Catalog_Model_Product_Status::STATUS_ENABLED)
-                ->setTaxClassId(4) //tax class (0 - none, 1 - default, 2 - taxable, 4 - shipping)
-                ->setVisibility(Mage_Catalog_Model_Product_Visibility::VISIBILITY_BOTH) //catalog and search visibility
-                ->setPrice(11.22) //price in form 11.22
-                ->setCost(22.33) //price in form 11.22
-                ->setMetaTitle('T-shirt_' . $colour . '_' . $size)
-                ->setMetaKeyword('T-shirt_' . $colour . '_' . $size)
-                ->setMetaDescription("This's Long Description !!")
-                ->setDescription("This's Long Description !!")
-                ->setShortDescription("This's Short Description !!")
-                ->setStockData(array(
-                    'is_in_stock' => 1, //Stock Availability
-                    'qty' => 100 //qty
-                        )
-                );
-        $product->setPrimaryColour($helper->getAttributeOptionValue('primary_colour', $colour));
-        $product->setSize($helper->getAttributeOptionValue('size', $size));
-        $product->setBrand('NIKE');
-        $product->setFabricCare('Machine Wash,COLD');
-        $product->save(); 
-    }
-}
+Mage::app()->getStore()->setId(Mage_Core_Model_App::ADMIN_STORE_ID);
 
+$configProduct
+        ->setWebsiteIds(array(1))
+        ->setAttributeSetId($attributeSetId) //ID of a attribute set named 'default'
+        ->setTypeId('configurable') //product type
+        ->setCreatedAt(strtotime('now')) //product creation time
+        ->setSku('Base Config Product') //SKU
+        ->setName('Base Config Product') //product name
+        ->setWeight(4.0000)
+        ->setStatus(Mage_Catalog_Model_Product_Status::STATUS_ENABLED) //product status (1 - enabled, 2 - disabled)
+        ->setTaxClassId(4) //tax class (0 - none, 1 - default, 2 - taxable, 4 - shipping)
+        ->setVisibility(Mage_Catalog_Model_Product_Visibility::VISIBILITY_BOTH) //catalog and search visibility
+        ->setPrice(11.22) //price in form 11.22
+        ->setMetaTitle('CONFIG')
+        ->setMetaKeyword('CONFIG')
+        ->setMetaDescription('CONFIG')
+        ->setDescription('Long conf description')
+        ->setShortDescription('Short conf description')
+        ->setStockData(array(
+            'use_config_manage_stock' => 0, //'Use config settings' checkbox
+            'manage_stock' => 1, //manage stock
+            'is_in_stock' => 1, //Stock Availability
+                )
+        )
+        ->setCategoryIds(array($categoryId)); //assign product to categories
 
+$configProduct->getTypeInstance()->setUsedProductAttributeIds(array((int) $colourId, (int) $sizeId)); //attribute ID of attribute 'primary_colour' in my store
+$configurableAttributesData = $configProduct->getTypeInstance()->getConfigurableAttributesAsArray();
+$configProduct->setCanSaveConfigurableAttributes(true);
+$configProduct->setConfigurableAttributesData($configurableAttributesData);
+$configProduct->save();
