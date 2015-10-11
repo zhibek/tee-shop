@@ -4,8 +4,8 @@ class CamelCase_Tee_Helper_Data extends Mage_Core_Helper_Abstract
 {
 
     
-    CONST ATTRIBUTE_PRIMARY_COLOUR = 'primary_colour';
-    CONST ATTRIBUTE_SIZE = 'size';
+    const ATTRIBUTE_PRIMARY_COLOUR = 'primary_colour';
+    const ATTRIBUTE_SIZE = 'size';
 
     //  to create an object ->  $helper = Mage::helper('tee');
     /*
