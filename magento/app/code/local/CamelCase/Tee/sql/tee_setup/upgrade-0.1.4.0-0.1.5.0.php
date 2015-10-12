@@ -19,7 +19,7 @@ $installer->addAttribute('catalog_product', 'brand', array(
     'searchable'        => false,
     'filterable'        => false,
     'comparable'        => false,
-    'visible_on_front'  => false,
+    'visible_on_front'  => true,
     'unique'            => false,
     'apply_to'          => 'simple,configurable',
     'is_configurable'   => true
@@ -41,7 +41,7 @@ $installer->addAttribute('catalog_product', 'fabric_care', array(
     'searchable'        => false,
     'filterable'        => false,
     'comparable'        => false,
-    'visible_on_front'  => false,
+    'visible_on_front'  => true,
     'unique'            => false,
     'apply_to'          => 'simple,configurable',
     'is_configurable'   => true
@@ -63,20 +63,20 @@ $installer->addAttribute('catalog_product', 'primary_colour', array(
     'searchable'        => false,
     'filterable'        => false,
     'comparable'        => false,
-    'visible_on_front'  => false,
+    'visible_on_front'  => true,
     'unique'            => false,
     'apply_to'          => 'simple,configurable',
     'is_configurable'   => true,
     'option'            => array(
             'value' => array(
-                    'white'  => array('White'),
-                    'black'  => array('Black'),
-                    'red'    => array('Red'),
-                    'blue'   => array('Blue'),
-                    'green'  => array('Green'),
-                    'yellow' => array('Yellow'),
-                    'purple' => array('Purple'),
-                    'brown'  => array('Brown'),
+                    'white'  => array('White','white'),
+                    'black'  => array('Black','black'),
+                    'red'    => array('Red','red'),
+                    'blue'   => array('Blue','blue'),
+                    'green'  => array('Green','green'),
+                    'yellow' => array('Yellow','yellow'),
+                    'purple' => array('Purple','purple'),
+                    'brown'  => array('Brown','brown'),
             )
     )
 ));

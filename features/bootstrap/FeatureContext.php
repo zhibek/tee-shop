@@ -19,7 +19,8 @@ use Behat\MinkExtension\Context\MinkContext,
 /**
  * Features context. Behat\Mink\Element\NodeElement
  */
-class FeatureContext extends Behat\MinkExtension\Context\MinkContext {
+class FeatureContext extends Behat\MinkExtension\Context\MinkContext
+{
 
     /**
      * Initializes context.
@@ -30,19 +31,23 @@ class FeatureContext extends Behat\MinkExtension\Context\MinkContext {
     protected $existance_flag = 0;
     protected $btn_title;
 
-    public function __construct(array $parameters) {
+    public function __construct(array $parameters)
+    {
         // Initialize your context here
     }
 
-    public function setBtnTitle($title) {
+    public function setBtnTitle($title)
+    {
         $this->btn_title = $title;
     }
 
-    public function getBtnTitle() {
+    public function getBtnTitle()
+    {
         return $this->btn_title;
     }
 
-    public function spin($lambda) {
+    public function spin($lambda)
+    {
         while (true) {
             try {
                 if ($lambda($this)) {
@@ -58,7 +63,8 @@ class FeatureContext extends Behat\MinkExtension\Context\MinkContext {
     /**
      * @Given /^I mock add to cart$/
      */
-    public function iMockAddToCart2() {
+    public function iMockAddToCart2()
+    {
         $this->iAmOnHomepage();
         $this->clickLink('Test Products');
         $this->clickLink('Test T-Shirt');
@@ -70,7 +76,8 @@ class FeatureContext extends Behat\MinkExtension\Context\MinkContext {
      * get the button with attribute value 
      * @When /^I press button with attribute "([^"]*)" and value is "([^"]*)" and container is "([^"]*)"$/
      */
-    public function iPressButtonWithAttributeAndNameIs($attribute, $value, $container, $count = 0) {
+    public function iPressButtonWithAttributeAndNameIs($attribute, $value, $container, $count = 0)
+    {
         $buttons = $this->getSession()->getPage()->findAll('css', 'button');
         // make sure no infinite loops happen
         if ($count > 20) {
@@ -98,16 +105,27 @@ class FeatureContext extends Behat\MinkExtension\Context\MinkContext {
             }
         }
     }
-    
+
     /**
      * 
      * get the button with attribute value 
      * @When /^I spin for a while to see a button with title "([^"]*)"$/
      */
-    public function iSpinForAWhileToSeeAButtonWithTitle($title) {
+    public function iSpinForAWhileToSeeAButtonWithTitle($title)
+    {
         $this->setBtnTitle($title);
         $this->spin(function(FeatureContext $context) {
             return ($context->getSession()->getPage()->hasButton($context->getBtnTitle()));
         });
     }
+
+    /**
+     * @Given /^I am on test products catalog page$/
+     */
+    public function iAmOnTestProductsCatalogPage()
+    {
+        $this->iAmOnHomepage();
+        $this->clickLink('Test Products');
+    }
+
 }

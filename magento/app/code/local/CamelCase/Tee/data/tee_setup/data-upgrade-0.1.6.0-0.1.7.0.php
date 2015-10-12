@@ -58,4 +58,6 @@ $configProduct->getTypeInstance()->setUsedProductAttributeIds(array((int) $colou
 $configurableAttributesData = $configProduct->getTypeInstance()->getConfigurableAttributesAsArray();
 $configProduct->setCanSaveConfigurableAttributes(true);
 $configProduct->setConfigurableAttributesData($configurableAttributesData);
+$configProduct->setBrand('Nike');
+$configProduct->setFabricCare('Machine Wash,COLD');
 $configProduct->save();
