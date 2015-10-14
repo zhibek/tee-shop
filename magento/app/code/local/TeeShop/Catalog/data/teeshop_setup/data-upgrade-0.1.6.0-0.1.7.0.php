@@ -16,16 +16,16 @@ $categoryId = Mage::getResourceModel('catalog/category_collection')
 
 // primary_colour attribute_id
 $colourId = (int) Mage::getResourceModel('eav/entity_attribute')
-                ->getIdByCode('catalog_product', 'primary_colour');
+                ->getIdByCode('catalog_product', TeeShop_Catalog_Helper_Data::ATTRIBUTE_PRIMARY_COLOUR);
 // size attribute_id
 $sizeId = (int) Mage::getResourceModel('eav/entity_attribute')
-                ->getIdByCode('catalog_product', 'size');
+                ->getIdByCode('catalog_product', TeeShop_Catalog_Helper_Data::ATTRIBUTE_SIZE);
 // fabric_care attribute_id
 $fabricId = (int) Mage::getResourceModel('eav/entity_attribute')
-                ->getIdByCode('catalog_product', 'fabric_care');
+                ->getIdByCode('catalog_product', TeeShop_Catalog_Helper_Data::ATTRIBUTE_FABRIC_CARE);
 // brand attribute_id
 $brandId = (int) Mage::getResourceModel('eav/entity_attribute')
-                ->getIdByCode('catalog_product', 'brand');
+                ->getIdByCode('catalog_product', TeeShop_Catalog_Helper_Data::ATTRIBUTE_BRAND);
 
 Mage::app()->getStore()->setId(Mage_Core_Model_App::ADMIN_STORE_ID);
 

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <TeeShop_Catalog>
+            <version>0.1.8.0</version>
+        </TeeShop_Catalog>
+    </modules>
+    <global>
+        <models>
+            <camelcase_tee>
+                <class>TeeShop_Catalog_Model</class>
+            </camelcase_tee>
+        </models>
+        <helpers>
+            <tee>
+                <class>TeeShop_Catalog_Helper</class>
+            </tee>
+        </helpers>
+        <resources>
+            <teeshop_setup>
+                <setup>
+                    <module>TeeShop_Catalog</module>
+                    <class>Mage_Catalog_Model_Resource_Setup</class>
+                </setup>
+            </teeshop_setup>
+        </resources>
+    </global>
+</config>

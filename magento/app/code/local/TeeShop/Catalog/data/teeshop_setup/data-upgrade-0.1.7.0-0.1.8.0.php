@@ -18,10 +18,10 @@
 //Here we're assinging our 10 shirts to Base CONFIG SHirt
 
 $colourId = (int) Mage::getResourceModel('eav/entity_attribute')
-                ->getIdByCode('catalog_product', 'primary_colour');
+                ->getIdByCode('catalog_product', TeeShop_Catalog_Helper_Data::ATTRIBUTE_PRIMARY_COLOUR);
 
 $sizeId = (int) Mage::getResourceModel('eav/entity_attribute')
-                ->getIdByCode('catalog_product', 'size');
+                ->getIdByCode('catalog_product', TeeShop_Catalog_Helper_Data::ATTRIBUTE_SIZE);
 
 $Config = Mage::getModel('catalog/product')->loadByAttribute('name', 'Base Config Product')->getId();
 // loading base config product
@@ -42,8 +42,8 @@ $simpleIds = array(
 // loading collection of our shirts
 $simpleProducts = Mage::getResourceModel('catalog/product_collection')
         ->addIdFilter($simpleIds)
-        ->addAttributeToSelect('primary_colour')
-        ->addAttributeToSelect('size');
+        ->addAttributeToSelect(TeeShop_Catalog_Helper_Data::ATTRIBUTE_PRIMARY_COLOUR)
+        ->addAttributeToSelect(TeeShop_Catalog_Helper_Data::ATTRIBUTE_SIZE);
 
 $configurableProductsData = array();
 $configurableAttributesData = $configurable->getTypeInstance()->getConfigurableAttributesAsArray();

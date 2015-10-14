@@ -3,7 +3,7 @@
 
 $installer = $this;
 $installer->startSetup();
-$installer->addAttribute('catalog_product', 'brand', array(
+$installer->addAttribute('catalog_product', TeeShop_Catalog_Helper_Data::ATTRIBUTE_BRAND, array(
     'group'             => 'General',
     'type'              => 'varchar',
     'backend'           => '',
@@ -25,7 +25,7 @@ $installer->addAttribute('catalog_product', 'brand', array(
     'is_configurable'   => true
 ));
 
-$installer->addAttribute('catalog_product', 'fabric_care', array(
+$installer->addAttribute('catalog_product', TeeShop_Catalog_Helper_Data::ATTRIBUTE_FABRIC_CARE, array(
     'group'             => 'General',
     'type'              => 'varchar',
     'backend'           => '',
@@ -47,7 +47,7 @@ $installer->addAttribute('catalog_product', 'fabric_care', array(
     'is_configurable'   => true
 ));
 
-$installer->addAttribute('catalog_product', 'primary_colour', array(
+$installer->addAttribute('catalog_product', TeeShop_Catalog_Helper_Data::ATTRIBUTE_PRIMARY_COLOUR, array(
     'group'             => 'General',
     'type'              => 'varchar',
     'backend'           => 'eav/entity_attribute_backend_array',
@@ -81,7 +81,7 @@ $installer->addAttribute('catalog_product', 'primary_colour', array(
     )
 ));
 
-$installer->addAttribute('catalog_product', 'size', array(
+$installer->addAttribute('catalog_product', TeeShop_Catalog_Helper_Data::ATTRIBUTE_SIZE, array(
     'group'             => 'General',
     'type'              => 'varchar',
     'backend'           => 'eav/entity_attribute_backend_array',

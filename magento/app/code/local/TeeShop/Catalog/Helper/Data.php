@@ -1,11 +1,12 @@
 <?php
 
-class CamelCase_Tee_Helper_Data extends Mage_Core_Helper_Abstract
+class TeeShop_Catalog_Helper_Data extends Mage_Core_Helper_Abstract
 {
 
-    
     const ATTRIBUTE_PRIMARY_COLOUR = 'primary_colour';
-    const ATTRIBUTE_SIZE = 'size';
+    const ATTRIBUTE_SIZE           = 'size';
+    const ATTRIBUTE_BRAND          = 'brand';
+    const ATTRIBUTE_FABRIC_CARE    = 'fabric_care';
 
     //  to create an object ->  $helper = Mage::helper('tee');
     /*
@@ -13,17 +14,17 @@ class CamelCase_Tee_Helper_Data extends Mage_Core_Helper_Abstract
      * @param string $argValue  -> option value needed to get its Id
      * 
      * @return int id of the option itself 
-     */  
+     */
     private function getAttributeOptionValue($argAttribute, $argValue)
     {
-        $attributeModel = Mage::getModel('eav/entity_attribute');
+        $attributeModel        = Mage::getModel('eav/entity_attribute');
         $attributeOptionsModel = Mage::getModel('eav/entity_attribute_source_table');
 
         $attributeCode = $attributeModel->getIdByCode('catalog_product', $argAttribute);
-        $attribute = $attributeModel->load($attributeCode);
+        $attribute     = $attributeModel->load($attributeCode);
 
         $attributeTable = $attributeOptionsModel->setAttribute($attribute);
-        $options = $attributeOptionsModel->getAllOptions(false);
+        $options        = $attributeOptionsModel->getAllOptions(false);
 
         foreach ($options as $option) {
             if ($option['label'] == $argValue) {
@@ -61,4 +62,5 @@ class CamelCase_Tee_Helper_Data extends Mage_Core_Helper_Abstract
     {
         return $this->getAttributeOptionValue(self::ATTRIBUTE_SIZE, $value);
     }
+
 }

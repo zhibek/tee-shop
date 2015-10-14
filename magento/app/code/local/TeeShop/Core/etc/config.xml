@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <TeeShop_Core>
+            <version>0.1.0.0</version>
+        </TeeShop_Core>
+    </modules>
+    <default>
+        <payment>
+            <ccsave>
+                <active>0</active>
+            </ccsave>
+        </payment>
+        <design>
+            <package>
+                <name>bare</name>
+            </package>
+            <theme>
+                <skin></skin>
+                <default>default</default>
+            </theme>
+        </design>
+    </default>
+</config>

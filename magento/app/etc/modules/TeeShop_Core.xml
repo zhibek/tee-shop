@@ -1,8 +1,8 @@
 <config>
   <modules>
-    <CamelCase_Tee>
+    <TeeShop_Core>
       <active>true</active>
       <codePool>local</codePool>
-    </CamelCase_Tee>
+    </TeeShop_Core>
   </modules>
 </config>
