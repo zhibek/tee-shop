@@ -19,7 +19,7 @@ $installer->addAttribute('catalog_product', TeeShop_Catalog_Helper_Data::ATTRIBU
     'searchable'        => false,
     'filterable'        => false,
     'comparable'        => false,
-    'visible_on_front'  => false,
+    'visible_on_front'  => true,
     'unique'            => false,
     'apply_to'          => 'simple,configurable',
     'is_configurable'   => true
@@ -41,7 +41,7 @@ $installer->addAttribute('catalog_product', TeeShop_Catalog_Helper_Data::ATTRIBU
     'searchable'        => false,
     'filterable'        => false,
     'comparable'        => false,
-    'visible_on_front'  => false,
+    'visible_on_front'  => true,
     'unique'            => false,
     'apply_to'          => 'simple,configurable',
     'is_configurable'   => true
@@ -49,7 +49,7 @@ $installer->addAttribute('catalog_product', TeeShop_Catalog_Helper_Data::ATTRIBU
 
 $installer->addAttribute('catalog_product', TeeShop_Catalog_Helper_Data::ATTRIBUTE_PRIMARY_COLOUR, array(
     'group'             => 'General',
-    'type'              => 'varchar',
+    'type'              => 'int',
     'backend'           => 'eav/entity_attribute_backend_array',
     'frontend'          => '',
     'label'             => 'Primary colour',
@@ -63,27 +63,27 @@ $installer->addAttribute('catalog_product', TeeShop_Catalog_Helper_Data::ATTRIBU
     'searchable'        => false,
     'filterable'        => false,
     'comparable'        => false,
-    'visible_on_front'  => false,
+    'visible_on_front'  => true,
     'unique'            => false,
     'apply_to'          => 'simple,configurable',
     'is_configurable'   => true,
     'option'            => array(
-            'value' => array(
-                    'white'  => array('White'),
-                    'black'  => array('Black'),
-                    'red'    => array('Red'),
-                    'blue'   => array('Blue'),
-                    'green'  => array('Green'),
-                    'yellow' => array('Yellow'),
-                    'purple' => array('Purple'),
-                    'brown'  => array('Brown'),
+            'values' => array(
+                    '0'  => 'White',
+                    '1'  => 'Black',
+                    '2'    => 'Red',
+                    '3'   => 'Blue',
+                    '4'  => 'Green',
+                    '5' => 'Yellow',
+                    '6' => 'Purple',
+                    '7'  => 'Brown',
             )
     )
 ));
 
 $installer->addAttribute('catalog_product', TeeShop_Catalog_Helper_Data::ATTRIBUTE_SIZE, array(
     'group'             => 'General',
-    'type'              => 'varchar',
+    'type'              => 'int',
     'backend'           => 'eav/entity_attribute_backend_array',
     'frontend'          => '',
     'label'             => 'Size',
@@ -102,14 +102,14 @@ $installer->addAttribute('catalog_product', TeeShop_Catalog_Helper_Data::ATTRIBU
     'apply_to'          => 'simple,configurable',
     'is_configurable'   => true,
     'option'            => array(
-            'value' => array(
-                    'xs'     => array('XS'),
-                    's'      => array('S'),
-                    'm'      => array('M'),
-                    'l'      => array('L'),
-                    'xl'     => array('XL'),
+            'values' => array(
+                    '0'     => 'XS',
+                    '1'      => 'S',
+                    '2'      => 'M',
+                    '3'      => 'L',
+                    '4'     => 'XL',
             )
-    )
+        )
 ));
 
 $installer->endSetup();
