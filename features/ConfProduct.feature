@@ -14,7 +14,7 @@ Feature: ConfProduct
     Then the response should contain "Nike"
     Then the response should contain "Machine Wash,COLD"
     #selecting white colour
-    Then I select "white" from "attribute134"
+    Then I select "White" from "attribute134"
     #select XL size
     Then I select "XL" from "attribute135" 
     When I press "Add to Cart"
