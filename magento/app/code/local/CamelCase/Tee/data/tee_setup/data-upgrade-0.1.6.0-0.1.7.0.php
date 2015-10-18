@@ -88,7 +88,6 @@ foreach ($simpleProducts as $simple) {
 
 $configProduct->setConfigurableProductsData($configurableProductsData);
 $configProduct->setConfigurableAttributesData($configurableAttributesData);
-$configProduct->setCanSaveConfigurableAttributes(true);
-Mage::log($configurableProductsData, null, 'configurableProductsData.log', true);
-Mage::log($configurableAttributesData, null, 'configurableAttributesData.log', true);
+$configProduct->setBrand('Nike');
+$configProduct->setFabricCare('Machine Wash,COLD');
 $configProduct->save();

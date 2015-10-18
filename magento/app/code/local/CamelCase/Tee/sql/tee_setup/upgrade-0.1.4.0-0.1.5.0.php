@@ -19,7 +19,7 @@ $installer->addAttribute('catalog_product', 'brand', array(
     'searchable'        => false,
     'filterable'        => false,
     'comparable'        => false,
-    'visible_on_front'  => false,
+    'visible_on_front'  => true,
     'unique'            => false,
     'apply_to'          => 'simple,configurable',
     'is_configurable'   => true
@@ -41,15 +41,16 @@ $installer->addAttribute('catalog_product', 'fabric_care', array(
     'searchable'        => false,
     'filterable'        => false,
     'comparable'        => false,
-    'visible_on_front'  => false,
+    'visible_on_front'  => true,
     'unique'            => false,
     'apply_to'          => 'simple,configurable',
     'is_configurable'   => true
 ));
 
 $installer->addAttribute('catalog_product', 'primary_colour', array(
+    'attribute_model' => NULL,
     'group'             => 'General',
-    'type'              => 'varchar',
+    'type'              => 'int',
     'backend'           => 'eav/entity_attribute_backend_array',
     'frontend'          => '',
     'label'             => 'Primary colour',
@@ -63,27 +64,28 @@ $installer->addAttribute('catalog_product', 'primary_colour', array(
     'searchable'        => false,
     'filterable'        => false,
     'comparable'        => false,
-    'visible_on_front'  => false,
+    'visible_on_front'  => true,
     'unique'            => false,
     'apply_to'          => 'simple,configurable',
     'is_configurable'   => true,
     'option'            => array(
             'value' => array(
-                    'white'  => array('White'),
-                    'black'  => array('Black'),
-                    'red'    => array('Red'),
-                    'blue'   => array('Blue'),
-                    'green'  => array('Green'),
-                    'yellow' => array('Yellow'),
-                    'purple' => array('Purple'),
-                    'brown'  => array('Brown'),
+                    '0'  => array('White'),
+                    '1'  => array('Black'),
+                    '2'    => array('Red'),
+                    '3'   => array('Blue'),
+                    '4'  => array('Green'),
+                    '5' => array('Yellow'),
+                    '6' => array('Purple'),
+                    '7'  => array('Brown'),
             )
     )
 ));
 
 $installer->addAttribute('catalog_product', 'size', array(
+    'attribute_model' => NULL,
     'group'             => 'General',
-    'type'              => 'varchar',
+    'type'              => 'int',
     'backend'           => 'eav/entity_attribute_backend_array',
     'frontend'          => '',
     'label'             => 'Size',
@@ -103,11 +105,11 @@ $installer->addAttribute('catalog_product', 'size', array(
     'is_configurable'   => true,
     'option'            => array(
             'value' => array(
-                    'xs'     => array('XS'),
-                    's'      => array('S'),
-                    'm'      => array('M'),
-                    'l'      => array('L'),
-                    'xl'     => array('XL'),
+                    '0'     => array('XS'),
+                    '1'      => array('S'),
+                    '2'      => array('M'),
+                    '3'      => array('L'),
+                    '4'     => array('XL'),
             )
     )
 ));
