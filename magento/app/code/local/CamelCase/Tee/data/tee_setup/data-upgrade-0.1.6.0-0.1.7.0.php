@@ -31,7 +31,7 @@ Mage::app()->getStore()->setId(Mage_Core_Model_App::ADMIN_STORE_ID);
 
 $configProduct
         ->setWebsiteIds(array(1))
-        ->setAttributeSetId($attributeSetId) //ID of a attribute set named 'default'
+        ->setAttributeSetId($configProduct->getDefaultAttributeSetId()) //ID of a attribute set named 'default'
         ->setTypeId('configurable') //product type
         ->setCreatedAt(strtotime('now')) //product creation time
         ->setSku('Base Config Product') //SKU
@@ -46,16 +46,49 @@ $configProduct
         ->setMetaDescription('CONFIG')
         ->setDescription('Long conf description')
         ->setShortDescription('Short conf description')
+        ->setBrand('NIKE')
+        ->setFabricCare('Machine Wash,COLD')
         ->setStockData(array(
-            'use_config_manage_stock' => 0, //'Use config settings' checkbox
             'manage_stock' => 1, //manage stock
             'is_in_stock' => 1, //Stock Availability
+            'qty' => 0,
+            'use_config_manage_stock' => 0, //'Use config settings' checkbox
                 )
         )
         ->setCategoryIds(array($categoryId)); //assign product to categories
 
-$configProduct->getTypeInstance()->setUsedProductAttributeIds(array((int) $colourId, (int) $sizeId)); //attribute ID of attribute 'primary_colour' in my store
+$configProduct->getTypeInstance()->setUsedProductAttributeIds(array($colourId, $sizeId)); //attribute ID of attribute 'primary_colour' in my store
+//getting shirts ids
+$simpleIds = array(
+    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt_Black_XL')->getId(),
+    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt_Black_L')->getId(),
+    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt_Black_M')->getId(),
+    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt_Black_S')->getId(),
+    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt_Black_XS')->getId(),
+    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt_White_XL')->getId(),
+    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt_White_L')->getId(),
+    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt_White_M')->getId(),
+    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt_White_S')->getId(),
+    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt_White_XS')->getId()
+);
+// loading collection of our shirts
+$simpleProducts = Mage::getResourceModel('catalog/product_collection')
+        ->addIdFilter($simpleIds)
+        ->addAttributeToSelect('primary_colour')
+        ->addAttributeToSelect('size');
+
+$configurableProductsData = array();
 $configurableAttributesData = $configProduct->getTypeInstance()->getConfigurableAttributesAsArray();
-$configProduct->setCanSaveConfigurableAttributes(true);
+
+foreach ($simpleProducts as $simple) {
+//    $simple['stock_item']->['_data']['is_in_stock']=1;
+    $configurableProductsData[$simple->getId()] = $simple;
+    $configurableAttributesData[0]['values'][] = $simple;
+}
+
+$configProduct->setConfigurableProductsData($configurableProductsData);
 $configProduct->setConfigurableAttributesData($configurableAttributesData);
+$configProduct->setCanSaveConfigurableAttributes(true);
+Mage::log($configurableProductsData, null, 'configurableProductsData.log', true);
+Mage::log($configurableAttributesData, null, 'configurableAttributesData.log', true);
 $configProduct->save();
