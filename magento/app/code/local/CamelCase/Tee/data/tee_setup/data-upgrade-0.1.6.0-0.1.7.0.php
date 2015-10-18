@@ -81,13 +81,11 @@ $configurableProductsData = array();
 $configurableAttributesData = $configProduct->getTypeInstance()->getConfigurableAttributesAsArray();
 
 foreach ($simpleProducts as $simple) {
-//    $simple['stock_item']->['_data']['is_in_stock']=1;
+
     $configurableProductsData[$simple->getId()] = $simple;
     $configurableAttributesData[0]['values'][] = $simple;
 }
 
 $configProduct->setConfigurableProductsData($configurableProductsData);
 $configProduct->setConfigurableAttributesData($configurableAttributesData);
-$configProduct->setBrand('Nike');
-$configProduct->setFabricCare('Machine Wash,COLD');
 $configProduct->save();

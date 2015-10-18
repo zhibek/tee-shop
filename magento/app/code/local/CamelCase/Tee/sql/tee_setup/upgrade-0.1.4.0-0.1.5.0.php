@@ -69,15 +69,15 @@ $installer->addAttribute('catalog_product', 'primary_colour', array(
     'apply_to'          => 'simple,configurable',
     'is_configurable'   => true,
     'option'            => array(
-            'value' => array(
-                    '0'  => array('White'),
-                    '1'  => array('Black'),
-                    '2'    => array('Red'),
-                    '3'   => array('Blue'),
-                    '4'  => array('Green'),
-                    '5' => array('Yellow'),
-                    '6' => array('Purple'),
-                    '7'  => array('Brown'),
+            'values' => array(
+                    '0'  => 'White',
+                    '1'  => 'Black',
+                    '2'    => 'Red',
+                    '3'   => 'Blue',
+                    '4'  => 'Green',
+                    '5' => 'Yellow',
+                    '6' => 'Purple',
+                    '7'  => 'Brown',
             )
     )
 ));
@@ -104,14 +104,14 @@ $installer->addAttribute('catalog_product', 'size', array(
     'apply_to'          => 'simple,configurable',
     'is_configurable'   => true,
     'option'            => array(
-            'value' => array(
-                    '0'     => array('XS'),
-                    '1'      => array('S'),
-                    '2'      => array('M'),
-                    '3'      => array('L'),
-                    '4'     => array('XL'),
+            'values' => array(
+                    '0'     => 'XS',
+                    '1'      => 'S',
+                    '2'      => 'M',
+                    '3'      => 'L',
+                    '4'     => 'XL',
             )
-    )
+        )
 ));
 
 $installer->endSetup();
