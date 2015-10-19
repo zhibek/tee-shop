@@ -91,14 +91,16 @@ class TeeShop_Catalog_Helper_Data extends Mage_Core_Helper_Abstract
 
     public function createTopCategory($topCatName)
     {
+        $store = Mage::getModel('core/store')->load(Mage_Core_Model_App::DISTRO_STORE_ID);
         $category = Mage::getModel('catalog/category');
         $category->setStoreId(self::ROOT_STORE_ID)
                 ->setName($topCatName)
                 ->setUrlKey($topCatName)
                 ->setIsActive(1)
                 ->setDisplayMode('PRODUCTS');
+
         $parentId = Mage_Catalog_Model_Category::TREE_ROOT_ID;
-        $parentCategory = Mage::getModel('catalog/category')->load($parentId);
+        $parentCategory = Mage::getModel('catalog/category')->load($store->getRootCategoryId());
         $category->setPath($parentCategory->getPath());
         $category->save();
     }
