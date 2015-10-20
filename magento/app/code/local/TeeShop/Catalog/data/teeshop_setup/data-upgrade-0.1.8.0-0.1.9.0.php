@@ -6,7 +6,7 @@
 $configProduct = Mage::getModel('catalog/product')->loadByAttribute('name', 'Base Config Product');
 
 $categories = array();
-$topCats = array('Men', 'Women', 'Children');
+$topCats = array('Men', 'Women', 'Children','Test Products');
 
 foreach ($topCats as $top) {
     // loading top category
