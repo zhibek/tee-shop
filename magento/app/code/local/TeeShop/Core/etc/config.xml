@@ -19,6 +19,20 @@
                 <skin></skin>
                 <default>default</default>
             </theme>
+            <pagination>
+                <!--3 pages in paginations and the others are arrows-->
+                <pagination_frame>3</pagination_frame>
+                <Anchor_Text_for_Previous>Back</Anchor_Text_for_Previous>
+                <Anchor_Text_for_Next>Next</Anchor_Text_for_Next>
+            </pagination>
         </design>
+        <catalog>
+            <frontend>
+                <grid_per_page_values>20,40,60</grid_per_page_values>
+                <!--<list_per_page_values>5,10,15,20,25</list_per_page_values>-->
+                <grid_per_page>20</grid_per_page>
+                <!--<list_per_page>10</list_per_page>-->
+            </frontend>
+        </catalog>
     </default>
 </config>
