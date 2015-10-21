@@ -6,5 +6,66 @@
         <remove name="right.poll" />
         <remove name="paypal.partner.right.logo"/>
         <remove name="product.info.sharing"/>
-    </default>    
+    </default>  
+    
+    <!--Changing values of rows and columns for all product grids-->  
+    <!-- Category, non-anchor -->
+    <catalog_category_default>
+        <reference name="product_list">
+            <action method="setColumnCount">
+                <count>4</count>
+            </action>
+            <action method="setRowCount">
+                <count>5</count>
+            </action>
+        </reference>
+    </catalog_category_default>
+
+    <!-- Category, anchor (layered navigation) -->
+    <catalog_category_layered>
+        <reference name="product_list">
+            <action method="setColumnCount">
+                <count>4</count>
+            </action>
+            <action method="setRowCount">
+                <count>5</count>
+            </action>
+        </reference>
+    </catalog_category_layered>
+
+    <!-- Search result (quick search) -->
+    <catalogsearch_result_index>
+        <reference name="search_result_list">
+            <action method="setColumnCount">
+                <count>4</count>
+            </action>
+            <action method="setRowCount">
+                <count>5</count>
+            </action>
+        </reference>
+    </catalogsearch_result_index>
+
+    <!-- Search result (advanced search) -->
+    <catalogsearch_advanced_result>
+        <reference name="search_result_list">
+            <action method="setColumnCount">
+                <count>4</count>
+            </action>
+            <action method="setRowCount">
+                <count>5</count>
+            </action>
+        </reference>
+    </catalogsearch_advanced_result>
+
+    <!-- Product, upsell -->
+    <catalog_product_view>
+        <reference name="product.info.upsell">
+            <action method="setColumnCount">
+                <count>4</count>
+            </action>
+            <action method="setRowCount">
+                <count>5</count>
+            </action>
+        </reference>
+    </catalog_product_view>    
 </layout>
