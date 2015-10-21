@@ -2,7 +2,7 @@
 <config>
     <modules>
         <TeeShop_Catalog>
-            <version>0.1.7.0</version>
+            <version>0.1.9.0</version>
         </TeeShop_Catalog>
     </modules>
     <global>
