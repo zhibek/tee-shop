@@ -6,14 +6,20 @@
 
 $Colours = array(
     '0' => 'White',
-    '1' => 'Black'
+    '1' => 'Black',
+    '2' => 'Green',
+    '3' => 'Red',
+    '4' => 'Brown',
+    '5' => 'Blue'
 );
 $Sizes = array(
     '0' => 'XS',
     '1' => 'S',
     '2' => 'M',
     '3' => 'L',
-    '4' => 'XL'
+    '4' => 'XL',
+    '5' => '2XL',
+    '6' => '3XL'
 );
 
 Mage::app()->getStore()->setId(Mage_Core_Model_App::ADMIN_STORE_ID);
