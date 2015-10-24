@@ -51,7 +51,7 @@ foreach ($Colours as $colour) {
         );
         $product->setPrimaryColour($helper->getPrimaryColourOptionValue($colour));
         $product->setSize($helper->getSizeOptionValue($size));
-        $product->setBrand('NIKE');
+        $product->setBrand(3);
         $product->setFabricCare('Machine Wash,COLD');
         $product->save();
     }
