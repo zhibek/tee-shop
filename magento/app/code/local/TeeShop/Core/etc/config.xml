@@ -11,6 +11,17 @@
                 <active>0</active>
             </ccsave>
         </payment>
+        <!--price search filtration -->
+        <catalog>
+            <layered_navigation>
+                <price_range_calculation>manual</price_range_calculation>
+                <price_range_step>5</price_range_step>
+                <price_range_max_intervals>5</price_range_max_intervals>
+                <one_price_interval>0</one_price_interval>
+                <interval_division_limit>9</interval_division_limit>
+                <display_product_count>1</display_product_count>
+            </layered_navigation>
+        </catalog>
         <design>
             <package>
                 <name>bare</name>
