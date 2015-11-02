@@ -3,7 +3,11 @@ default:
         Behat\MinkExtension\Extension:
             base_url: http://tee-shop.local
             goutte: ~
-            selenium2: ~
+            default_session: selenium2
+            javascript_session: 'selenium2'
+            browser_name: firefox
+            selenium2:
+                browser: firefox
 
 ci:
     extensions:
