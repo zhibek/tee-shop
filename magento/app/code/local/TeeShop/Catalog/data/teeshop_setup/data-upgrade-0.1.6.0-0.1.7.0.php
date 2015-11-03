@@ -46,7 +46,7 @@ $configProduct
         ->setMetaDescription('CONFIG')
         ->setDescription('Long conf description')
         ->setShortDescription('Short conf description')
-        ->setBrand('NIKE')
+        ->setBrand(4)
         ->setFabricCare('Machine Wash,COLD')
         ->setStockData(array(
             'manage_stock' => 1, //manage stock
