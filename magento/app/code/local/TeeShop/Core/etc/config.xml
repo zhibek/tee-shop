@@ -11,6 +11,12 @@
                 <active>0</active>
             </ccsave>
         </payment>
+        <catalog>
+            <search>
+                <!--3 means combined type (Like and fulltext)-->
+                <search_type>3</search_type>
+            </search>
+        </catalog>
         <design>
             <package>
                 <name>bare</name>
