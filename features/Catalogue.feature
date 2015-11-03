@@ -1,5 +1,5 @@
 #For testing the existence of Tee-shirt on the catalogue
-
+@ignore
 Feature: catalogue
   In order to check exitsance of link which redirect to test product category 
  

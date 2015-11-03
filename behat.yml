@@ -1,4 +1,6 @@
 default:
+    filters:
+        tags: "~@ignore"
     extensions:
         Behat\MinkExtension\Extension:
             base_url: http://tee-shop.local/

@@ -4,7 +4,7 @@ Feature: ConfProduct
   In order to test new variations in configurable product page
   @javascript 
   Scenario: Buying a white Xl configurable t-shirt
-    Given I am on test products catalog page
+    Given I am on "/men/sport.html"
     When I follow "Base Config Product"
     Then I should see "Base Config Product"
     Then I should see "In stock"
