@@ -35,7 +35,8 @@
         "magento-root-dir": "magento",
         "persistent-files": [
             "app/etc/install.xml",
-            "app/etc/modules/CamelCase_Tee.xml",
+            "app/etc/modules/TeeShop_Catalog.xml",
+            "app/etc/modules/TeeShop_Core.xml",
             "app/code/local",
             "app/design/frontend/bare"
         ],
