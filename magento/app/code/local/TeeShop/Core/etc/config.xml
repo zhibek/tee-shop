@@ -21,6 +21,11 @@
                 <interval_division_limit>9</interval_division_limit>
                 <display_product_count>1</display_product_count>
             </layered_navigation>
+            <search>
+                <!--3 means combined type (Like and fulltext)-->
+                <search_type>3</search_type>
+            </search>
+
         </catalog>
         <design>
             <package>
