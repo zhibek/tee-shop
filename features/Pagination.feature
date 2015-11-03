@@ -8,7 +8,7 @@ Feature: Pagination
     Given I am on homepage
     When I fill in "search" with "shirt"
     When I press "Search"
-    Then I should be on "http://tee-shop.local/catalogsearch/result/?q=shirt"
+    Then I should be on "/catalogsearch/result/?q=shirt"
 
     Then the response should contain "<li class=\"current\">1</li>"
     #button to move to the second page
@@ -20,7 +20,7 @@ Feature: Pagination
     Given I am on homepage
     When I fill in "search" with "shirt"
     When I press "Search"
-    Then I should be on "http://tee-shop.local/catalogsearch/result/?q=shirt"
+    Then I should be on "/catalogsearch/result/?q=shirt"
 
     #this means that the page shows 20 products
     Then the response should contain "1-20"
