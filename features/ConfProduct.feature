@@ -10,7 +10,7 @@ Feature: ConfProduct
     Then I should see "In stock"
     #checking for brand and fabric care
     When I should see "Additional Information"
-    Then the response should contain "Nike"
+    Then the response should contain "Adidas"
     Then the response should contain "Machine Wash,COLD"
     #selecting white colour
     Then I select "White" from "attribute134"
