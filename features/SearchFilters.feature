@@ -27,14 +27,11 @@ Feature: search filters
     # href value that redirect to white and Test Products category filter
     Then the response should contain "catalogsearch/result/index/?cat=3&amp;q=white" 
     
-    # href value that redirect to white and Men category filter
-    Then the response should contain "catalogsearch/result/index/?cat=4&amp;q=white" 
-    
     # href value that redirect to white and Women category filter
-    Then the response should contain "catalogsearch/result/index/?cat=8&amp;q=white" 
+    Then the response should contain "catalogsearch/result/index/?cat=7&amp;q=white" 
     
     # href value that redirect to white and children category filter
-    Then the response should contain "catalogsearch/result/index/?cat=12&amp;q=white" 
+    Then the response should contain "catalogsearch/result/index/?cat=11&amp;q=white" 
         
     # href value that redirect to white and Nike filter
     Then the response should contain "catalogsearch/result/index/?brand=3&amp;q=white" 
