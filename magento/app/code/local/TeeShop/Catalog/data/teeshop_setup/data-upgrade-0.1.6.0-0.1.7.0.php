@@ -1,6 +1,6 @@
 <?php
 
-// Creating a conf product
+//Creating a conf product
 
 $configProduct = Mage::getModel('catalog/product');
 $entityTypeId = Mage::getModel('catalog/product')
@@ -10,13 +10,17 @@ $entityTypeId = Mage::getModel('catalog/product')
 $attributeSetName = 'Default';
 $attributeSetId = $this->getAttributeSetId($entityTypeId, $attributeSetName);
 $categoryId = Mage::getResourceModel('catalog/category_collection')
-                ->addFieldToFilter('name', 'Test products')
+                ->addFieldToFilter('name', 'Men')
                 ->getFirstItem()->getId();
 
 
 // primary_colour attribute_id
-$colourId = (int) Mage::getResourceModel('eav/entity_attribute')
+$primaryColourId = (int) Mage::getResourceModel('eav/entity_attribute')
                 ->getIdByCode('catalog_product', TeeShop_Catalog_Helper_Data::ATTRIBUTE_PRIMARY_COLOUR);
+// colour attribute_id
+$colourId = (int) Mage::getResourceModel('eav/entity_attribute')
+                ->getIdByCode('catalog_product', TeeShop_Catalog_Helper_Data::ATTRIBUTE_COLOUR);
+//var_dump($colourId);exit();
 // size attribute_id
 $sizeId = (int) Mage::getResourceModel('eav/entity_attribute')
                 ->getIdByCode('catalog_product', TeeShop_Catalog_Helper_Data::ATTRIBUTE_SIZE);
@@ -46,7 +50,6 @@ $configProduct
         ->setMetaDescription('CONFIG')
         ->setDescription('Long conf description')
         ->setShortDescription('Short conf description')
-        ->setBrand(4)
         ->setFabricCare('Machine Wash,COLD')
         ->setStockData(array(
             'manage_stock' => 1, //manage stock
@@ -54,28 +57,27 @@ $configProduct
             'qty' => 0,
             'use_config_manage_stock' => 0, //'Use config settings' checkbox
                 )
-        )
-        ->setCategoryIds(array($categoryId)); //assign product to categories
+);
+//        ->setCategoryIds(array($categoryId)); //assign product to categories
 
-$configProduct->getTypeInstance()->setUsedProductAttributeIds(array($colourId, $sizeId)); //attribute ID of attribute 'primary_colour' in my store
+$configProduct->getTypeInstance()->setUsedProductAttributeIds(array($primaryColourId, $colourId, $sizeId)); //attribute ID of attribute 'primary_colour' in my store
 //getting shirts ids
 $simpleIds = array(
-    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt_Black_XL')->getId(),
-    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt_Black_L')->getId(),
-    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt_Black_M')->getId(),
-    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt_Black_S')->getId(),
-    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt_Black_XS')->getId(),
-    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt_White_XL')->getId(),
-    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt_White_L')->getId(),
-    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt_White_M')->getId(),
-    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt_White_S')->getId(),
-    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt_White_XS')->getId()
+    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt_Off_Black_XL')->getId(),
+    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt_Off_Black_L')->getId(),
+    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt_Off_Black_M')->getId(),
+    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt_Off_Black_S')->getId(),
+    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt_Off_Black_XS')->getId(),
+    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt_Off_White_XL')->getId(),
+    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt_Off_White_L')->getId(),
+    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt_Off_White_M')->getId(),
+    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt_Off_White_S')->getId(),
+    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt_Off_White_XS')->getId()
 );
+
 // loading collection of our shirts
 $simpleProducts = Mage::getResourceModel('catalog/product_collection')
-        ->addIdFilter($simpleIds)
-        ->addAttributeToSelect('primary_colour')
-        ->addAttributeToSelect('size');
+        ->addIdFilter($simpleIds);
 
 $configurableProductsData = array();
 $configurableAttributesData = $configProduct->getTypeInstance()->getConfigurableAttributesAsArray();
@@ -88,4 +90,6 @@ foreach ($simpleProducts as $simple) {
 
 $configProduct->setConfigurableProductsData($configurableProductsData);
 $configProduct->setConfigurableAttributesData($configurableAttributesData);
+$brand = 'Adidas';
+$configProduct->setBrand($helper->getBrandOptionValue($brand));
 $configProduct->save();

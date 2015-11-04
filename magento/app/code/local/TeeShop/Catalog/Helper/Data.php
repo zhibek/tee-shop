@@ -5,6 +5,7 @@ class TeeShop_Catalog_Helper_Data extends Mage_Core_Helper_Abstract
 
     //  to create an object ->  $helper = Mage::helper('tee');
 
+    const ATTRIBUTE_COLOUR = 'color';
     const ATTRIBUTE_PRIMARY_COLOUR = 'primary_colour';
     const ATTRIBUTE_SIZE = 'size';
     const ATTRIBUTE_BRAND = 'brand';
@@ -68,6 +69,20 @@ class TeeShop_Catalog_Helper_Data extends Mage_Core_Helper_Abstract
     }
 
     /*
+     * gives back the id of each option of color attribute 
+     * which used to set color for simple shirts 
+     * 
+     * @param string  $value : is the name of the attribute option
+     * 
+     * @return  the id of the option itself 
+     */
+
+    public function getColourOptionValue($value)
+    {
+        return $this->getAttributeOptionValue(self::ATTRIBUTE_COLOUR, $value);
+    }
+
+    /*
      * gives back the id of each option value of size attribute
      * which used to set size for simple shirts
      * 
@@ -80,6 +95,21 @@ class TeeShop_Catalog_Helper_Data extends Mage_Core_Helper_Abstract
     {
         return $this->getAttributeOptionValue(self::ATTRIBUTE_SIZE, $value);
     }
+
+    /*
+     * gives back the id of each option of Brand attribute 
+     * which used to set Brand for simple shirts 
+     * 
+     * @param string  $value : is the name of the attribute option
+     * 
+     * @return  the id of the option itself 
+     */
+
+    public function getBrandOptionValue($value)
+    {
+        return $this->getAttributeOptionValue(self::ATTRIBUTE_BRAND, $value);
+    }
+
 
     /*
      * creates Top level categories
