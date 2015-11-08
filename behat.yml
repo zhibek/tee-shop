@@ -1,7 +1,9 @@
 default:
+    filters:
+        tags: "~@ignore"
     extensions:
         Behat\MinkExtension\Extension:
-            base_url: http://tee-shop.local
+            base_url: http://tee-shop.local/
             goutte: ~
             default_session: selenium2
             javascript_session: 'selenium2'

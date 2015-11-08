@@ -1,5 +1,5 @@
 #For testing check out
-
+@ignore
 Feature: check out
   Checking out
     
