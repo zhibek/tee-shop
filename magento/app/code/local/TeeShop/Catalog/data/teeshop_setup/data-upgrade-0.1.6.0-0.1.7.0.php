@@ -63,16 +63,16 @@ $configProduct
 $configProduct->getTypeInstance()->setUsedProductAttributeIds(array($primaryColourId, $colourId, $sizeId)); //attribute ID of attribute 'primary_colour' in my store
 //getting shirts ids
 $simpleIds = array(
-    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt_Off_Black_XL')->getId(),
-    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt_Off_Black_L')->getId(),
-    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt_Off_Black_M')->getId(),
-    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt_Off_Black_S')->getId(),
-    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt_Off_Black_XS')->getId(),
-    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt_Off_White_XL')->getId(),
-    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt_Off_White_L')->getId(),
-    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt_Off_White_M')->getId(),
-    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt_Off_White_S')->getId(),
-    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt_Off_White_XS')->getId()
+    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt Off Black XL')->getId(),
+    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt Off Black L')->getId(),
+    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt Off Black M')->getId(),
+    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt Off Black S')->getId(),
+    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt Off Black XS')->getId(),
+    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt Off White XL')->getId(),
+    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt Off White L')->getId(),
+    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt Off White M')->getId(),
+    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt Off White S')->getId(),
+    Mage::getModel('catalog/product')->loadByAttribute('name', 'T-shirt Off White XS')->getId()
 );
 
 // loading collection of our shirts
