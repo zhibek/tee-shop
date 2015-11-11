@@ -128,4 +128,16 @@ class FeatureContext extends Behat\MinkExtension\Context\MinkContext
         $this->clickLink('Test Products');
     }
 
+    /**
+     * this function add filter(category & brand) to search to checkfilter 
+     * and return back first search page 
+     * @Then /^I check for "([^"]*)" and "([^"]*)"$/
+     */
+    public function iCheckForAnd($filter, $color )
+    {
+        $this->visit("/catalogsearch/result/?q=" . $color);
+        $this->clickLink($filter);
+        
+    }
+
 }
