@@ -147,25 +147,13 @@ class TeeShop_Catalog_Helper_Data extends Mage_Core_Helper_Abstract
     }
 
     /*
-     * UPLOAD
+     * This function gets colours from product json document& ignore 
+     * duplicated colours and create assosiative array to be used as
+     * options of "color" attribute 
+     * 
+     * @return $colour : assostive array contains color options
+     * 
      */
-
-    private function checkFileSize($fileSize)
-    {
-        return $fileSize < self::MAX_FILE_SIZE ? TRUE : FALSE;
-    }
-
-    private function checkExtension($filePath)
-    {
-        $array = explode('.', $this->getFilePath());
-        $extension = end($array);
-        return $extension == self::FILE_EXTENSION ? True : False;
-    }
-
-    private function getFilePath()
-    {
-        return self::FILE_PATH;
-    }
 
     public function getColours()
     {
@@ -185,6 +173,15 @@ class TeeShop_Catalog_Helper_Data extends Mage_Core_Helper_Abstract
         return $colours;
     }
 
+    /*
+     * This function gets primary colours from product json document& ignore 
+     * duplicated primary colours and create assosiative array to be used as
+     * options of "primary_colour" attribute 
+     * 
+     * @return $primaryColours : assostive array contains primary colour options
+     * 
+     */
+
     public function getPrimaryColours()
     {
         $string = file_get_contents(self::PRODUCTS_DATA_URL);
@@ -203,6 +200,14 @@ class TeeShop_Catalog_Helper_Data extends Mage_Core_Helper_Abstract
         return $primaryColours;
     }
 
+    /*
+     * This function gets sizes from product json document& ignore 
+     * duplicated sizes and create assosiative array to be used as
+     * options of "size" attribute 
+     * 
+     * @return $sizes : assostive array contains sizes options
+     * 
+     */
     public function getSizes()
     {
         $string = file_get_contents(self::PRODUCTS_DATA_URL);
@@ -220,6 +225,15 @@ class TeeShop_Catalog_Helper_Data extends Mage_Core_Helper_Abstract
         $sizes = array_combine($index, $sizes);
         return $sizes;
     }
+    
+    /*
+     * This function gets brands from product json document& ignore 
+     * duplicated brands and create assosiative array to be used as
+     * options of "brand" attribute 
+     * 
+     * @return $brands : assostive array contains brand options
+     * 
+     */
 
     public function getBrands()
     {
@@ -236,6 +250,15 @@ class TeeShop_Catalog_Helper_Data extends Mage_Core_Helper_Abstract
         $brands = array_combine($index, $brands);
         return $brands;
     }
+
+    /*
+     * this function is used to prepare categories ids of 
+     * products in json document (for both top level & sub categories)
+     * 
+     * @param $categories : array of product categories each "top>sub"
+     * 
+     * @return $categoriesIds : array of ids of both top and sub categories
+     */
 
     public function prepareCategories($categories)
     {
