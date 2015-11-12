@@ -5,6 +5,7 @@ class TeeShop_Catalog_Helper_Data extends Mage_Core_Helper_Abstract
 
     //  to create an object ->  $helper = Mage::helper('tee');
 
+    const PRODUCTS_DATA_URL = 'http://fulfilment-service.zhibek.com/product';
     const ATTRIBUTE_PRIMARY_COLOUR = 'primary_colour';
     const ATTRIBUTE_SIZE = 'size';
     const ATTRIBUTE_BRAND = 'brand';
@@ -82,6 +83,20 @@ class TeeShop_Catalog_Helper_Data extends Mage_Core_Helper_Abstract
     }
 
     /*
+     * gives back the id of each option value of size attribute
+     * which used to set size for simple shirts
+     * 
+     * @param string  $value : is the name of the attribute option
+     * 
+     * @return  the id of the option itself 
+     */
+
+    public function getBrandOptionValue($value)
+    {
+        return $this->getAttributeOptionValue(self::ATTRIBUTE_BRAND, $value);
+    }
+
+    /*
      * creates Top level categories
      * 
      * @param string  $topCatName : top category's name
@@ -129,6 +144,124 @@ class TeeShop_Catalog_Helper_Data extends Mage_Core_Helper_Abstract
         $category->setPath($parentCategory->getPath());
 
         $category->save();
+    }
+
+    /*
+     * UPLOAD
+     */
+
+    private function checkFileSize($fileSize)
+    {
+        return $fileSize < self::MAX_FILE_SIZE ? TRUE : FALSE;
+    }
+
+    private function checkExtension($filePath)
+    {
+        $array = explode('.', $this->getFilePath());
+        $extension = end($array);
+        return $extension == self::FILE_EXTENSION ? True : False;
+    }
+
+    private function getFilePath()
+    {
+        return self::FILE_PATH;
+    }
+
+    public function getColours()
+    {
+        $string = file_get_contents(self::PRODUCTS_DATA_URL);
+        $content = json_decode($string, true);
+        $colours = array();
+        foreach ($content['products'] as $product) {
+            foreach ($product['variants'] as $simple) {
+                if (!in_array($simple['colour'], $colours)) {
+                    array_push($colours, $simple['colour']);
+                }
+            }
+        }
+        // convert it to assositive array
+        $index = range(0, count($colours) - 1, 1);
+        $colours = array_combine($index, $colours);
+        return $colours;
+    }
+
+    public function getPrimaryColours()
+    {
+        $string = file_get_contents(self::PRODUCTS_DATA_URL);
+        $content = json_decode($string, true);
+        $primaryColours = array();
+        foreach ($content['products'] as $product) {
+            foreach ($product['variants'] as $simple) {
+                if (!in_array($simple["primary_colour"], $primaryColours)) {
+                    array_push($primaryColours, $simple["primary_colour"]);
+                }
+            }
+        }
+        // convert it to assositive array
+        $index = range(0, count($primaryColours) - 1, 1);
+        $primaryColours = array_combine($index, $primaryColours);
+        return $primaryColours;
+    }
+
+    public function getSizes()
+    {
+        $string = file_get_contents(self::PRODUCTS_DATA_URL);
+        $content = json_decode($string, true);
+        $sizes = array();
+        foreach ($content['products'] as $product) {
+            foreach ($product['variants'] as $simple) {
+                if (!in_array($simple["size"], $sizes)) {
+                    array_push($sizes, $simple["size"]);
+                }
+            }
+        }
+        // convert it to assositive array
+        $index = range(0, count($sizes) - 1, 1);
+        $sizes = array_combine($index, $sizes);
+        return $sizes;
+    }
+
+    public function getBrands()
+    {
+        $string = file_get_contents(self::PRODUCTS_DATA_URL);
+        $content = json_decode($string, true);
+        $brands = array();
+        foreach ($content['products'] as $product) {
+            if (!in_array($product["brand"], $brands)) {
+                array_push($brands, $product["brand"]);
+            }
+        }
+        // convert it to assositive array
+        $index = range(0, count($brands) - 1, 1);
+        $brands = array_combine($index, $brands);
+        return $brands;
+    }
+
+    public function prepareCategories($categories)
+    {
+        $categoryIds = array();
+        $trace = explode('>', $categories);
+        $top = $trace[0];
+        $sub = $trace[1];
+        $topId = Mage::getResourceModel('catalog/category_collection')
+                        ->addFieldToFilter('name', $top)
+                        ->getFirstItem()->getId();
+        switch ($sub):
+            case "Sport":
+                $subId = $topId + 1;
+                array_push($categoryIds, $topId, $subId);
+                break;
+            case "Music":
+                $subId = $topId + 2;
+                array_push($categoryIds, $topId, $subId);
+                break;
+            case "Art":
+                $subId = $topId + 3;
+                array_push($categoryIds, $topId, $subId);
+                break;
+        endswitch;
+
+        return $categoryIds;
     }
 
 }

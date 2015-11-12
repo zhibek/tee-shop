@@ -1,6 +1,7 @@
 <?php
 // adding our product attributes (fabric_care , primary_colour , size , brand )
 
+$helper = Mage::helper('tee');
 $installer = $this;
 $installer->startSetup();
 
@@ -26,13 +27,7 @@ $installer->addAttribute('catalog_product', TeeShop_Catalog_Helper_Data::ATTRIBU
     'apply_to'              => 'simple,configurable',    // used with both simple and configurable products
     'is_configurable'       => true,
     'option'                => array(
-            'values' => array(
-                    '0'  => 'Nike',
-                    '1'  => 'Adidas',
-                    '2'  => 'Jeans',
-                    '3'  => 'versace',
-                    '4'  => 'Hugo'
-            )
+            'values' => $helper->getBrands()
     )
 ));
 $installer->addAttribute('catalog_product', TeeShop_Catalog_Helper_Data::ATTRIBUTE_FABRIC_CARE, array(
@@ -79,16 +74,7 @@ $installer->addAttribute('catalog_product', TeeShop_Catalog_Helper_Data::ATTRIBU
     'apply_to'          => 'simple,configurable',
     'is_configurable'   => true,
     'option'            => array(
-            'values' => array(
-                    '0'  => 'White',
-                    '1'  => 'Black',
-                    '2'    => 'Red',
-                    '3'   => 'Blue',
-                    '4'  => 'Green',
-                    '5' => 'Yellow',
-                    '6' => 'Purple',
-                    '7'  => 'Brown',
-            )
+            'values' => $helper->getPrimaryColours()
     )
 ));
 
@@ -113,13 +99,7 @@ $installer->addAttribute('catalog_product', TeeShop_Catalog_Helper_Data::ATTRIBU
     'apply_to'          => 'simple,configurable',
     'is_configurable'   => true,
     'option'            => array(
-            'values' => array(
-                    '0'     => 'XS',
-                    '1'      => 'S',
-                    '2'      => 'M',
-                    '3'      => 'L',
-                    '4'     => 'XL',
-            )
+            'values' => $helper->getSizes()
         )
 ));
 
