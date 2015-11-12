@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+    <modules>
+        <TeeShop_Import>
+            <version>0.0.0.1</version>
+        </TeeShop_Import>
+    </modules>
+    <global>
+        <models>
+            <TeeShop_Import>
+                <class>TeeShop_Import_Model</class>
+            </TeeShop_Import>
+        </models>
+        <helpers>
+            <TeeShop_Import>
+                <class>TeeShop_Import_Helper</class>
+            </TeeShop_Import>
+        </helpers>
+    </global>
+    <crontab>
+        <jobs>
+            <TeeShop_Import>
+                <schedule>
+                    <cron_expr>1 0 * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>TeeShop_Import/processImport</model>
+                </run>
+            </TeeShop_Import>
+        </jobs>
+    </crontab>
+    <default>
+        <teeshop_import>
+            <general>
+                <file>app/code/local/TeeShop/Import/etc/catalog_product.csv</file>
+            </general>
+        </teeshop_import>
+    </default>
+</config>
