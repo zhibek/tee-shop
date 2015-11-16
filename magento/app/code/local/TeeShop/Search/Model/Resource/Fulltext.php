@@ -5,7 +5,6 @@ class TeeShop_Search_Model_Resource_Fulltext extends Mage_CatalogSearch_Model_Re
 
     public function prepareResult($object, $queryText, $query)
     {
-        Mage::log("Done", null, 'events.log');
         $adapter = $this->_getWriteAdapter();
         if (!$query->getIsProcessed()) {
             $searchType = $object->getSearchType($query->getStoreId());
