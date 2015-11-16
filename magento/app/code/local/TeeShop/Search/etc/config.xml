@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <TeeShop_Search>
+            <version>1.0.0.0</version>
+        </TeeShop_Search>
+    </modules>
+    <default>
+        <catalog>
+            <search>
+                <!--1 means type "Like"-->
+                <search_type>1</search_type>
+            </search>
+        </catalog>
+    </default>
+    <global>
+        <models>
+            <!--overriding fulltext.php::prepareResults() to fix
+            type "Like" search-->
+            <catalogsearch_resource>
+                <rewrite>
+                    <fulltext>TeeShop_Search_Model_Resource_Fulltext</fulltext>
+                </rewrite>
+            </catalogsearch_resource>
+        </models>
+    </global>
+</config>

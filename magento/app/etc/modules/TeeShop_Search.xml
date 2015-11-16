@@ -1,0 +1,8 @@
+<config>
+  <modules>
+    <TeeShop_Search>
+      <active>true</active>
+      <codePool>local</codePool>
+    </TeeShop_Search>
+  </modules>
+</config>
