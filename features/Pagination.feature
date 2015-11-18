@@ -1,6 +1,6 @@
 #For testing Pagination Frame  & number of products in the page
-@ignore
 #ignored because we stoped using "shirt" in names
+@ignore
 Feature: Pagination
   In order to how many page blocks(Pagination Frame) to move between 
   setting was 3 pages ( current , 2 , 3 ) for this test

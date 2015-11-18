@@ -1,5 +1,6 @@
 #testing configurable product after adding color attribute
-
+#ignored because we stoped using configurable products
+@ignore
 Feature: NewConfProduct
   In order to test new variations in configurable product page
   @javascript 
