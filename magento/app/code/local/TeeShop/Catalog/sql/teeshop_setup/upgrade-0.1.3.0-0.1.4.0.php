@@ -6,7 +6,7 @@
 
 $installer = $this;
 $installer->startSetup();
-
+$helper = Mage::helper('tee');
 $entityTypeId = Mage::getModel('catalog/product')
         ->getResource()
         ->getEntityType()
@@ -38,14 +38,7 @@ $installer->addAttribute('catalog_product', TeeShop_Catalog_Helper_Data::ATTRIBU
     'apply_to'          => 'simple,configurable',
     'is_configurable'   => true,
     'option'            => array(
-            'values' => array(
-                        '0' => 'Pure',
-                        '1' => 'Off',
-                        '2' => 'Light',
-                        '3' => 'Pale',
-                        '4' => 'Hot',
-                        '5' => 'Dark'
-            )
-    )
+            'values' => $helper->getColours()
+        )
 ));
 

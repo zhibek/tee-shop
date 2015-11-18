@@ -14,7 +14,7 @@
         </models>
         <helpers>
             <import>
-                <class>TeeShop_Catalog_Helper</class>
+                <class>TeeShop_Import_Helper</class>
             </import>
         </helpers>
         <resources>
