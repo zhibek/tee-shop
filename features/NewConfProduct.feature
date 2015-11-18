@@ -1,9 +1,9 @@
-#For testing new variations in configurable product page 
-@ignore
-Feature: ConfProduct
+#testing configurable product after adding color attribute
+
+Feature: NewConfProduct
   In order to test new variations in configurable product page
   @javascript 
-  Scenario: Buying a white Xl configurable t-shirt
+  Scenario: Buying a off-white Xl configurable t-shirt
     Given I am on "/men/sport.html"
     When I follow "Base Config Product"
     Then I should see "Base Config Product"
@@ -14,6 +14,8 @@ Feature: ConfProduct
     Then the response should contain "Machine Wash,COLD"
     #selecting white colour
     Then I select "White" from "attribute134"
+    #selecting off-white colour
+    Then I select "Off" from "attribute92" 
     #select XL size
     Then I select "XL" from "attribute135" 
     When I press "Add to Cart"

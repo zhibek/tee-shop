@@ -34,15 +34,15 @@ Feature: search filters
     Then the response should contain "catalogsearch/result/index/?cat=11&amp;q=white" 
         
     # href value that redirect to white and Nike filter
-    Then the response should contain "catalogsearch/result/index/?brand=3&amp;q=white" 
+    Then the response should contain "catalogsearch/result/index/?brand=9&amp;q=white" 
     
     # href value that redirect to white and Adidas filter
-    Then the response should contain "catalogsearch/result/index/?brand=4&amp;q=white" 
+    Then the response should contain "catalogsearch/result/index/?brand=10&amp;q=white" 
     
     # href value that redirect to white search filter
-    Then the response should contain "catalogsearch/result/index/?primary_colour=8&amp;q=white" 
+    Then the response should contain "catalogsearch/result/index/?primary_colour=14&amp;q=white" 
     
     # href value that redirect to black search filter
-    Then the response should contain "catalogsearch/result/index/?primary_colour=9&amp;q=white" 
+    Then the response should contain "catalogsearch/result/index/?primary_colour=15&amp;q=white" 
     
     

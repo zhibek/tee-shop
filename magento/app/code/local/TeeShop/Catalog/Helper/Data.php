@@ -6,12 +6,23 @@ class TeeShop_Catalog_Helper_Data extends Mage_Core_Helper_Abstract
     //  to create an object ->  $helper = Mage::helper('tee');
 
     const PRODUCTS_DATA_URL = 'http://fulfilment-service.zhibek.com/product';
+    const ATTRIBUTE_COLOUR = 'color';
     const ATTRIBUTE_PRIMARY_COLOUR = 'primary_colour';
     const ATTRIBUTE_SIZE = 'size';
     const ATTRIBUTE_BRAND = 'brand';
     const ATTRIBUTE_FABRIC_CARE = 'fabric_care';
     const ROOT_STORE_ID = 0;    // used to create root categories
+    protected $productData;
 
+    
+    public function __construct()
+    {
+        $this->productData = TeeShop_Import_Model_Products::getInstance()->instance;
+    
+//        var_dump($this->productData);die;
+    }
+
+    
     /* private function to return parent category id
      * 
      * @param string $parentName : parent category's name
@@ -83,8 +94,8 @@ class TeeShop_Catalog_Helper_Data extends Mage_Core_Helper_Abstract
     }
 
     /*
-     * gives back the id of each option value of size attribute
-     * which used to set size for simple shirts
+     * gives back the id of each option of Brand attribute 
+     * which used to set Brand for simple shirts 
      * 
      * @param string  $value : is the name of the attribute option
      * 
@@ -94,6 +105,20 @@ class TeeShop_Catalog_Helper_Data extends Mage_Core_Helper_Abstract
     public function getBrandOptionValue($value)
     {
         return $this->getAttributeOptionValue(self::ATTRIBUTE_BRAND, $value);
+    }
+    
+        /*
+     * gives back the id of each option value of color attribute
+     * which used to set color for simple shirts
+     * 
+     * @param string  $value : is the name of the attribute option
+     * 
+     * @return  the id of the option itself 
+     */
+
+    public function getColourOptionValue($value)
+    {
+        return $this->getAttributeOptionValue(self::ATTRIBUTE_COLOUR, $value);
     }
 
     /*
@@ -132,7 +157,7 @@ class TeeShop_Catalog_Helper_Data extends Mage_Core_Helper_Abstract
     public function createSubCategory($subCatName, $parentCatName)
     {
         $category = Mage::getModel('catalog/category');
-        $category->setName($subCatName)
+        $category->setName($subCatName) 
                 ->setUrlKey($subCatName)
                 ->setIsActive(1)
                 ->setDisplayMode('PRODUCTS')
@@ -157,10 +182,8 @@ class TeeShop_Catalog_Helper_Data extends Mage_Core_Helper_Abstract
 
     public function getColours()
     {
-        $string = file_get_contents(self::PRODUCTS_DATA_URL);
-        $content = json_decode($string, true);
         $colours = array();
-        foreach ($content['products'] as $product) {
+        foreach ($this->productData['products'] as $product) {
             foreach ($product['variants'] as $simple) {
                 if (!in_array($simple['colour'], $colours)) {
                     array_push($colours, $simple['colour']);
@@ -184,10 +207,8 @@ class TeeShop_Catalog_Helper_Data extends Mage_Core_Helper_Abstract
 
     public function getPrimaryColours()
     {
-        $string = file_get_contents(self::PRODUCTS_DATA_URL);
-        $content = json_decode($string, true);
         $primaryColours = array();
-        foreach ($content['products'] as $product) {
+        foreach ($this->productData['products'] as $product) {
             foreach ($product['variants'] as $simple) {
                 if (!in_array($simple["primary_colour"], $primaryColours)) {
                     array_push($primaryColours, $simple["primary_colour"]);
@@ -208,12 +229,11 @@ class TeeShop_Catalog_Helper_Data extends Mage_Core_Helper_Abstract
      * @return $sizes : assostive array contains sizes options
      * 
      */
+
     public function getSizes()
     {
-        $string = file_get_contents(self::PRODUCTS_DATA_URL);
-        $content = json_decode($string, true);
         $sizes = array();
-        foreach ($content['products'] as $product) {
+        foreach ($this->productData['products'] as $product) {
             foreach ($product['variants'] as $simple) {
                 if (!in_array($simple["size"], $sizes)) {
                     array_push($sizes, $simple["size"]);
@@ -225,7 +245,7 @@ class TeeShop_Catalog_Helper_Data extends Mage_Core_Helper_Abstract
         $sizes = array_combine($index, $sizes);
         return $sizes;
     }
-    
+
     /*
      * This function gets brands from product json document& ignore 
      * duplicated brands and create assosiative array to be used as
@@ -237,10 +257,8 @@ class TeeShop_Catalog_Helper_Data extends Mage_Core_Helper_Abstract
 
     public function getBrands()
     {
-        $string = file_get_contents(self::PRODUCTS_DATA_URL);
-        $content = json_decode($string, true);
         $brands = array();
-        foreach ($content['products'] as $product) {
+        foreach ($this->productData['products'] as $product) {
             if (!in_array($product["brand"], $brands)) {
                 array_push($brands, $product["brand"]);
             }

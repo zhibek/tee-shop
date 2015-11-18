@@ -1,6 +1,6 @@
 <?php
 
-// Creating a conf product
+//Creating a conf product
 
 //$configProduct = Mage::getModel('catalog/product');
 //$entityTypeId = Mage::getModel('catalog/product')
