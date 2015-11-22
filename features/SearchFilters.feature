@@ -30,11 +30,3 @@ Feature: search filters
     # check for results of white with Adidas Brand
     Then I check for "Adidas" and "white" 
     Then I should see "Brand: Adidas"
-    
-    # check for results of white with Black primary colour (returns the configurable product)
-    Then I check for "Black" and "white" 
-    Then I should see "Primary Colour: Black"
- 
-    #check for results of white with white primary colour (returns the configurable product)
-    Then I check for "White" and "white" 
-    Then I should see "Primary Colour: White"
