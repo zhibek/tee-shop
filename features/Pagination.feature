@@ -1,4 +1,5 @@
 #For testing Pagination Frame  & number of products in the page
+#ignored because we stoped using "shirt" in names
 @ignore
 Feature: Pagination
   In order to how many page blocks(Pagination Frame) to move between 

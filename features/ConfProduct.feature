@@ -1,5 +1,4 @@
 #For testing new variations in configurable product page 
-
 @ignore
 Feature: ConfProduct
   In order to test new variations in configurable product page

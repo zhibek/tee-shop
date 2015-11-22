@@ -37,3 +37,4 @@ index.php
 install.php
 mage
 LICENSE.html
+!/app/code/local/TeeShop/Import/shell/
