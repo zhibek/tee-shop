@@ -21,28 +21,20 @@ Feature: search filters
     #head of table containing filter primary colours 
     Then I should see "Primary colour" 
     
-    
     ###test filter redirect URLs
 
-    # href value that redirect to white and Test Products category filter
-    Then the response should contain "catalogsearch/result/index/?cat=3&amp;q=white" 
+    # check for results of white with Nike Brand
+    Then I check for "Nike" and "white"
+    Then I should see "Brand: Nike"
     
-    # href value that redirect to white and Women category filter
-    Then the response should contain "catalogsearch/result/index/?cat=7&amp;q=white" 
+    # check for results of white with Adidas Brand
+    Then I check for "Adidas" and "white" 
+    Then I should see "Brand: Adidas"
     
-    # href value that redirect to white and children category filter
-    Then the response should contain "catalogsearch/result/index/?cat=11&amp;q=white" 
-        
-    # href value that redirect to white and Nike filter
-    Then the response should contain "catalogsearch/result/index/?brand=9&amp;q=white" 
-    
-    # href value that redirect to white and Adidas filter
-    Then the response should contain "catalogsearch/result/index/?brand=10&amp;q=white" 
-    
-    # href value that redirect to white search filter
-    Then the response should contain "catalogsearch/result/index/?primary_colour=14&amp;q=white" 
-    
-    # href value that redirect to black search filter
-    Then the response should contain "catalogsearch/result/index/?primary_colour=15&amp;q=white" 
-    
-    
+    # check for results of white with Black primary colour (returns the configurable product)
+    Then I check for "Black" and "white" 
+    Then I should see "Primary Colour: Black"
+ 
+    #check for results of white with white primary colour (returns the configurable product)
+    Then I check for "White" and "white" 
+    Then I should see "Primary Colour: White"
