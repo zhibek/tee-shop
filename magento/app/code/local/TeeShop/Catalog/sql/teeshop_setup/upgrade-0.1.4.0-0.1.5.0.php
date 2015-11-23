@@ -17,7 +17,8 @@ $installer->addAttribute('catalog_product', TeeShop_Catalog_Helper_Data::ATTRIBU
     'required'              => false,
     'user_defined'          => true,    // user attribute not system attribute
     'default'               => '',
-    'searchable'            => false, 
+    'searchable'            => true,
+    'visible_in_advanced_search' => true,
     'filterable'            => true,    // can be searched with
     'filterable_in_search'  => true,    // to appear in search filters
     'comparable'            => false,
