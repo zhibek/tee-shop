@@ -63,14 +63,14 @@ class FeatureContext extends Behat\MinkExtension\Context\MinkContext
     /**
      * @Given /^I mock add to cart$/
      */
-    public function iMockAddToCart2()
+    public function iMockAddToCart()
     {
         $this->iAmOnHomepage();
         $this->clickLink('Test Products');
         $this->clickLink('Test T-Shirt');
         $this->pressButton('Add to Cart');
     }
-
+    
     /**
      * 
      * get the button with attribute value 

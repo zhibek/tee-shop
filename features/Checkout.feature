@@ -1,11 +1,13 @@
 #For testing check out
-@ignore
+
 Feature: check out
   Checking out
     
   @javascript  
-  Scenario: Checking out test-t-shirt
-    Given I mock add to cart
+  Scenario: Checking out liverpool children's casual
+    Given I am on "catalogsearch/result/?q=liverpool"
+    When I follow "Liverpool Children's Casual"
+    When I press "Add to Cart"
     When  I press "Proceed to Checkout"
     When  I check "login:guest"
     When  I press "onepage-guest-register-button"
