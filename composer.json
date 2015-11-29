@@ -37,6 +37,7 @@
             "app/etc/install.xml",
             "app/etc/modules/TeeShop_Catalog.xml",
             "app/etc/modules/TeeShop_Core.xml",
+            "app/etc/modules/TeeShop_Search.xml",
             "app/etc/modules/TeeShop_Import.xml",
             "app/code/local",
             "app/design/frontend/bare"

@@ -2,8 +2,7 @@
 
 Feature: search filters
     
-  
-  Scenario: Checking out test-t-shirt
+  Scenario: Searching products
     Given I am on the homepage
     When I fill in "search" with "white"
     Then I press "Search"
