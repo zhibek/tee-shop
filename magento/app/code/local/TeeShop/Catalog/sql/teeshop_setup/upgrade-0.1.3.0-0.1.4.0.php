@@ -37,8 +37,8 @@ $installer->addAttribute('catalog_product', TeeShop_Catalog_Helper_Data::ATTRIBU
     'unique'            => false,
     'apply_to'          => 'simple,configurable',
     'is_configurable'   => true,
-    'option'            => array(
-            'values' => $helper->getColours()
-        )
+//    'option'            => array(
+//            'values' => $helper->getColours()
+//        )
 ));
 

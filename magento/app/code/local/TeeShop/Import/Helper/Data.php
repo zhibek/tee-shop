@@ -134,11 +134,11 @@ class TeeShop_Import_Helper_Data extends Mage_Core_Helper_Abstract
      * return array of products ids   
      */
 
-    public function prepareShirtIds()
-    {
+    public function prepareShirtIds($products)
+    {   
         $counter = 1;
         $ids = array();
-        $configs = $this->getShirtsSkus();
+        $configs = $this->getShirtsSkus($products);
         foreach ($configs as $config) {
             foreach ($config as $sku) {
                 $id = Mage::getModel('catalog/product')->getIdBySku($sku);
@@ -176,13 +176,12 @@ class TeeShop_Import_Helper_Data extends Mage_Core_Helper_Abstract
      * config products
      */
 
-    private function getShirtsSkus()
-    {
+    private function getShirtsSkus($products)
+    {       
         $counter = 1;
         $skus = array();
         $varients = array();
-        $content = TeeShop_Import_Model_Products::getInstance();
-        foreach ($content->instance['products'] as $productData) {
+        foreach ($products['products'] as $productData) {
             foreach ($productData['variants'] as $simple) {
                 array_push($varients, $simple['sku']);
             }
