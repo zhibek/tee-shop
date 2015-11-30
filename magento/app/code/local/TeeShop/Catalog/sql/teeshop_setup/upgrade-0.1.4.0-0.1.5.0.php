@@ -1,7 +1,7 @@
 <?php
 // adding our product attributes (fabric_care , primary_colour , size , brand )
 
-$helper = Mage::helper('tee');
+$helper = Mage::helper('camelcase_tee');
 $installer = $this;
 $installer->startSetup();
 

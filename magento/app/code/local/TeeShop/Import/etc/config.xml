@@ -13,17 +13,9 @@
             </teeshop_import>
         </models>
         <helpers>
-            <import>
+            <teeshop_import>
                 <class>TeeShop_Import_Helper</class>
-            </import>
+            </teeshop_import>
         </helpers>
-        <resources>
-            <import_setup>
-                <setup>
-                    <module>TeeShop_Import</module>
-                    <class>Mage_Catalog_Model_Resource_Setup</class>
-                </setup>
-            </import_setup>
-        </resources>
     </global>
 </config>

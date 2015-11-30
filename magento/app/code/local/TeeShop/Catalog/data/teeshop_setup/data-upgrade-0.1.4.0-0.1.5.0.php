@@ -2,7 +2,7 @@
 
 // here we create the new 3 top categories and their subs
 
-$helper = Mage::helper('tee');
+$helper = Mage::helper('camelcase_tee');
 $topCategories = array('Men', 'Women', 'Children');
 $subCategories = array('Sport', 'Music', 'Art');
 

@@ -12,9 +12,9 @@
             </camelcase_tee>
         </models>
         <helpers>
-            <tee>
+            <camelcase_tee>
                 <class>TeeShop_Catalog_Helper</class>
-            </tee>
+            </camelcase_tee>
         </helpers>
         <resources>
             <teeshop_setup>
