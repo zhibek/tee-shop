@@ -5,7 +5,6 @@ class TeeShop_Catalog_Helper_Data extends Mage_Core_Helper_Abstract
 
     //  to create an object ->  $helper = Mage::helper('tee');
 
-    const PRODUCTS_DATA_URL = 'http://fulfilment-service.zhibek.com/product';
     const ATTRIBUTE_COLOUR = 'color';
     const ATTRIBUTE_PRIMARY_COLOUR = 'primary_colour';
     const ATTRIBUTE_SIZE = 'size';
@@ -15,13 +14,7 @@ class TeeShop_Catalog_Helper_Data extends Mage_Core_Helper_Abstract
     protected $productData;
 
     
-    public function __construct()
-    {
-        $this->productData = TeeShop_Import_Model_Products::getInstance()->instance;
     
-//        var_dump($this->productData);die;
-    }
-
     
     /* private function to return parent category id
      * 
@@ -89,104 +82,7 @@ class TeeShop_Catalog_Helper_Data extends Mage_Core_Helper_Abstract
         $category->save();
     }
 
-    /*
-     * This function gets colours from product json document& ignore 
-     * duplicated colours and create assosiative array to be used as
-     * options of "color" attribute 
-     * 
-     * @return $colour : assostive array contains color options
-     * 
-     */
-
-    public function getColours()
-    {
-        $colours = array();
-        foreach ($this->productData['products'] as $product) {
-            foreach ($product['variants'] as $simple) {
-                if (!in_array($simple['colour'], $colours)) {
-                    array_push($colours, $simple['colour']);
-                }
-            }
-        }
-        // convert it to assositive array
-        $index = range(0, count($colours) - 1, 1);
-        $colours = array_combine($index, $colours);
-        return $colours;
-    }
-
-    /*
-     * This function gets primary colours from product json document& ignore 
-     * duplicated primary colours and create assosiative array to be used as
-     * options of "primary_colour" attribute 
-     * 
-     * @return $primaryColours : assostive array contains primary colour options
-     * 
-     */
-
-    public function getPrimaryColours()
-    {
-        $primaryColours = array();
-        foreach ($this->productData['products'] as $product) {
-            foreach ($product['variants'] as $simple) {
-                if (!in_array($simple["primary_colour"], $primaryColours)) {
-                    array_push($primaryColours, $simple["primary_colour"]);
-                }
-            }
-        }
-        // convert it to assositive array
-        $index = range(0, count($primaryColours) - 1, 1);
-        $primaryColours = array_combine($index, $primaryColours);
-        return $primaryColours;
-    }
-
-    /*
-     * This function gets sizes from product json document& ignore 
-     * duplicated sizes and create assosiative array to be used as
-     * options of "size" attribute 
-     * 
-     * @return $sizes : assostive array contains sizes options
-     * 
-     */
-
-    public function getSizes()
-    {
-        $sizes = array();
-        foreach ($this->productData['products'] as $product) {
-            foreach ($product['variants'] as $simple) {
-                if (!in_array($simple["size"], $sizes)) {
-                    array_push($sizes, $simple["size"]);
-                }
-            }
-        }
-        // convert it to assositive array
-        $index = range(0, count($sizes) - 1, 1);
-        $sizes = array_combine($index, $sizes);
-        return $sizes;
-    }
-
-    /*
-     * This function gets brands from product json document& ignore 
-     * duplicated brands and create assosiative array to be used as
-     * options of "brand" attribute 
-     * 
-     * @return $brands : assostive array contains brand options
-     * 
-     */
-
-    public function getBrands()
-    {
-        $brands = array();
-        foreach ($this->productData['products'] as $product) {
-            if (!in_array($product["brand"], $brands)) {
-                array_push($brands, $product["brand"]);
-            }
-        }
-        // convert it to assositive array
-        $index = range(0, count($brands) - 1, 1);
-        $brands = array_combine($index, $brands);
-        return $brands;
-    }
-
+    
     /*
      * this function is used to prepare categories ids of 
      * products in json document (for both top level & sub categories)

@@ -127,4 +127,86 @@ class TeeShop_Import_Helper_Data extends Mage_Core_Helper_Abstract
         return $categoryIds;
     }
 
+    /*
+     * function to return simple products ids by using array
+     * of their skus
+     * 
+     * return array of products ids   
+     */
+
+    public function prepareShirtIds($products)
+    {   
+        $counter = 1;
+        $ids = array();
+        $configs = $this->getShirtsSkus($products);
+        foreach ($configs as $config) {
+            foreach ($config as $sku) {
+                $id = Mage::getModel('catalog/product')->getIdBySku($sku);
+                array_push($ids, $id);
+            }
+            $configs[$counter] = $ids;
+            $counter++;
+            unset($ids);
+            $ids = array();
+        }
+        return $configs;
+    }
+
+    /*
+     * function to return array of each config product with 
+     * its simple products skus
+     * Ex as following : 
+     * [2]=>
+      array(6) {
+      [0]=>
+      string(16) "10002-offwhite-s"
+      [1]=>
+      string(16) "10002-offwhite-m"
+      [2]=>
+      string(16) "10002-offwhite-l"
+      [3]=>
+      string(20) "10002-darkcharcoal-s"
+      [4]=>
+      string(20) "10002-darkcharcoal-m"
+      [5]=>
+      string(20) "10002-darkcharcoal-l"
+      }
+     * 
+     * @return  array of products skus with respect of their 
+     * config products
+     */
+
+    private function getShirtsSkus($products)
+    {       
+        $counter = 1;
+        $skus = array();
+        $varients = array();
+        foreach ($products['products'] as $productData) {
+            foreach ($productData['variants'] as $simple) {
+                array_push($varients, $simple['sku']);
+            }
+            $skus[$counter] = $varients;
+            $counter++;
+            unset($varients);
+            $varients = array();
+        }
+
+        return $skus;
+    }
+    
+//    /*
+//     * function to return names of configurable products
+//     * 
+//     * @return array of configurable products' names
+//     */
+//    public function getBaseProductNames()
+//    {
+//        $names = array();
+//        $content = TeeShop_Import_Model_Products::getInstance();
+//        foreach ($content->instance['products'] as $productData) {
+//            array_push($names, 'Base '.$productData['title']);
+//        }
+//        return $names;
+//    }
+
 }

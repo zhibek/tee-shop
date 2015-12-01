@@ -27,9 +27,9 @@ $installer->addAttribute('catalog_product', TeeShop_Catalog_Helper_Data::ATTRIBU
     'unique'                => false,
     'apply_to'              => 'simple,configurable',    // used with both simple and configurable products
     'is_configurable'       => true,
-    'option'                => array(
-            'values' => $helper->getBrands()
-    )
+//    'option'                => array(
+//            'values' => $helper->getBrands()
+//    )
 ));
 $installer->addAttribute('catalog_product', TeeShop_Catalog_Helper_Data::ATTRIBUTE_FABRIC_CARE, array(
     'group'             => 'General',
@@ -74,9 +74,9 @@ $installer->addAttribute('catalog_product', TeeShop_Catalog_Helper_Data::ATTRIBU
     'unique'            => false,
     'apply_to'          => 'simple,configurable',
     'is_configurable'   => true,
-    'option'            => array(
-            'values' => $helper->getPrimaryColours()
-    )
+//    'option'            => array(
+//            'values' => $helper->getPrimaryColours()
+//    )
 ));
 
 $installer->addAttribute('catalog_product', TeeShop_Catalog_Helper_Data::ATTRIBUTE_SIZE, array(
@@ -99,9 +99,9 @@ $installer->addAttribute('catalog_product', TeeShop_Catalog_Helper_Data::ATTRIBU
     'unique'            => false,
     'apply_to'          => 'simple,configurable',
     'is_configurable'   => true,
-    'option'            => array(
-            'values' => $helper->getSizes()
-        )
+//    'option'            => array(
+//            'values' => $helper->getSizes()
+//        )
 ));
 
 $installer->endSetup();

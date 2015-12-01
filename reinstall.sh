@@ -8,6 +8,9 @@ rm -rf /vagrant/magento/var/cache/*
 
 /vagrant/bin/install.sh install
 
+#importing products
+php magento/app/code/local/TeeShop/Import/shell/ProductsImport.php
+
 #Note: removing cache and reindexing to fix search issue
 rm -r /vagrant/magento/var/cache/*
 php magento/shell/indexer.php --reindexall
