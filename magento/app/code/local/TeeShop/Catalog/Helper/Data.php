@@ -3,7 +3,7 @@
 class TeeShop_Catalog_Helper_Data extends Mage_Core_Helper_Abstract
 {
 
-    //  to create an object ->  $helper = Mage::helper('tee');
+    //  to create an object ->  $helper = Mage::helper('teeshop_catalog');
 
     const ATTRIBUTE_COLOUR = 'color';
     const ATTRIBUTE_PRIMARY_COLOUR = 'primary_colour';

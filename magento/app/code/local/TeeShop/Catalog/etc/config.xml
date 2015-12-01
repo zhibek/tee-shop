@@ -7,14 +7,14 @@
     </modules>
     <global>
         <models>
-            <camelcase_tee>
+            <teeshop_catalog>
                 <class>TeeShop_Catalog_Model</class>
-            </camelcase_tee>
+            </teeshop_catalog>
         </models>
         <helpers>
-            <camelcase_tee>
+            <teeshop_catalog>
                 <class>TeeShop_Catalog_Helper</class>
-            </camelcase_tee>
+            </teeshop_catalog>
         </helpers>
         <resources>
             <teeshop_setup>
