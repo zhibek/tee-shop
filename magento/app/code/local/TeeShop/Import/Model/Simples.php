@@ -16,7 +16,7 @@ class TeeShop_Import_Model_Simples
 
     public function __construct()
     {
-        $this->helper = Mage::helper('import');
+        $this->helper = Mage::helper('teeshop_import');
     }
 
     public function getUpdatesCount()
