@@ -4,7 +4,7 @@ Feature: ConfProduct
   In order to test new variations in configurable product page
   @javascript 
   Scenario: Buying a blue-sky Xl LIVERPOOL CHILDREN'S PYJAMA
-    Given I am on "catalogsearch/result/?q=%27base%27+liverpool"
+    Given I am on "catalogsearch/result/?q=base+liverpool"
     When I follow "Base Liverpool Children's Pyjama"
     Then I should see "In stock"
     #checking for brand and fabric care
