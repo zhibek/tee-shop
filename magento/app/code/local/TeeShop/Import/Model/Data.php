@@ -52,7 +52,7 @@ class TeeShop_Import_Model_Data
         
     }
 
-    private function storeData()
+    private static function storeData()
     {
         if (TeeShop_Import_Model_Data::is_404(self::PRODUCTS_URL)) {
             print('Not Found ... please try again later ' . PHP_EOL);
@@ -66,7 +66,7 @@ class TeeShop_Import_Model_Data
         }
     }
 
-    private function is_404($url)
+    private static function is_404($url)
     {
         $handle = curl_init($url);
         curl_setopt($handle, CURLOPT_RETURNTRANSFER, TRUE);

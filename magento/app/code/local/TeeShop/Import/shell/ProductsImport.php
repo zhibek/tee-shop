@@ -15,7 +15,7 @@ require_once dirname(__FILE__) . $path;
  * Shell script to trigger the import of product records from a custom CSV format
  * using the new (1.5) ImportExport module
  */
-class TeeShop_ProductsImport extends Mage_Shell_Abstract
+class TeeShop_Import_Shell_ProductsImport extends Mage_Shell_Abstract
 {
 
     /**
@@ -46,5 +46,5 @@ USAGE;
 
 }
 
-$main = new TeeShop_ProductsImport();
+$main = new TeeShop_Import_Shell_ProductsImport();
 $main->run();

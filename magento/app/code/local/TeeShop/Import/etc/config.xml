@@ -29,17 +29,15 @@
     <crontab>
         <jobs>
             <!--cron name in cron_schedule table-->
-<!--            <teeshop_import>
+            <teeshop_import>
                 <schedule>
-                    runs each day at midnight
+                    <!--runs each day at midnight-->
                     <cron_expr>0 0 * * *</cron_expr>
-                    runs each day at midnight
-                    <cron_expr>*/5 * * * *</cron_expr>
                 </schedule>
                 <run>
                     <model>teeshop_import/observer::import</model>
                 </run>
-            </teeshop_import>-->
+            </teeshop_import>
         </jobs>
     </crontab>
 </config>

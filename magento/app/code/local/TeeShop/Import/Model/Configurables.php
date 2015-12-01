@@ -66,7 +66,7 @@ class TeeShop_Import_Model_Configurables
             $updates = array(
                 'name' => 'Base ' . $product['title'],
                 'price' => $product['price'],
-                'meta_title' => 'Base ' . $$product['title'],
+                'meta_title' => 'Base ' . $product['title'],
                 'meta_keyword' => 'Base ' . $product['title'],
                 'description' => 'Base ' . $product['description'],
                 'short_description' => 'Base ' . $product['description'],
@@ -270,109 +270,6 @@ class TeeShop_Import_Model_Configurables
         );
         return $updates;
     }
-
-//    private function assignNewProducts($associationUpdates, $confProduct)
-//    {
-//
-//        //array contains simple products objects
-//        $simples = array();
-//
-//        /* simple products that still assigned 
-//         * to be added with the new ones
-//         */
-//        $oldproductIds = $confProduct->getTypeInstance()->getUsedProductIds();
-//
-//        //adding old products to array
-//        foreach ($oldproductIds as $old) {
-//            $simpleObject = Mage::getModel('catalog/product')->load($old);
-//            array_push($simples, $simpleObject);
-//        }
-//
-//        //adding new products to array
-//        foreach ($associationUpdates['add'] as $new) {
-//            $simpleObject = Mage::getModel('catalog/product')->loadByAttribute('sku', $new);
-//            array_push($simples, $simpleObject);
-//        }
-//
-//        // remove all assosiation
-////        Mage::getResourceSingleton('catalog/product_type_configurable')
-////                ->saveProducts($confProduct, array());
-////
-////        // getting fresh object of the configurable product
-////        // bacause using old object fails to assign products again
-////        $confProduct = Mage::getModel('catalog/product')->loadbyAttribute('sku', $confProduct['sku']);
-//
-//        $configurableProductsData = array();
-//        foreach ($simples as $simple) {
-//
-//            $configurableProductsData[$simple->getId()] = $simple;
-//        }
-//
-//        $confProduct->setConfigurableProductsData($configurableProductsData);
-//        $confProduct->save();
-//
-//
-//        // unassigning old products
-//        $this->unassignOldProducts($associationUpdates, $confProduct);
-//    }
-
-    /*
-     * This function meant to unassign removed products from 
-     * last update So How does it work?
-     * Answer : 
-     * 1- by getting all skus of old products including
-     * the ones wanted to be removed 
-     * 2- loop on each sku if needed so save it in new array
-     * 3- remove assosiation for all products
-     * 4- assign only wanted products
-     * 
-     * @param $associationUpdates array containg products needed
-     * be removed 
-     * 
-     * @param $confProduct  object of $configurable product itself
-     *  
-     */
-
-//    private function unassignOldProducts($associationUpdates, $confProduct)
-//    {   // all old products including ones wanted to be removed
-//        $old = $this->getOldAssosiatedProducts($confProduct);
-//        // array of all simples needed to be assigned
-//        $simples = array();
-//        // getting all products assigned in simples array
-//        foreach ($associationUpdates['remove'] as $removed) {
-//            foreach ($old as $simple) {
-//                if ($simple != $removed) {
-//                    if (!in_array($simple, $simples)) {
-//                        array_push($simples, $simple);
-//                    }
-//                }
-//            }
-//        }
-//        // remove all assosiation
-//        Mage::getResourceSingleton('catalog/product_type_configurable')
-//                ->saveProducts($confProduct, array());
-//
-//        //then reassign only needed products
-//        $simpleProducts = array();
-//        foreach ($simples as $simpleSku) {
-//            $simple = Mage::getModel('catalog/product')->loadByAttribute('sku', $simpleSku);
-//            array_push($simpleProducts, $simple);
-//        }
-//
-//        // getting fresh object of the configurable product
-//        // bacause using old object fails to assign products again
-//        $confProduct = Mage::getModel('catalog/product')->loadbyAttribute('sku', $confProduct['sku']);
-//
-//        // finally assigning all needed products to config
-//        $configurableProductsData = array();
-//        foreach ($simpleProducts as $simple) {
-//
-//            $configurableProductsData[$simple->getId()] = $simple;
-//        }
-//
-//        $confProduct->setConfigurableProductsData($configurableProductsData);
-//        $confProduct->save();
-//    }
     /*
      * This function meant to update association(add new & remove old)
      * 
