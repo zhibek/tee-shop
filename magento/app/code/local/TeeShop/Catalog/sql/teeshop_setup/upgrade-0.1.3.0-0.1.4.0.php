@@ -6,7 +6,7 @@
 
 $installer = $this;
 $installer->startSetup();
-$helper = Mage::helper('camelcase_tee');
+$helper = Mage::helper('teeshop_catalog');
 $entityTypeId = Mage::getModel('catalog/product')
         ->getResource()
         ->getEntityType()

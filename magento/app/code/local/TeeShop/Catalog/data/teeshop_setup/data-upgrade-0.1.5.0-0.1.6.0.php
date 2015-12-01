@@ -30,7 +30,7 @@
 //
 //Mage::app()->getStore()->setId(Mage_Core_Model_App::ADMIN_STORE_ID);
 //
-//$helper = Mage::helper('camelcase_tee');
+//$helper = Mage::helper('teeshop_catalog');
 //
 //$product = Mage::getModel('catalog/product');
 //foreach ($primaryColours as $primaryColour){

@@ -3,7 +3,7 @@
 class TeeShop_Catalog_Helper_Data extends Mage_Core_Helper_Abstract
 {
 
-    //  to create an object ->  $helper = Mage::helper('tee');
+    //  to create an object ->  $helper = Mage::helper('teeshop_catalog');
 
     const PRODUCTS_DATA_URL = 'http://fulfilment-service.zhibek.com/product';
     const ATTRIBUTE_COLOUR = 'color';
