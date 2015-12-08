@@ -134,7 +134,7 @@ class TeeShop_Import_Model_Configurables
                         ->setWeight(4.0000)
                         ->setStatus(Mage_Catalog_Model_Product_Status::STATUS_ENABLED) //product status (1 - enabled, 2 - disabled)
                         ->setTaxClassId(4) //tax class (0 - none, 1 - default, 2 - taxable, 4 - shipping)
-                        ->setVisibility(Mage_Catalog_Model_Product_Visibility::VISIBILITY_BOTH) //catalog and search visibility
+                        ->setVisibility(Mage_Catalog_Model_Product_Visibility::VISIBILITY_NOT_VISIBLE) //catalog and search visibility
 //                        ->setPrice($productData['price']) //price in form 11.22
                         ->setMetaTitle('Base ' . $productData['title'])
                         ->setMetaKeyword('Base ' . $productData['title'])
@@ -152,12 +152,11 @@ class TeeShop_Import_Model_Configurables
                         )
                         ->setCategoryIds(array($this->helper->prepareCategories($productData['categories'][0]))); //assign product to categories
 
-                $configProduct->getTypeInstance()->setUsedProductAttributeIds(array($primaryColourId, $colourId, $sizeId)); //attribute ID of attribute 'primary_colour' in my store
+                $configProduct->getTypeInstance()->setUsedProductAttributeIds(array($colourId, $sizeId)); //attribute ID of attribute 'primary_colour' in my store
                 $simpleIds = $simples[static::$counter];
                 //// loading collection of our shirts
                 $simpleProducts = Mage::getResourceModel('catalog/product_collection')
                         ->addIdFilter($simpleIds)
-                        ->addAttributeToSelect('primary_colour')
                         ->addAttributeToSelect('color')
                         ->addAttributeToSelect('size');
                 $configurableProductsData = array();

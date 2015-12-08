@@ -71,7 +71,7 @@ class TeeShop_Import_Model_Simples
                 if ($simple['sku'] === $sku) {
                     // start updating
                     $updates = array(
-                        'name' => $productData['title'],
+                        'name' => $productData['title'].'-'.$simple['primary_colour'],
                         'price' => $productData['price'],
                         'meta_title' => $productData['title'],
                         'meta_keyword' => $productData['title'],
@@ -112,7 +112,7 @@ class TeeShop_Import_Model_Simples
                         ->setTypeId('simple') //product type
                         ->setCreatedAt(strtotime('now')) //product creation time
                         ->setSku($simple['sku']) //SKU
-                        ->setName($productData['title']) //product name
+                        ->setName($productData['title'].'-'.$simple['primary_colour']) //product name
                         ->setWeight(4)
                         ->setStatus(Mage_Catalog_Model_Product_Status::STATUS_ENABLED)
                         ->setTaxClassId(4) //tax class (0 - none, 1 - default, 2 - taxable, 4 - shipping)

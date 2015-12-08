@@ -70,7 +70,7 @@ $installer->addAttribute('catalog_product', TeeShop_Catalog_Helper_Data::ATTRIBU
     'filterable'        => true,
     'filterable_in_search'  => true,    // to appear in search filters
     'comparable'        => false,
-    'visible_on_front'  => true,
+    'visible_on_front'  => false,
     'unique'            => false,
     'apply_to'          => 'simple,configurable',
     'is_configurable'   => true,
