@@ -16,6 +16,14 @@
     </default>
     <global>
         <models>
+            <!--overriding Mage_CatalogSearch_Model_Layer
+            to prevent appearance of multi size shirts for
+            the same color-->
+            <catalogsearch>
+                <rewrite>
+                    <layer>TeeShop_Search_Model_Layer</layer>
+                </rewrite>
+            </catalogsearch>
             <!--overriding fulltext.php::prepareResults() to fix
             type "Like" search-->
             <catalogsearch_resource>

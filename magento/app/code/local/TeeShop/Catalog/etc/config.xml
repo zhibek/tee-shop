@@ -10,11 +10,21 @@
             <teeshop_catalog>
                 <class>TeeShop_Catalog_Model</class>
             </teeshop_catalog>
+            <catalog>
+                <rewrite>
+                    <layer>TeeShop_Catalog_Model_Layer</layer>
+                </rewrite>
+            </catalog>
         </models>
         <helpers>
             <teeshop_catalog>
                 <class>TeeShop_Catalog_Helper</class>
             </teeshop_catalog>
+            <catalog>
+                <rewrite>
+                    <product>TeeShop_Catalog_Helper_Catalog_Product</product>
+                </rewrite>
+            </catalog>
         </helpers>
         <resources>
             <teeshop_setup>
@@ -25,4 +35,17 @@
             </teeshop_setup>
         </resources>
     </global>
+    <frontend>
+        <events>
+            <controller_action_predispatch_catalog_product_view>
+                <observers>
+                    <teeshop_catalog>
+                        <type>model</type>
+                        <class>teeshop_catalog/observer</class>
+                        <method>forwardToConfigurable</method>
+                    </teeshop_catalog>
+                </observers>
+            </controller_action_predispatch_catalog_product_view>
+        </events>
+    </frontend>
 </config>

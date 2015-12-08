@@ -11,11 +11,9 @@ class TeeShop_Catalog_Helper_Data extends Mage_Core_Helper_Abstract
     const ATTRIBUTE_BRAND = 'brand';
     const ATTRIBUTE_FABRIC_CARE = 'fabric_care';
     const ROOT_STORE_ID = 0;    // used to create root categories
+
     protected $productData;
 
-    
-    
-    
     /* private function to return parent category id
      * 
      * @param string $parentName : parent category's name
@@ -31,7 +29,6 @@ class TeeShop_Catalog_Helper_Data extends Mage_Core_Helper_Abstract
                         ->getId();
     }
 
-        
     /*
      * creates Top level categories
      * 
@@ -68,7 +65,7 @@ class TeeShop_Catalog_Helper_Data extends Mage_Core_Helper_Abstract
     public function createSubCategory($subCatName, $parentCatName)
     {
         $category = Mage::getModel('catalog/category');
-        $category->setName($subCatName) 
+        $category->setName($subCatName)
                 ->setUrlKey($subCatName)
                 ->setIsActive(1)
                 ->setDisplayMode('PRODUCTS')
@@ -82,7 +79,6 @@ class TeeShop_Catalog_Helper_Data extends Mage_Core_Helper_Abstract
         $category->save();
     }
 
-    
     /*
      * this function is used to prepare categories ids of 
      * products in json document (for both top level & sub categories)
@@ -117,6 +113,93 @@ class TeeShop_Catalog_Helper_Data extends Mage_Core_Helper_Abstract
         endswitch;
 
         return $categoryIds;
+    }
+
+    /*
+     * Methods of Overriding Mage_Catalog_Model_Layer in TeeShop_Catalog_Model_Layer
+     */
+
+
+    /*
+     * This function used to return skus without sizes
+     * 
+     * @param $product is a product's object
+     * 
+     * @return sku without size ex: 10017-brightwhite
+     */
+
+    public function getSkuWithoutSize($product)
+    {
+        $skuArray = explode('-', $product->getSku());
+
+        return $skuArray[0] . '-' . $skuArray[1];
+    }
+
+    /*
+     * This function is used to get one size form each color 
+     * and then get id for each product of the filtered products
+     * @ param is products array -> null to be used in search too
+     * @return array of filter product ids
+     */
+
+    public function prepareColourFilteredIds($products = null)
+    {
+        if (is_null($products)) {
+            // getting all products in certain category
+            $products = Mage::getModel('catalog/product')
+                    ->getCollection()
+                    ->addCategoryFilter(Mage::registry('current_category'));
+        }
+        // contains skus without ids of filtered products
+        $tempArray = array();
+
+        // contains skus of filtered products 
+        $values = array();
+        foreach ($products as $product) {
+
+            /*
+             * a way to prevent product with the same color to be 
+             * duplicated with another size
+             */
+
+            if (!in_array($this->getSkuWithoutSize($product), $tempArray)) {
+                array_push($values, $product->getSku());
+                array_push($tempArray, $this->getSkuWithoutSize($product));
+            }
+        }
+
+        // getting product ids
+        $ids = array();
+        foreach ($values as $sku) {
+            $id = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku)->getId();
+            array_push($ids, $id);
+        }
+
+        return $ids;
+    }
+
+    /*
+     * function to get only simple products to use in search
+     * 
+     * @param collection of products
+     * 
+     * @return collection of simple products only 
+     */
+
+    public function getSimplesOnly($collection)
+    {
+        $simplesIds = array();
+        foreach ($collection as $product) {
+            if (!($product->isConfigurable())) {
+                array_push($simplesIds, $product->getId());
+            }
+        }
+
+        $simplesCollection = Mage::getModel('catalog/product')
+                ->getCollection()
+                ->addAttributeToFilter('entity_id', $simplesIds);
+
+        return $simplesCollection;
     }
 
 }
