@@ -6,6 +6,8 @@ Feature: ConfProduct
   Scenario: Buying a Sky-blue Xl LIVERPOOL MEN'S CASUAL-BLUE
     Given I am on "catalogsearch/result/?q=liverpool"
     When I follow "Liverpool Men's Casual-blue"
+    #forwarding simple product to its config
+    Then I should see "Base Liverpool Men's Casual"
     Then I should see "In stock"
     #checking for brand and fabric care
     When I should see "Additional Information"
