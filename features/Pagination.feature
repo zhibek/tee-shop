@@ -12,8 +12,6 @@ Feature: Pagination
     Then the response should contain "<li class=\"current\">1</li>"
     #button to move to the second page
     Then the response should contain "/catalogsearch/result/index/?p=2&amp;q=liverpool\">2"
-    #button to move to the 3rd page
-    Then the response should contain "/catalogsearch/result/index/?p=3&amp;q=liverpool\">3"
 
   Scenario: Test products/page drop downlist
     Given I am on homepage
