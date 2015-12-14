@@ -135,7 +135,7 @@ class TeeShop_Import_Helper_Data extends Mage_Core_Helper_Abstract
      */
 
     public function prepareShirtIds($products)
-    {   
+    {
         $counter = 1;
         $ids = array();
         $configs = $this->getShirtsSkus($products);
@@ -177,7 +177,7 @@ class TeeShop_Import_Helper_Data extends Mage_Core_Helper_Abstract
      */
 
     private function getShirtsSkus($products)
-    {       
+    {
         $counter = 1;
         $skus = array();
         $varients = array();
@@ -193,20 +193,15 @@ class TeeShop_Import_Helper_Data extends Mage_Core_Helper_Abstract
 
         return $skus;
     }
-    
-//    /*
-//     * function to return names of configurable products
-//     * 
-//     * @return array of configurable products' names
-//     */
-//    public function getBaseProductNames()
-//    {
-//        $names = array();
-//        $content = TeeShop_Import_Model_Products::getInstance();
-//        foreach ($content->instance['products'] as $productData) {
-//            array_push($names, 'Base '.$productData['title']);
-//        }
-//        return $names;
-//    }
+
+    function formatPeriod($endtime, $starttime)
+    {
+        $duration = $endtime - $starttime;
+        $hours = (int) ($duration / 60 / 60);
+        $minutes = (int) ($duration / 60) - $hours * 60;
+        $seconds = (int) $duration - $hours * 60 * 60 - $minutes * 60;
+
+        return ($hours == 0 ? "00" : $hours) . ":" . ($minutes == 0 ? "00" : ($minutes < 10 ? "0" . $minutes : $minutes)) . ":" . ($seconds == 0 ? "00" : ($seconds < 10 ? "0" . $seconds : $seconds));
+    }
 
 }

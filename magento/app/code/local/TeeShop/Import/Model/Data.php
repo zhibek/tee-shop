@@ -89,39 +89,45 @@ class TeeShop_Import_Model_Data
 
     public function setupImportedData()
     {
+        $helper = Mage::helper('teeshop_import');
+        $attributeStartTime = microtime(true);
         $attrSetup = new TeeShop_Import_Model_Attributes();
         // importing attributes options
         if ($attrSetup->prepareAttrOptions(static::$instance->content)) {
-            print('Attributes options was imported successfully.' . PHP_EOL);
-            print('Report:' . $attrSetup->getUpdatesCount() . ' options was newly imported' . PHP_EOL);
+            $attributeEndTime = microtime(true);
+            print('Attributes options were imported successfully in ' . $helper->formatPeriod($attributeEndTime, $attributeStartTime) . PHP_EOL);
+            print('Report:' . $attrSetup->getUpdatesCount() . ' options were newly imported ' . PHP_EOL);
         }
         else {
             print('Oops..! there was a problem importing attribues options.' . PHP_EOL);
         }
 
         // importing simple products
+        $simpleStartTime = microtime(true);
         $simplesSetup = new TeeShop_Import_Model_Simples();
 
         if ($simplesSetup->prepareSimples(static::$instance->content)) {
-            print('Simple products was imported successfully.' . PHP_EOL);
+            $simpleEndTime = microtime(true);
+            print('Simple products were imported successfully in ' . $helper->formatPeriod($simpleEndTime, $simpleStartTime) . PHP_EOL);
             print('Report:' . $simplesSetup->getUpdatesCount()[0] . ' products exist' . PHP_EOL);
-            print('Report:' . $simplesSetup->getUpdatesCount()[1] . ' products was newly imported' . PHP_EOL);
-            print('Report:' . $simplesSetup->getUpdatesCount()[2] . ' products was updated successfully' . PHP_EOL);
-            print('Report:' . $simplesSetup->getUpdatesCount()[3] . ' products was failed to be updated' . PHP_EOL);
+            print('Report:' . $simplesSetup->getUpdatesCount()[1] . ' products were newly imported' . PHP_EOL);
+            print('Report:' . $simplesSetup->getUpdatesCount()[2] . ' products were updated successfully' . PHP_EOL);
+            print('Report:' . $simplesSetup->getUpdatesCount()[3] . ' products were failed to be updated' . PHP_EOL);
         }
         else {
             print('Oops..! there was a problem importing simple products.' . PHP_EOL);
         }
 
         // importing configurable products
-
+        $confStartTime = microtime(true);
         $configs = new TeeShop_Import_Model_Configurables();
         if ($configs->prepareConfigs(static::$instance->content)) {
-            print('Configurable products was imported successfully.' . PHP_EOL);
+            $confEndTime = microtime(true);
+            print('Configurable products were imported successfully in ' . $helper->formatPeriod($confEndTime, $confStartTime) . PHP_EOL);
             print('Report:' . $configs->getUpdatesCount()[0] . ' products exist' . PHP_EOL);
-            print('Report:' . $configs->getUpdatesCount()[1] . ' products was newly imported' . PHP_EOL);
-            print('Report:' . $configs->getUpdatesCount()[2] . ' products was updated successfully' . PHP_EOL);
-            print('Report:' . $configs->getUpdatesCount()[3] . ' products was failed to be updated' . PHP_EOL);
+            print('Report:' . $configs->getUpdatesCount()[1] . ' products were newly imported' . PHP_EOL);
+            print('Report:' . $configs->getUpdatesCount()[2] . ' products were updated successfully' . PHP_EOL);
+            print('Report:' . $configs->getUpdatesCount()[3] . ' products were failed to be updated' . PHP_EOL);
         }
         else {
             print('Oops..! there was a problem importing Configurable products.' . PHP_EOL);
