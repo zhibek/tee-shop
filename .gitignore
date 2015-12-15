@@ -1,3 +1,5 @@
 /.vagrant
 /vendor
 /logs
+composer.lock
+nbproject/
