@@ -1,0 +1,8 @@
+<config>
+  <modules>
+    <TeeShop_Logger>
+      <active>true</active>
+      <codePool>local</codePool>
+    </TeeShop_Logger>
+  </modules>
+</config>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <TeeShop_Logger>
+            <version>0.1.0.0</version>
+        </TeeShop_Logger>
+    </modules>
+    <default>
+        <dev>
+            <log>
+                <active>1</active>
+            </log>
+        </dev>
+    </default>
+</config>
