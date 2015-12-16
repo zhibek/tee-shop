@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Teeshop_Main>
+            <version>1.0.0.0</version>
+        </Teeshop_Main>
+    </modules>
+    <global>
+        <resources>
+        </resources>
+        <helpers>
+        </helpers>
+    </global>
+</config>
