@@ -161,10 +161,11 @@ class TeeShop_Catalog_Helper_Data extends Mage_Core_Helper_Abstract
              * a way to prevent product with the same color to be 
              * duplicated with another size
              */
-
-            if (!in_array($this->getSkuWithoutSize($product), $tempArray)) {
-                array_push($values, $product->getSku());
-                array_push($tempArray, $this->getSkuWithoutSize($product));
+            if (!$product->isConfigurable()) {
+                if (!in_array($this->getSkuWithoutSize($product), $tempArray)) {
+                    array_push($values, $product->getSku());
+                    array_push($tempArray, $this->getSkuWithoutSize($product));
+                }
             }
         }
 
@@ -188,18 +189,13 @@ class TeeShop_Catalog_Helper_Data extends Mage_Core_Helper_Abstract
 
     public function getSimplesOnly($collection)
     {
-        $simplesIds = array();
-        foreach ($collection as $product) {
-            if (!($product->isConfigurable())) {
-                array_push($simplesIds, $product->getId());
+
+        foreach ($collection as $pro) {
+            if ($pro->isConfigurable()) {
+                $collection->removeItemByKey($pro->getId());
             }
+            return $collection;
         }
-
-        $simplesCollection = Mage::getModel('catalog/product')
-                ->getCollection()
-                ->addAttributeToFilter('entity_id', $simplesIds);
-
-        return $simplesCollection;
     }
 
 }
