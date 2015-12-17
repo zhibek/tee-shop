@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Teeshop_Weather>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Teeshop_Weather>
+    </modules>
+</config>
