@@ -19,15 +19,18 @@
         }
     ],
     "require": {
-        "bragento/magento-composer-installer": "~1",
-        "magento/core": "~1.9",
+        "bragento/magento-composer-installer": "^1.1",
+        "magento/core": "1.9.1",
 	"zhibek/magento-scriptable-config": "dev-master"
     },
     "extra": {
         "magento-root-dir": "magento",
         "persistent-files": [
             "app/etc/install.xml",
-            "app/code/local"
+            "app/code/local",
+            "magento/app/etc/modules/Teeshop_All.xml",
+            "magento/app/etc/modules/Zhibek_Migration.xml",
+            "magento/app/design/frontend/teeshop/default"
         ],
 	"magento-deploystrategy": "symlink",
 	"auto-append-gitignore": false
