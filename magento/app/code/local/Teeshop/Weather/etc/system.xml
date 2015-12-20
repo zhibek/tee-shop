@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <weatherConfig translate="label">
+            <label>Weather Configuration</label>
+            <sort_order>150</sort_order>
+        </weatherConfig>
+    </tabs>
+    <sections>
+        <weather translate="label" module="adminhtml">
+            <label>Weather</label>
+            <tab>weatherConfig</tab>
+            <sort_order>10</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label comment">
+                    <label>Weather Configuration</label>
+                    <sort_order>50</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <comment><![CDATA[This is all <strong>weather-related</strong> configurations]]></comment>
+                    <fields>
+                        <city_field translate="label comment">
+                            <label>City</label>
+                            <comment>City where weather data is displayed.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </city_field>
+                    </fields>
+                </general>
+            </groups>
+        </weather>
+    </sections>
+</config>
