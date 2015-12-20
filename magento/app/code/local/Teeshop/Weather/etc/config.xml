@@ -5,4 +5,48 @@
             <version>1.0.0.0</version>
         </Teeshop_Weather>
     </modules>
+    <global>
+        <blocks>
+            <weather>
+                <class>Teeshop_Weather_Block</class>
+            </weather>
+        </blocks>
+    </global>
+    <frontend>
+        <layout>
+            <updates>
+                <weather module="Teeshop_Weather">
+                    <file>weather.xml</file>
+                </weather>
+            </updates>
+        </layout>
+    </frontend>
+    <default>
+        <weather>
+            <general>
+                <city_field>Cairo</city_field>
+            </general>
+        </weather>
+    </default>
+    <adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <weather>
+                                            <title>Weather Section</title> <!-- Used in resources tree -->
+                                        </weather>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
 </config>
