@@ -1,0 +1,26 @@
+<?php
+// app/design/frontend/teeshop/default/template/weather/weather.phtml
+$weather = $this->getWeather();
+?>
+
+<div id="weather_list">
+    <?php if (is_object($weather)) { ?>
+    <div class="block-title">
+        <strong><span>Weather</span></strong>
+    </div>
+    <div class="block-content">
+        <p>
+            <img style="float:left" src="http://openweathermap.org/img/w/<?php echo $weather->weather[0]->icon; ?>.png">
+            <?php echo $weather->name; ?>, <?php echo $weather->sys->country; ?> 
+            <br/><?php echo $weather->weather[0]->description; ?>
+            <br/><?php echo number_format($weather->main->temp, 1); ?> °С 
+            <br/>Temperature from <?php echo number_format($weather->main->temp_min, 1); ?> to <?php echo number_format($weather->main->temp_max, 1); ?>°С, 
+            <br/>Wind <?php echo $weather->wind->speed; ?> m/s. 
+            Clouds <?php echo $weather->clouds->all; ?> %, 
+            <?php echo $weather->main->pressure; ?> hpa
+            <br/>
+            Geo coords [ <?php echo $weather->coord->lon; ?> , <?php echo $weather->coord->lat; ?>  ]
+        </p>
+    </div>
+    <?php } ?>
+</div>
