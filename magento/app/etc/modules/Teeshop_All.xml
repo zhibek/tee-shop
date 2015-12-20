@@ -5,5 +5,9 @@
             <active>true</active>
             <codePool>local</codePool>
         </Teeshop_Main>
+        <Teeshop_Weather>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Teeshop_Weather>
     </modules>
 </config>
