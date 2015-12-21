@@ -15,7 +15,7 @@ $weather = $this->getWeather();
             <br/><?php echo $weather->weather[0]->description; ?>
             <br/><?php echo number_format($weather->main->temp, 1); ?> °С 
             <br/>Temperature from <?php echo number_format($weather->main->temp_min, 1); ?> to <?php echo number_format($weather->main->temp_max, 1); ?>°С, 
-            <br/>Wind <?php echo $weather->wind->speed; ?> m/s. 
+            <br/>Wind <?php echo number_format($weather->wind->speed * 3.6 ,1 ); ?> km/h. 
             Clouds <?php echo $weather->clouds->all; ?> %, 
             <?php echo $weather->main->pressure; ?> hpa
             <br/>
