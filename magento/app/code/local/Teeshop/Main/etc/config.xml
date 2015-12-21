@@ -5,7 +5,15 @@
             <version>1.0.0.0</version>
         </Teeshop_Main>
     </modules>
-
+    <frontend>
+        <layout>
+            <updates>
+                <listProducts>
+                    <file>listProducts.xml</file>
+                </listProducts>
+            </updates>
+        </layout>
+    </frontend>
     <websites>
         <base>
             <design>
