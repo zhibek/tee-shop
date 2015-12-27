@@ -27,4 +27,17 @@
             </design>
         </base>
     </websites>
+    <stores>
+        <admin>
+            <design>
+                <package>
+                    <name>teeshop</name>
+                </package>
+                <theme>
+                    <template>default</template>
+                    <layout>default</layout>
+                </theme>
+            </design>
+        </admin>
+    </stores>
 </config>
