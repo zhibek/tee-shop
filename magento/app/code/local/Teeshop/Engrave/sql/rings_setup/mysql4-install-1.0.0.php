@@ -13,16 +13,22 @@ $parentCategory = Mage::getModel('catalog/category')->load($parentId);
 $category->setPath($parentCategory->getPath());
 $category->save();
 
-// This installer scripts adds a product attribute to Magento programmatically.
+// This installer scripts adds attribute to Magento programmatically.
 // Set data:
-$attributeName = 'Is Engravable'; // Name of the attribute
-$attributeCode = 'is_engravable'; // Code of the attribute
+$attributeNames = array(
+    'is_engravable' => 'Is Engravable',
+    'engraved_name' => 'Engraved Name',
+    'engraved_date' => 'Engraved Date'
+); // Name of the attribute
+$attributeCodes = array(
+    'is_engravable' => 'is_engravable',
+    'engraved_name' => 'engraved_name',
+    'engraved_date' => 'engraved_date'
+); // Code of the attribute
 $attributeGroup = 'General';          // Group to add the attribute to
 $attributeSetIds = array(4);          // Array with attribute set ID's to add this attribute to. (ID:4 is the Default Attribute Set)
 // Configuration:
-$data = array(
-    'type' => 'int', // Attribute type
-    'input' => 'boolean', // Input type
+$commonData = array(
     'global' => Mage_Catalog_Model_Resource_Eav_Attribute::SCOPE_GLOBAL, // Attribute scope
     'required' => false, // Is this attribute required?
     'user_defined' => false,
@@ -32,23 +38,50 @@ $data = array(
     'visible_on_front' => true,
     'unique' => false,
     'used_in_product_listing' => true,
-    // Filled from above:
-    'label' => $attributeName
 );
 
 // Create attribute:
 // We create a new installer class here so we can also use this snippet in a non-EAV setup script.
-$installer = Mage::getResourceModel('catalog/setup', 'catalog_setup');
-$installer->startSetup();
-$installer->addAttribute('catalog_product', $attributeCode, $data);
+$catalogInstaller = Mage::getResourceModel('catalog/setup', 'catalog_setup');
+$salesInstaller = Mage::getResourceModel('sales/setup', 'sales_setup');
+$catalogInstaller->startSetup();
+$salesInstaller->startSetup();
+
+$isEngravableData = array_merge(
+        array(
+    'label' => $attributeNames['is_engravable'],
+    'type' => 'int', // Attribute type
+    'input' => 'boolean', // Input type
+        ), $commonData);
+$engravedNameData = array_merge(
+        array(
+    'label' => $attributeNames['engraved_name'],
+    'type' => Varien_Db_Ddl_Table::TYPE_VARCHAR, // Attribute type
+    'input' => 'text', // Input type
+        ), $commonData);
+$engravedDateData = array_merge(
+        array(
+    'label' => $attributeNames['engraved_date'],
+    'type' => Varien_Db_Ddl_Table::TYPE_VARCHAR, // Attribute type
+    'input' => 'date', // Input type
+        ), $commonData);
+
+$catalogInstaller->addAttribute('catalog_product', $attributeCodes['is_engravable'], $isEngravableData);
+$salesInstaller->addAttribute('quote_item', $attributeCodes['engraved_name'], $engravedNameData);
+$salesInstaller->addAttribute('order_item', $attributeCodes['engraved_name'], $engravedNameData);
+$salesInstaller->addAttribute('quote_item', $attributeCodes['engraved_date'], $engravedDateData);
+$salesInstaller->addAttribute('order_item', $attributeCodes['engraved_date'], $engravedDateData);
 
 // Add the attribute to the proper sets/groups:
 foreach ($attributeSetIds as $attributeSetId) {
-    $installer->addAttributeToGroup('catalog_product', $attributeSetId, $attributeGroup, $attributeCode);
+    $catalogInstaller->addAttributeToGroup('catalog_product', $attributeSetId, $attributeGroup, $attributeCodes['is_engravable']);
 }
 
 // Done:
-$installer->endSetup();
+$catalogInstaller->endSetup();
+$salesInstaller->endSetup();
+
+
 
 Mage::app()->setCurrentStore(Mage_Core_Model_App::ADMIN_STORE_ID);
 Mage::app()->getStore(Mage_Core_Model_App::DISTRO_STORE_ID)->setWebsiteId(1);
