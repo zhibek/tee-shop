@@ -73,4 +73,11 @@
             </sales_quote_item_set_product>
         </events>
     </frontend>
+    <default>
+        <engrave>
+            <general>
+                <price_per_character>0.10</price_per_character>
+            </general>
+        </engrave>
+    </default>
 </config>
