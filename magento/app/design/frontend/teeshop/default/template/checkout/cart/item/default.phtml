@@ -73,12 +73,11 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
         </div>
         
         <?php if ($isEngravableProduct === true):?>
-                <p class="item-msg">
-                    Engraved Name : <?php echo $_item->getEngravedName(); ?>
-                </p>
-                <p class="item-msg">
-                    Engraved Date : <?php echo date_format(new \DateTime($_item->getEngravedDate()), "D, d M Y H:i:s"); ?>
-                </p>
+                <div>
+                    <span class="label">Engraved Name:</span> <?php echo $_item->getEngravedName(); ?>
+                <br/>
+                    <span class="label">Engraved Date:</span> <?php echo date_format(new \DateTime($_item->getEngravedDate()), "D, d M Y H:i:s"); ?>
+                </div>
         <?php endif;?>
                 
         <?php if ($_options = $this->getOptionList()):?>

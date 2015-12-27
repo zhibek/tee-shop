@@ -21,18 +21,24 @@ class Teeshop_Engrave_Model_Observer {
         }
     }
 
-    public function setQuote($observer) {
+    public function addItem($observer) {
 
         $quoteItem = $observer->getQuoteItem();
-        $product = $observer->getProduct();
+        $product = $quoteItem->getProduct();
 
         if (!$product->getId()) {
             return;
         }
         $isEngravable = (bool) $product->getIsEngravable();
         if ($isEngravable === true) {
+            
+            // separate engravable products
+            $data['microtime'] = microtime(true);
+            $product->addCustomOption('do_not_merge', serialize($data));
+            $quoteItem->addOption($product->getCustomOption('do_not_merge'));
+            
             $requestParameters = Mage::app()->getRequest()->getParams();
-            $originalPrice = $quoteItem->getPrice();
+            $originalPrice = $product->getFinalPrice();
             // sectionName/groupName/fieldName
             $pricePerCharacter = Mage::getStoreConfig('engrave/general/price_per_character');
             // remove old engrave price
