@@ -6,6 +6,11 @@
         </Teeshop_Engrave>
     </modules>
     <global>
+        <models>
+            <teeshop_engrave>
+                <class>Teeshop_Engrave_Model</class>
+            </teeshop_engrave>
+        </models>
         <resources>  
             <rings_setup>
                 <setup>
@@ -16,5 +21,26 @@
                 </connection>
             </rings_setup>
         </resources>
+        <sales>
+            <quote>
+                <item>
+                    <product_attributes>
+                        <is_engravable />
+                    </product_attributes>
+                </item>
+            </quote>
+        </sales>
     </global>
+    <frontend>
+        <events>
+            <controller_action_predispatch_checkout_cart_add>
+                <observers>
+                    <teeshop_engrave_listen_cart_add>
+                        <class>teeshop_engrave/observer</class>
+                        <method>listenCartAdd</method>
+                    </teeshop_engrave_listen_cart_add>
+                </observers>
+            </controller_action_predispatch_checkout_cart_add>
+        </events>
+    </frontend>
 </config>
