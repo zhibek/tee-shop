@@ -52,6 +52,13 @@
         </fieldsets>
     </global>
     <frontend>
+        <layout>
+            <updates>
+                <engrave_catalog module="Teeshop_Engrave">
+                    <file>engrave.xml</file>
+                </engrave_catalog>
+            </updates>
+        </layout>
         <events>
             <controller_action_predispatch_checkout_cart_add>
                 <observers>

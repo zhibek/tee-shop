@@ -30,7 +30,8 @@
             "app/code/local",
             "magento/app/etc/modules/Teeshop_All.xml",
             "magento/app/etc/modules/Zhibek_Migration.xml",
-            "magento/app/design/frontend/teeshop/default"
+            "magento/app/design/frontend/teeshop/default",
+            "magento/js/teeshop"
         ],
 	"magento-deploystrategy": "symlink",
 	"auto-append-gitignore": false

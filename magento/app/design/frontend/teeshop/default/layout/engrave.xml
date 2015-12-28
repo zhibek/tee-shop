@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+
+<layout version="0.1.0">
+
+    
+    <catalogsearch_result_index translate="label">
+        <reference name="head">
+            <action method="addItem">
+                <type>js_css</type>
+                <name>teeshop/bootstrap/css/bootstrap.min.css</name>
+            </action>
+            <action method="addJs"><script>teeshop/bootstrap/js/bootstrap.min.js</script></action>
+            <action method="addJs"><script>teeshop/modal/bootbox.min.js</script></action>
+            <action method="addJs"><script>teeshop/productList.js</script></action>
+        </reference>
+    </catalogsearch_result_index>
+    <catalogsearch_advanced_result translate="label">
+        <reference name="head">
+            <action method="addItem">
+                <type>js_css</type>
+                <name>teeshop/bootstrap/css/bootstrap.min.css</name>
+            </action>
+            <action method="addJs"><script>teeshop/bootstrap/js/bootstrap.min.js</script></action>
+            <action method="addJs"><script>teeshop/modal/bootbox.min.js</script></action>
+            <action method="addJs"><script>teeshop/productList.js</script></action>
+        </reference>
+    </catalogsearch_advanced_result>
+    <catalog_category_default translate="label">
+        <reference name="head">
+            <action method="addItem">
+                <type>js_css</type>
+                <name>teeshop/bootstrap/css/bootstrap.min.css</name>
+            </action>
+            <action method="addJs"><script>teeshop/bootstrap/js/bootstrap.min.js</script></action>
+            <action method="addJs"><script>teeshop/modal/bootbox.min.js</script></action>
+            <action method="addJs"><script>teeshop/productList.js</script></action>
+        </reference>
+    </catalog_category_default>
+    <catalog_category_layered translate="label">
+        <reference name="head">
+            <action method="addItem">
+                <type>js_css</type>
+                <name>teeshop/bootstrap/css/bootstrap.min.css</name>
+            </action>
+            <action method="addJs"><script>teeshop/bootstrap/js/bootstrap.min.js</script></action>
+            <action method="addJs"><script>teeshop/modal/bootbox.min.js</script></action>
+            <action method="addJs"><script>teeshop/productList.js</script></action>
+        </reference>
+    </catalog_category_layered>
+</layout>

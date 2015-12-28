@@ -16,7 +16,8 @@ app/locale/en_US
 downloader
 errors
 includes
-js
+js/*
+!js/teeshop
 lib
 media
 pkginfo
