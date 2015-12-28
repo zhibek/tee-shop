@@ -3,7 +3,7 @@
 <layout version="0.1.0">
 
     <default>
-
+        <!--Show weather instead of poll-->
         <reference name="right">
             <block type="weather/weather" name="weather_weather" template="weather/weather.phtml"></block>
         </reference>

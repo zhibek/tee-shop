@@ -3,7 +3,7 @@
 <layout version="0.1.0">
 
     <default>
-
+        <!--Hide poll-->
         <referenceBlock name="right.poll" remove="true" />
     </default>
 </layout>

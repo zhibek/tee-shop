@@ -2,6 +2,12 @@
 
 class Teeshop_Engrave_Model_Observer {
 
+    /**
+     * Log engraved name and time on adding product to cart
+     * @access public
+     * 
+     * @return null stop if no product is found
+     */
     public function addCart() {
 
         $product = Mage::getModel('catalog/product')
@@ -21,6 +27,15 @@ class Teeshop_Engrave_Model_Observer {
         }
     }
 
+    /**
+     * Save engraved name and time on adding product to cart
+     * Update price for product with engravable
+     * Separate engravable products by distinguishing them
+     * @access public
+     * 
+     * @param object $observer
+     * @return null stop if no product is found
+     */
     public function addItem($observer) {
 
         $quoteItem = $observer->getQuoteItem();

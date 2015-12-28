@@ -2,7 +2,7 @@
 
 <layout version="0.1.0">
 
-    
+    <!--Load needed resources for category and search results pages-->
     <catalogsearch_result_index translate="label">
         <reference name="head">
             <action method="addItem">

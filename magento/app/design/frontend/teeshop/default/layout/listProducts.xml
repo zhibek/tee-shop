@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <layout version="0.1.0">
-
+    <!--Add products list for default category in home page-->
     <cms_index_index>    
         <reference name="content">
             <block type="catalog/product_list" name="home.catalog.product.list" alias="products_homepage" template="catalog/product/list.phtml">

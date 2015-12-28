@@ -3,6 +3,10 @@
 // app/code/local/Teeshop/Weather/Block/Weather.php
 class Teeshop_Weather_Block_Weather extends Mage_Core_Block_Template {
 
+    /**
+     * Query weather data for the city sved in configuration
+     * @return stdObject weather data
+     */
     public function getWeather() {
         // sectionName/groupName/fieldName
         $city = Mage::getStoreConfig('weather/general/city_field');
