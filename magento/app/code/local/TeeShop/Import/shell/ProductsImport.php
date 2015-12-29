@@ -23,11 +23,10 @@ class TeeShop_Import_Shell_ProductsImport extends Mage_Shell_Abstract
      */
     public function run()
     {
-    $import = TeeShop_Import_Model_Data::getInstance();
-    $import->setupImportedData();
+        $import = TeeShop_Import_Model_Data::getInstance($this->getArg('url'));
+        $import->setupImportedData();
     }
 
-    
     /**
      * Retrieve usage help message
      *
@@ -35,8 +34,7 @@ class TeeShop_Import_Shell_ProductsImport extends Mage_Shell_Abstract
     public function usageHelp()
     {
         return <<<USAGE
-        
-Usage:  php import.php -- [options]
+Usage:  php ProductsImport.php -- [options]
   --url         link to import from
   -h            Short alias for help
   help          This help

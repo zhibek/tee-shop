@@ -12,11 +12,11 @@ class TeeShop_Import_Model_Data
      *
      * @return Products The *Products* instance.
      */
-    public static function getInstance()
+    public static function getInstance($url)
     {
         if (null === static::$instance) {
             static::$instance = new static();
-            static::$instance->content = TeeShop_Import_Model_Data::storeData();
+            static::$instance->content = TeeShop_Import_Model_Data::storeData($url);
         }
         return static::$instance;
     }
@@ -52,9 +52,13 @@ class TeeShop_Import_Model_Data
         
     }
 
-    private static function storeData()
+    private static function storeData($url)
     {
-        if (TeeShop_Import_Model_Data::is_404(self::PRODUCTS_URL)) {
+        if ($url == null) {
+           $url= self::PRODUCTS_URL; 
+        }
+
+        if (TeeShop_Import_Model_Data::is_404($url)) {
             print('Not Found ... please try again later ' . PHP_EOL);
             print('No Products have been imported' . PHP_EOL);
             die();
