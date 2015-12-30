@@ -139,5 +139,13 @@ class FeatureContext extends Behat\MinkExtension\Context\MinkContext
         $this->clickLink($filter);
         
     }
+    
+    /**
+     * @Given /^I wait for (\d+) seconds$/
+     */
+    public function iWaitForSeconds($seconds)
+    {
+        $this->getSession()->wait($seconds);
+    }
 
 }

@@ -6,6 +6,7 @@ Feature: check out
   @javascript  
   Scenario: Checking out liverpool children's casual
     Given I am on "catalogsearch/result/?q=liverpool"
+    And I wait for 5 seconds
     When I follow "Liverpool Children's Casual"
     When I press "Add to Cart"
     When  I press "Proceed to Checkout"
